@@ -258,18 +258,31 @@ function createBlocks(level) {
                     inputBox.id = 'typedBlock';
                 };
             }
-
+            const playingLevel = 'LEVEL 1';
             const tweetButton = document.getElementById('tweet');
             const t = String(30 - Number(timer.textContent));
             const c = count.textContent;
             const k = kpm.textContent;
-        
-            const tweet = `${c}打鍵/${t}秒(${k}KPM)＠脱衣タイピング（α）`;
-            tweetButton.dataset.text = tweet;
+            const hashTags = "脱衣タイピング"
+            const tweet = `${playingLevel} cleared! ${c}keys in ${t} sec (${k}KPM) ＠脱衣タイピング（α）`;
+            const url = 'https://example.com';
 
+            const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&hashtags=${hashTags}&url=${url}`;
+            tweetButton.href = tweetText;
         }
     }
 
 }
 
+/*
+https://twitter.com/intent/tweet?
+hashtags=%E8%84%B1%E8%A1%A3%E3%82%BF%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0&
 
+original_referer=http%3A%2F%2F127.0.0.1%3A5500%2F&
+
+ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&
+
+text=%E3%82%81%E3%81%A3%E3%81%9B%E3%83%BC%E3%81%98&
+
+url=http%3A%2F%2F127.0.0.1%3A5500%2Findex.html
+*/
