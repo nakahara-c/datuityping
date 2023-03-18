@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--ここからtwitter card-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@tt_cocoan">
+    <meta name="twitter:domain" content="example.com">
+    <meta name="twitter:title" content="【R-18】脱衣タイピング（α）">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="twitter_card.png">
+    <!--ここまでtwitter card-->
+
+    <!--ここからGoogle Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500;700&display=swap" rel="stylesheet">
+    <!--ここまでGoogle Fonts-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>【R-18】脱衣タイピング（α）</title>
+</head>
+
+<body>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-2 has-text-centered" style="opacity:0.7">
+                    脱衣タイピング(α)
+                </h1>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section">
+
+        <div class="tile is-ancestor">
+            <div class="container tile is-3 is-vertical is-parent m-1">
+
+                <div id="sidebar" class="tile is-child box">
+
+                    <div id="about" class="button is-medium mb-6">
+                        About
+                    </div>
+
+                    <p>Difficulty</p>
+
+                    <div id="lv1" class="button notification is-primary is-medium">
+                        LEVEL 1
+                    </div>
+                    <div id="lv2" class="button notification is-success is-medium">
+                        LEVEL 2
+                    </div>
+                    <div id="lv3" class="button notification is-info is-medium">
+                        LEVEL 3
+                    </div>
+                    <div id="lv4" class="button notification is-warning is-medium">
+                        LEVEL 4
+                    </div>
+                    <div id="lv5" class="button notification is-danger is-medium">
+                        LEVEL 5
+                    </div>
+
+
+                    <div class="mb-6"></div>
+
+                    <div class="box">
+                        <span id="timer" style="font-size:2em" class="has-text-danger"></span>s / 30s
+                        <br>
+                        <span id="count" style="font-size:1.5em"></span>keys
+                        <span id="kpm" style="font-size:1.5em"></span>kpm
+                    </div>
+
+                    <div class="mb-4"></div>
+
+                    <!--ここからツイートボタン-->
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=脱衣タイピング&ref_src=twsrc%5Etfw"
+                        class="twitter-share-button" data-show-count="false" data-text="脱衣タイピングを開発中！"
+                        data-via="tp_cocoan" data-size="large">Tweet #脱衣タイピング</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <!--ここまでツイートボタン-->
+                </div>
+
+            </div>
+
+            <div class="tile is-parent">
+
+                <div id="area" class="is-relative mx-auto">
+
+                    <!--メインコンテンツここ-->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer py-3">
+
+        <div class="content has-text-centered">
+
+        </div>
+
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+        VANTA.FOG({
+            el: ".hero",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 100.00,
+            minWidth: 1000.00,
+            highlightColor: 0xfafafa,
+            midtoneColor: 0xeb76d2,
+            lowlightColor: 0xd6d4de,
+            zoom: 0.6
+        })
+    </script>
+
+    <script src="main.js"></script>
+
+
+</body>
+
+</html>
