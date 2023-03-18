@@ -244,3 +244,14 @@ function createBlocks(level) {
 
 }
 
+makeTweetText();
+
+function makeTweetText () {
+    const tweetButton = document.getElementById('tweet');
+    const t = String(30 - Number(timer.textContent));
+    const c = count.textContent;
+    const k = kpm.textContent;
+
+    const tweet = `${c}打鍵/${t}秒(${k}KPM)＠脱衣タイピング（α）`;
+    tweetButton.dataset.text = tweet;
+}
