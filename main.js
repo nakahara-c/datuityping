@@ -25,6 +25,9 @@ function displayAbout () {
     
         <div style="width:60vw;height:60vh;"></div>
     </div>
+
+    <!--難易度対応表 table-->
+
     `
 
     let d = document.getElementById('area');
@@ -157,20 +160,14 @@ function createBlocks(level) {
     function setWord() {
         const typingArea = document.getElementById('typing_area');
         
-        function fisherYatesShuffle(arr){
-            for(let i = arr.length-1 ; i>0 ;i--) {
-                let j = Math.floor( Math.random() * (i + 1) );
-                [arr[i],arr[j]]=[arr[j],arr[i]];
-            }
-            return arr;
-        }
+
 
         let shuffledWordList = fisherYatesShuffle(wordList);
         let typeText = shuffledWordList.join(' ');
         typingArea.placeholder = typeText;
 
-        window.removeEventListener('keydown', judgeKeys);
-        window.addEventListener('keydown', judgeKeys);
+        window.removeEventListener('keydown', judgeKeys, false);
+        window.addEventListener('keydown', judgeKeys, false);
 
         function judgeKeys(e) {
 
@@ -200,7 +197,7 @@ function createBlocks(level) {
         }
         
         function incorrectType(key) {
-            if (key !== 'Enter') addBlock();
+            //if (key !== 'Enter') addBlock();
         }
         
         function deleteBlock() {
@@ -272,6 +269,22 @@ function createBlocks(level) {
         }
     }
 
+}
+
+function fisherYatesShuffle(arr){
+    for(let i = arr.length-1 ; i>0 ;i--) {
+        let j = Math.floor( Math.random() * (i + 1) );
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
+}
+
+function makeRandomOrder (cnt) {
+    let arr = [];
+    for (let i = 0; i < cnt; i++) {
+        arr.append(i);
+    }
+    return arr;
 }
 
 /*
