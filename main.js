@@ -128,12 +128,27 @@ function endTime() {
 function createBlocks(level) {
     const area = document.getElementById('area');
 
-    createInputBox();
+
 
     //レベルに応じてあれする
-    let w = 50
-    let xCount = 500 / w
-    let yCount = 750 / w
+    let w = 0;
+    switch (level) {
+        case 1:
+            w = 50;
+            break;
+        case 2:
+            w = 25;
+            break;
+        //...
+        default:
+            w = 25;
+            break;
+    }
+
+    let xCount = 500 / w;
+    let yCount = 750 / w;
+
+    createInputBox(xCount*yCount);
     
     
     for (let i = 0; i < yCount; i++) {
@@ -162,7 +177,7 @@ function createBlocks(level) {
         return img;
     }
 
-    function createInputBox() {
+    function createInputBox(cnt) {
 
         let div = document.createElement('div');
         div.id = 'type_area';
@@ -178,30 +193,31 @@ function createBlocks(level) {
         let makedDiv = document.getElementById('type_area');
         makedDiv.appendChild(input);
 
-        setWord();
+        setWord(cnt);
 
     }
 
 
-    function setWord() {
+    function setWord(cnt) {
         const typingArea = document.getElementById('typing_area');
         
-
 
         let shuffledWordList = fisherYatesShuffle(wordList);
         let typeText = shuffledWordList.join(' ');
         //valueにする
         typingArea.placeholder = typeText;
 
-        const cnt = 150;
         let order = [];
         for (let i = 0; i < cnt; i++) {
             order.push(i);
         }
         let shuffledOrder = fisherYatesShuffle(order);
 
+
         window.removeEventListener('keydown', judgeKeys, false);
         window.addEventListener('keydown', judgeKeys, false);
+
+
 
         function judgeKeys(e) {
 
@@ -232,6 +248,11 @@ function createBlocks(level) {
         
         function incorrectType(key) {
             //if (key !== 'Enter') addBlock();
+            if (key === 'Escape') {
+                //setWord();
+
+                return;
+            }
         }
         
         function deleteBlock() {
@@ -280,27 +301,34 @@ function createBlocks(level) {
             let inputBox = document.getElementById('typing_area');
             inputBox.placeholder = 'Press Enter!';
 
-            window.addEventListener('keydown', brokeInputBox);
+            window.addEventListener('keydown', brokeInputBox, true);
 
             function brokeInputBox (e) {
                 if (e.key === 'Enter') {
                     inputBox.id = 'typedBlock';
                 };
             }
-            const playingLevel = 'LEVEL 1';
-            const tweetButton = document.getElementById('tweet');
-            const t = String(30 - Number(timer.textContent));
-            const c = count.textContent;
-            const k = kpm.textContent;
-            const hashTags = "脱衣タイピング"
-            const tweet = `${playingLevel} cleared! ${c}keys in ${t} sec (${k}KPM) ＠脱衣タイピング（α）`;
-            const url = 'https://example.com';
 
-            const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&hashtags=${hashTags}&url=${url}`;
-            tweetButton.href = tweetText;
+            makeTweet();
+
         }
     }
 
+}
+
+function makeTweet (level) {
+    //const playingLevel = level;
+    const playingLevel = 'LEVEL 1';
+    const tweetButton = document.getElementById('tweet');
+    const t = String(30 - Number(timer.textContent));
+    const c = count.textContent;
+    const k = kpm.textContent;
+    const hashTags = "脱衣タイピング"
+    const tweet = `${playingLevel} cleared! ${c}keys in ${t} sec (${k}KPM) ＠脱衣タイピング（α）`;
+    const url = 'https://example.com';
+
+    const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&hashtags=${hashTags}&url=${url}`;
+    tweetButton.href = tweetText;
 }
 
 function fisherYatesShuffle(arr){
