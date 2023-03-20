@@ -6,8 +6,8 @@ function displayAbout () {
     div.innerHTML = `
 
     <div class="tile is-child box">
-    <ul>
-        <li class="has-text-danger has-background-danger-light">
+    <ul class="mb-6">
+        <li class="subtitle has-text-danger has-background-danger-light">
             18歳未満はプレイ禁止です。
         </li>
         <br>
@@ -22,11 +22,54 @@ function displayAbout () {
         <br>
         中原ここあ(<a href="https://twitter.com/tt_cocoan">@tt_cocoan</a>)
     </ul>
-    
-        <div style="width:60vw;height:60vh;"></div>
-    </div>
 
     <!--難易度対応表 table-->
+    <p class="mb-1">難易度対応表（目安）</p>
+    <table class="table is-bordered is-striped">
+        <thead>
+            <tr>
+            <th>LEVEL</th>
+            <th>打鍵数</th>
+            <th>KPM</th>
+            <th>TW英単語換算</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>1</td>
+            <td>100</td>
+            <td>200</td>
+            <td>ZH</td>
+            </tr>
+            <tr>
+            <td>2</td>
+            <td>200</td>
+            <td>400</td>
+            <td>ZH</td>
+            </tr>
+            <tr>
+            <td>3</td>
+            <td>400</td>
+            <td>800</td>
+            <td>ZH</td>
+            </tr>
+            <tr>
+            <td>4</td>
+            <td>400</td>
+            <td>800</td>
+            <td>ZH</td>
+            </tr>
+            <tr>
+            <td>5</td>
+            <td>400</td>
+            <td>800</td>
+            <td>ZH</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
 
     `
 
