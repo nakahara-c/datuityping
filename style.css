@@ -10,6 +10,11 @@ img {
     z-index: 2;
 }
 
+#tweet {
+    background-color: #1d9bf0;
+    color:#FFFFFF;
+}
+
 #sidebar {
     background-color: #f8ecf3;
     box-shadow: 2px 2px 6px #e4e4e4;
