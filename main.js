@@ -41,6 +41,12 @@ let timer = document.getElementById('timer');
 let count = document.getElementById('count');
 let kpm = document.getElementById('kpm');
 
+
+let typeText = "";
+let order = [];
+
+let shuffledOrder;
+
 const lv1 = document.getElementById('lv1');
 const lv2 = document.getElementById('lv2');
 const lv3 = document.getElementById('lv3');
@@ -59,6 +65,8 @@ for (let i = 0; i < contentList.length; i++) {
         createBlocks(i+1);
     })
 }
+
+
 
 /*
 const wordList = [
@@ -130,7 +138,7 @@ function createBlocks(level) {
 
 
 
-    //レベルに応じてあれする
+    //レベルに応じてブロック幅を指定。
     let w = 0;
     switch (level) {
         case 1:
@@ -193,127 +201,25 @@ function createBlocks(level) {
         let makedDiv = document.getElementById('type_area');
         makedDiv.appendChild(input);
 
-        setWord(cnt);
+        setWord(cnt, input);
 
     }
 
 
-    function setWord(cnt) {
-        const typingArea = document.getElementById('typing_area');
-        
+    function setWord(cnt, typingArea) {
 
         let shuffledWordList = fisherYatesShuffle(wordList);
-        let typeText = shuffledWordList.join(' ');
+        typeText = shuffledWordList.join(' ');
         //valueにする
-        typingArea.placeholder = typeText;
 
-        let order = [];
+        typingArea.placeholder = typeText;
         for (let i = 0; i < cnt; i++) {
             order.push(i);
         }
-        let shuffledOrder = fisherYatesShuffle(order);
+        shuffledOrder = fisherYatesShuffle(order)
 
+        window.addEventListener('keydown', judgeKeys, true);
 
-        window.removeEventListener('keydown', judgeKeys, false);
-        window.addEventListener('keydown', judgeKeys, false);
-
-
-
-        function judgeKeys(e) {
-            
-            e.preventDefault();
-
-            console.log(e.key);
-
-            let typedKey = e.key;
-            let nextKey = typeText[0];
-        
-            if (typedKey === nextKey) {
-                if (timer.textContent === '') {
-                    firstKeyPressed();
-                }
-
-                correctType(typedKey);
-            } else {
-                incorrectType(typedKey);
-            }
-        }
-
-        function correctType(key) {
-
-            typeText = typeText.slice(1);
-            typingArea.placeholder = typeText;
-        
-            deleteBlock();
-        
-        }
-        
-        function incorrectType(key) {
-            //if (key !== 'Enter') addBlock();
-            if (key === 'Escape') {
-                //setWord();
-
-                return;
-            }
-        }
-        
-        function deleteBlock() {
-            
-            let typedCount = Number(count.textContent);
-            count.textContent = String(typedCount + 1);
-            let elapsedTime = 30 - Number(timer.textContent);
-            let kpmValue = Math.round(typedCount / elapsedTime * 60);
-
-            kpm.textContent = String(kpmValue);
-
-            const blocks = document.getElementsByClassName('block');
-            
-            if (shuffledOrder.length === 0) {
-
-                typeFinish();
-
-            } else {
-
-                let topOrder = shuffledOrder.shift();
-                blocks[topOrder].id = 'typedBlock';
-
-            }
-        
-        }
-
-        function addBlock() {
-
-            const blocks = document.getElementsByClassName('block');
-        
-            for (let i = blocks.length; i >= 0; i--) {
-
-                if (blocks[i]?.id === 'typedBlock') {
-                    blocks[i].id = 'missedBlock';
-                    break;
-                }
-        
-            }
-
-        }
-
-        function typeFinish() {
-            
-            stopInterval();
-
-            let inputBox = document.getElementById('typing_area');
-            inputBox.placeholder = 'Press Enter!';
-
-            window.addEventListener('keydown', brokeInputBox, true);
-
-            function brokeInputBox (e) {
-                if (e.key === 'Enter') {
-                    inputBox.id = 'typedBlock';
-                };
-            }
-
-            makeTweet();
-
-        }
     }
 
 }
@@ -339,6 +245,107 @@ function fisherYatesShuffle(arr){
         [arr[i],arr[j]]=[arr[j],arr[i]];
     }
     return arr;
+}
+
+function judgeKeys(e) {
+
+    e.preventDefault();
+
+    console.log(e.key);
+
+    let typedKey = e.key;
+    let nextKey = typeText[0];
+
+    if (typedKey === nextKey) {
+        if (timer.textContent === '') {
+            firstKeyPressed();
+        }
+
+        correctType(typedKey);
+    } else {
+        incorrectType(typedKey);
+    }
+
+
+}
+
+function correctType(key) {
+    
+    typeText = typeText.slice(1);
+    let typingArea = document.getElementById('typing_area');
+    typingArea.placeholder = typeText;
+
+    deleteBlock();
+
+}
+
+function incorrectType(key) {
+    //if (key !== 'Enter') addBlock();
+    if (key === 'Escape') {
+        //setWord();
+
+        return;
+    }
+}
+
+function deleteBlock() {
+    
+    let typedCount = Number(count.textContent);
+    count.textContent = String(typedCount + 1);
+    let elapsedTime = 30 - Number(timer.textContent);
+    let kpmValue = Math.round(typedCount / elapsedTime * 60);
+
+    kpm.textContent = String(kpmValue);
+
+    const blocks = document.getElementsByClassName('block');
+    
+
+    
+    if (shuffledOrder.length === 0) {
+
+        typeFinish();
+
+    } else {
+
+        let topOrder = shuffledOrder.shift();
+        blocks[topOrder].id = 'typedBlock';
+
+    }
+
+}
+
+function addBlock() {
+
+    const blocks = document.getElementsByClassName('block');
+
+    for (let i = blocks.length; i >= 0; i--) {
+
+        if (blocks[i]?.id === 'typedBlock') {
+            blocks[i].id = 'missedBlock';
+            break;
+        }
+
+    }
+
+}
+
+function typeFinish() {
+            
+    stopInterval();
+
+
+    typingArea.placeholder = 'Press Enter!';
+
+    window.addEventListener('keydown', brokeInputBox, true);
+
+    function brokeInputBox (e) {
+        if (e.key === 'Enter') {
+            inputBox.id = 'typedBlock';
+        };
+    }
+
+    makeTweet();
+
 }
 
 
