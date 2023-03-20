@@ -216,10 +216,9 @@ function createBlocks(level) {
         for (let i = 0; i < cnt; i++) {
             order.push(i);
         }
-        shuffledOrder = fisherYatesShuffle(order)
+        shuffledOrder = fisherYatesShuffle(order);
 
-        window.addEventListener('keydown', judgeKeys, true);
-
+        window.addEventListener('keydown', judgeKeys, false);
     }
 
 }
@@ -228,7 +227,9 @@ function makeTweet (level) {
     //const playingLevel = level;
     const playingLevel = 'LEVEL 1';
     const tweetButton = document.getElementById('tweet');
-    const t = String(30 - Number(timer.textContent));
+    
+    const t = String((30 - parseFloat(timer.textContent)).toFixed(1));
+
     const c = count.textContent;
     const k = kpm.textContent;
     const hashTags = "脱衣タイピング"
@@ -333,14 +334,14 @@ function typeFinish() {
             
     stopInterval();
 
-
+    let typingArea = document.getElementById('typing_area');
     typingArea.placeholder = 'Press Enter!';
 
     window.addEventListener('keydown', brokeInputBox, true);
 
     function brokeInputBox (e) {
         if (e.key === 'Enter') {
-            inputBox.id = 'typedBlock';
+            typingArea.id = 'typedBlock';
         };
     }
 
