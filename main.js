@@ -104,6 +104,7 @@ function createBlocks(level) {
 
     createInputBox();
 
+    //レベルに応じてあれする
     let w = 50
     let xCount = 500 / w
     let yCount = 750 / w
@@ -113,7 +114,6 @@ function createBlocks(level) {
         for (let j = 0; j < xCount; j++) {
             let [x, y] = [j*w, i*w];
             let block = createImg();
-            //block.style = `transform:translate(${x}%, ${y}%)`;
             block.style = `left:${x}px;top:${y}px`;
             area.appendChild(block);
         }
@@ -164,7 +164,15 @@ function createBlocks(level) {
 
         let shuffledWordList = fisherYatesShuffle(wordList);
         let typeText = shuffledWordList.join(' ');
+        //valueにする
         typingArea.placeholder = typeText;
+
+        const cnt = 150;
+        let order = [];
+        for (let i = 0; i < cnt; i++) {
+            order.push(i);
+        }
+        let shuffledOrder = fisherYatesShuffle(order);
 
         window.removeEventListener('keydown', judgeKeys, false);
         window.addEventListener('keydown', judgeKeys, false);
@@ -209,19 +217,17 @@ function createBlocks(level) {
 
             kpm.textContent = String(kpmValue);
 
-
             const blocks = document.getElementsByClassName('block');
-        
-            for (let i = 0; i < blocks.length; i++) {
+            
+            if (shuffledOrder.length === 0) {
 
+                typeFinish();
                 
-                if (blocks[i].id !== 'typedBlock') {
-                    blocks[i].id = 'typedBlock';
-                    break;
-                }
+            } else {
 
-                if (i === blocks.length-1) typeFinish();
-        
+                let topOrder = shuffledOrder.shift();
+                blocks[topOrder].id = 'typedBlock';
+
             }
         
         }
@@ -279,13 +285,7 @@ function fisherYatesShuffle(arr){
     return arr;
 }
 
-function makeRandomOrder (cnt) {
-    let arr = [];
-    for (let i = 0; i < cnt; i++) {
-        arr.append(i);
-    }
-    return arr;
-}
+
 
 /*
 https://twitter.com/intent/tweet?
