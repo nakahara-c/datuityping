@@ -220,6 +220,8 @@ function createBlocks(level) {
 
 
         function judgeKeys(e) {
+            
+            e.preventDefault();
 
             console.log(e.key);
 
