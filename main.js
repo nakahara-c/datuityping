@@ -44,8 +44,9 @@ let kpm = document.getElementById('kpm');
 
 let typeText = "";
 let order = [];
-
 let shuffledOrder;
+let choosingLevel;
+
 
 const lv1 = document.getElementById('lv1');
 const lv2 = document.getElementById('lv2');
@@ -61,7 +62,9 @@ for (let i = 0; i < contentList.length; i++) {
         timer.textContent = '';
         count.textContent = '';
         kpm.textContent = '';
+
         stopInterval();
+        choosingLevel = i+1;
         createBlocks(i+1);
     })
 }
@@ -263,6 +266,10 @@ function judgeKeys(e) {
         }
 
         correctType(typedKey);
+    } else if (typedKey === 'Escape') {
+
+        contentList[choosingLevel-1].click();
+
     } else {
         incorrectType(typedKey);
     }
@@ -282,11 +289,6 @@ function correctType(key) {
 
 function incorrectType(key) {
     //if (key !== 'Enter') addBlock();
-    if (key === 'Escape') {
-        //setWord();
-
-        return;
-    }
 }
 
 function deleteBlock() {
