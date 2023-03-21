@@ -233,9 +233,8 @@ function createBlocks(level) {
 
         let shuffledWordList = fisherYatesShuffle(wordList);
         typeText = shuffledWordList.join(' ');
-        //valueにする
 
-        typingArea.placeholder = typeText;
+        typingArea.value = typeText;
         for (let i = 0; i < cnt; i++) {
             order.push(i);
         }
@@ -286,7 +285,7 @@ function correctType(key) {
     
     typeText = typeText.slice(1);
     let typingArea = document.getElementById('typing_area');
-    typingArea.placeholder = typeText;
+    typingArea.value = typeText;
 
     deleteBlock();
 
@@ -342,7 +341,7 @@ function typeFinish() {
     stopInterval();
 
     let typingArea = document.getElementById('typing_area');
-    typingArea.placeholder = 'Press Enter!';
+    typingArea.value = 'Press Enter!';
 
     window.addEventListener('keydown', brokeInputBox, true);
 
