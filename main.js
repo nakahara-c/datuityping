@@ -9,7 +9,7 @@ function displayAbout () {
     <p class="subtitle mt-2 mb-6">About</p>
     <ul class="mb-6">
         <li class="subtitle has-text-danger has-background-danger-light">
-            成人向けコンテンツを含みます。18歳未満はプレイ禁止です。
+            成人向けコンテンツを含みます。18歳未満は閲覧禁止です。
         </li>
         <br>
         <li class="subtitle has-text-link has-background-link-light">
@@ -70,8 +70,6 @@ function displayAbout () {
     </table>
 
     </div>
-
-
     `
 
     let d = document.getElementById('area');
