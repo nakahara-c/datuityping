@@ -6,17 +6,18 @@ function displayAbout () {
     div.innerHTML = `
 
     <div class="tile is-child box">
+    <p class="subtitle mt-2 mb-6">About</p>
     <ul class="mb-6">
         <li class="subtitle has-text-danger has-background-danger-light">
-            18歳未満はプレイ禁止です。
+            成人向けコンテンツを含みます。18歳未満はプレイ禁止です。
         </li>
         <br>
-        <li class="has-text-link has-background-link-light">
+        <li class="subtitle has-text-link has-background-link-light">
             使用しているイラストはAI製です。
         </li>
         <br>
         <br>
-        <p>真ん中をクリックしてキーを押すと始まります。</p>
+        <p>レベルを選んでキーを押すと始まります。</p>
         <br>
         <p>よく分からんけど見た目上それらしく動いている気がする状態です。</p>
         <br>
@@ -88,7 +89,7 @@ let kpm = document.getElementById('kpm');
 let typeText = "";
 let order = [];
 let shuffledOrder;
-let choosingLevel;
+let choosingLevel = 1;
 
 
 const lv1 = document.getElementById('lv1');
@@ -101,6 +102,7 @@ contentList = [lv1,lv2,lv3,lv4,lv5];
 for (let i = 0; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
         let d = document.getElementById('area');
+
         d.innerHTML = '';
         timer.textContent = '';
         count.textContent = '';
@@ -111,6 +113,14 @@ for (let i = 0; i < contentList.length; i++) {
         createBlocks(i+1);
     })
 }
+
+window.addEventListener('keydown', judgeEscape, true);
+function judgeEscape (e) {
+    if (e.key === 'Escape') {
+        contentList[choosingLevel-1].click();
+    }
+}
+
 
 
 
@@ -125,7 +135,7 @@ const wordList = new Array(1000).fill('tajitaji sakusaku');
 
 function firstKeyPressed () {
 
-    timer.textContent = "3.0";
+    timer.textContent = "30.0";
     count.textContent = "0";
     kpm.textContent = "0";
 
@@ -138,7 +148,6 @@ function startTimer () {
     let nowTime = timer.textContent - 0.1;
     nowTime = Number.parseFloat(nowTime).toFixed(1);
     if (nowTime <= 0) {
-        stopInterval();
         typeFinish(false);
     }
     timer.textContent = nowTime;
@@ -150,6 +159,7 @@ function stopInterval() {
         clearInterval(timerArray.shift());
     }
 }
+
 
 
 function createBlocks(level) {
@@ -251,7 +261,6 @@ function createBlocks(level) {
 }
 
 
-
 function fisherYatesShuffle(arr){
     for(let i = arr.length-1 ; i>0 ;i--) {
         let j = Math.floor( Math.random() * (i + 1) );
@@ -261,7 +270,6 @@ function fisherYatesShuffle(arr){
 }
 
 function judgeKeys(e) {
-
     e.preventDefault();
 
     console.log(e.key);
@@ -275,10 +283,6 @@ function judgeKeys(e) {
         }
 
         correctType(typedKey);
-    } else if (typedKey === 'Escape') {
-
-        contentList[choosingLevel-1].click();
-
     } else {
         incorrectType(typedKey);
     }
@@ -356,7 +360,11 @@ function typeFinish(isCompleted) {
         }
 
     } else {
+        window.removeEventListener('keydown', judgeKeys, false);
         typingArea.value = 'Press Escape...';
+
+
+
     }
 
     //makeTweet();
