@@ -125,7 +125,7 @@ const wordList = new Array(1000).fill('tajitaji sakusaku');
 
 function firstKeyPressed () {
 
-    timer.textContent = "30.0";
+    timer.textContent = "3.0";
     count.textContent = "0";
     kpm.textContent = "0";
 
@@ -139,7 +139,7 @@ function startTimer () {
     nowTime = Number.parseFloat(nowTime).toFixed(1);
     if (nowTime <= 0) {
         stopInterval();
-        endTime();
+        typeFinish(false);
     }
     timer.textContent = nowTime;
 
@@ -151,10 +151,6 @@ function stopInterval() {
     }
 }
 
-
-function endTime() {
-    console.log('ended!');
-}
 
 function createBlocks(level) {
     const area = document.getElementById('area');
@@ -310,7 +306,7 @@ function deleteBlock() {
     
     if (shuffledOrder.length === 0) {
 
-        typeFinish();
+        typeFinish(true);
 
     } else {
 
@@ -336,19 +332,22 @@ function addBlock() {
 
 }
 
-function typeFinish() {
+function typeFinish(isCompleted) {
             
     stopInterval();
-
     let typingArea = document.getElementById('typing_area');
-    typingArea.value = 'Press Enter!';
+    if (isCompleted) {
 
-    window.addEventListener('keydown', brokeInputBox, true);
+        typingArea.value = 'Press Enter!';
+        window.addEventListener('keydown', brokeInputBox, true);
+        function brokeInputBox (e) {
+            if (e.key === 'Enter') {
+                typingArea.id = 'typedBlock';
+            };
+        }
 
-    function brokeInputBox (e) {
-        if (e.key === 'Enter') {
-            typingArea.id = 'typedBlock';
-        };
+    } else {
+        typingArea.value = 'Press Escape...';
     }
 
     //makeTweet();
