@@ -6,6 +6,10 @@
     z-index: 3;
 }
 
+#typing_area {
+    caret-color: transparent;
+}
+
 img {
     z-index: 2;
 }
