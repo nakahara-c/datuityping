@@ -159,21 +159,25 @@ function createBlocks(level) {
 
     //レベルに応じてブロック幅を指定。
     let w = 0;
+    let xCount = 0;
+    let yCount = 0;
     switch (level) {
         case 1:
-            w = 50;
+            [w, xCount, yCount] = [62.5, 8, 12];
             break;
         case 2:
-            w = 50;
+            [w, xCount, yCount] = [50, 10, 15];
             break;
-        //...
-        default:
-            w = 25;
+        case 3:
+            [w, xCount, yCount] = [42, 12, 18];
+            break;
+        case 4:
+            [w, xCount, yCount] = [36, 14, 21];
+            break;
+        case 5:
+            [w, xCount, yCount] = [31.5, 16, 24];
             break;
     }
-
-    let xCount = 500 / w;
-    let yCount = 750 / w;
 
     createInputBox(xCount*yCount);
     
@@ -189,8 +193,13 @@ function createBlocks(level) {
 
     const girls = document.createElement('img');
     girls.src = "img"+level+".png";
-    girls.width = "500";
-    girls.height = "750";
+    if (level < 3) {
+        girls.width = "500";
+        girls.height = "750";
+    } else {
+        girls.width = "504";
+        girls.height = "756";
+    }
     setTimeout(() => {
         area.appendChild(girls);
     }, 300);
