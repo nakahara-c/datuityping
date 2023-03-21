@@ -37,31 +37,31 @@ function displayAbout () {
         <tbody>
             <tr>
             <td>1</td>
-            <td>8*12=96</td>
+            <td>96</td>
             <td>192</td>
             <td>F</td>
             </tr>
             <tr>
             <td>2</td>
-            <td>10*15=150</td>
+            <td>150</td>
             <td>300</td>
             <td>SJ</td>
             </tr>
             <tr>
             <td>3</td>
-            <td>12*18=216</td>
+            <td>216</td>
             <td>432</td>
             <td>XI</td>
             </tr>
             <tr>
             <td>4</td>
-            <td>14*21=294</td>
+            <td>294</td>
             <td>588</td>
             <td>XB</td>
             </tr>
             <tr>
             <td>5</td>
-            <td>16*24=384</td>
+            <td>384</td>
             <td>768</td>
             <td>ZI</td>
             </tr>
