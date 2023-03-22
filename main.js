@@ -351,6 +351,7 @@ function typeFinish(isCompleted) {
         window.removeEventListener('keydown', judgeKeys, false);
         window.addEventListener('keydown', brokeInputBox, true);
         function brokeInputBox (e) {
+            e.preventDefault();
             if (e.key === 'Enter') {
                 typingArea.id = 'typedBlock';
             };
