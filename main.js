@@ -367,6 +367,7 @@ function typeFinish(isCompleted) {
 
 }
 
+
 function makeTweet (level) {
     //const playingLevel = level;
     const playingLevel = 'LEVEL 1';
@@ -377,9 +378,9 @@ function makeTweet (level) {
     const c = count.textContent;
     const k = kpm.textContent;
     //const hashTags = "脱衣タイピング"
-    const tweet = `${playingLevel} cleared! ${c}keys in ${t} sec (${k}KPM) ＠脱衣タイピング（α）`;
+    const tweet = `LEVEL${choosingLevel} cleared! ${c}keys in ${t} sec (${k}KPM) ＠脱衣タイピング（α）`;
     const url = 'https://datuityping.x.fc2.com/';
-
+    console.log(choosingLevel);
     const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&url=${url}`;
     tweetButton.href = tweetText;
 }
