@@ -17,11 +17,8 @@ function displayAbout () {
         </li>
         <br>
         <br>
-        <p>レベルを選んでキーを押すと始まります。</p>
-        <br>
-        <p>よく分からんけど見た目上それらしく動いている気がする状態です。</p>
-        <br>
-        中原ここあ(<a href="https://twitter.com/tt_cocoan">@tt_cocoan</a>)
+        <p>レベルを選んでキーを押すと始まります。Escでやり直しができます。</p>
+
     </ul>
 
     <!--難易度対応表 table-->
