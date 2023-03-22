@@ -189,13 +189,14 @@ function createBlocks(level) {
 
     createInputBox(xCount*yCount);
     
-    
+    let blockDOMs = [];
     for (let i = 0; i < yCount; i++) {
         for (let j = 0; j < xCount; j++) {
             let [x, y] = [j*w, i*w];
             let block = createImg();
             block.style = `left:${x}px;top:${y}px`;
-            area.appendChild(block);
+            //area.appendChild(block);
+            blockDOMs.push(block);
         }
     }
 
@@ -209,14 +210,21 @@ function createBlocks(level) {
         girls.height = "756";
     }
     setTimeout(() => {
+        
+        console.log(area.childNodes);
+
+        //inputだけの場合
+        if (area.childElementCount === 1) {
+        for (const b of blockDOMs) area.appendChild(b);
         area.appendChild(girls);
+        }
+
     }, 300);
 
     function createImg () {
         const img = document.createElement('img');
         img.src = "block.png";
         img.className = "block is-overlay";
-        //x=500,y=750(2:3) w:50 -> 10,15
         img.width= w;
         return img;
     }
@@ -299,7 +307,8 @@ function incorrectType(key) {
     //if (key !== 'Enter') addBlock();
 }
 
-/*
+/*//ミスペナ処理
+
 function addBlock() {
 
     const blocks = document.getElementsByClassName('block');
@@ -355,8 +364,6 @@ function typeFinish(isCompleted) {
     } else {
         window.removeEventListener('keydown', judgeKeys, false);
         typingArea.value = 'Press Escape...';
-
-
 
     }
 
