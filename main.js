@@ -248,6 +248,7 @@ function createBlocks(level) {
         typeText = shuffledWordList.join(' ');
 
         typingArea.value = typeText;
+        order = [];
         for (let i = 0; i < cnt; i++) {
             order.push(i);
         }
@@ -269,8 +270,6 @@ function fisherYatesShuffle(arr){
 
 function judgeKeys(e) {
     e.preventDefault();
-
-    //console.log(e.key);
 
     let typedKey = e.key;
     let nextKey = typeText[0];
