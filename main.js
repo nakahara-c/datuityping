@@ -260,7 +260,7 @@ function createBlocks(level) {
 
 
 function fisherYatesShuffle(arr){
-    for(let i = arr.length-1 ; i>0 ;i--) {
+    for(let i = arr.length-1 ; i > 0; i--) {
         let j = Math.floor( Math.random() * (i + 1) );
         [arr[i],arr[j]]=[arr[j],arr[i]];
     }
@@ -270,7 +270,7 @@ function fisherYatesShuffle(arr){
 function judgeKeys(e) {
     e.preventDefault();
 
-    console.log(e.key);
+    //console.log(e.key);
 
     let typedKey = e.key;
     let nextKey = typeText[0];
@@ -279,12 +279,10 @@ function judgeKeys(e) {
         if (timer.textContent === '') {
             firstKeyPressed();
         }
-
         correctType(typedKey);
     } else {
         incorrectType(typedKey);
     }
-
 
 }
 
@@ -302,32 +300,7 @@ function incorrectType(key) {
     //if (key !== 'Enter') addBlock();
 }
 
-function deleteBlock() {
-    
-    let typedCount = Number(count.textContent);
-    count.textContent = String(typedCount + 1);
-    let elapsedTime = 30 - Number(timer.textContent);
-    let kpmValue = Math.round(typedCount / elapsedTime * 60);
-
-    kpm.textContent = String(kpmValue);
-
-    const blocks = document.getElementsByClassName('block');
-    
-
-    
-    if (shuffledOrder.length === 0) {
-
-        typeFinish(true);
-
-    } else {
-
-        let topOrder = shuffledOrder.shift();
-        blocks[topOrder].id = 'typedBlock';
-
-    }
-
-}
-
+/*
 function addBlock() {
 
     const blocks = document.getElementsByClassName('block');
@@ -340,8 +313,30 @@ function addBlock() {
         }
 
     }
-
 }
+*/
+
+function deleteBlock() {
+    
+    let typedCount = Number(count.textContent);
+    count.textContent = String(typedCount + 1);
+    let elapsedTime = 30 - Number(timer.textContent);
+    let kpmValue = Math.round(typedCount / elapsedTime * 60);
+
+    kpm.textContent = String(kpmValue);
+
+    const blocks = document.getElementsByClassName('block');
+    
+
+    let topOrder = shuffledOrder.shift();
+    blocks[topOrder].id = 'typedBlock';
+    if (shuffledOrder.length === 0) {
+
+        typeFinish(true);
+
+    }
+}
+
 
 function typeFinish(isCompleted) {
             
@@ -350,6 +345,7 @@ function typeFinish(isCompleted) {
     if (isCompleted) {
 
         typingArea.value = 'Press Enter!';
+        window.removeEventListener('keydown', judgeKeys, false);
         window.addEventListener('keydown', brokeInputBox, true);
         function brokeInputBox (e) {
             if (e.key === 'Enter') {
