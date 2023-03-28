@@ -7,7 +7,7 @@
 }
 
 #typing_area {
-    caret-color: transparent;
+    /*caret-color: transparent;*/
 }
 
 img {
@@ -26,6 +26,14 @@ img {
 
 .footer {
     background-color: #ece3e9;
+}
+
+@keyframes missType {
+    0% {background-color:beige;}
+}
+
+.missed {
+    animation : missType 1s forwards;
 }
 
 @keyframes rot {
