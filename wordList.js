@@ -1,4 +1,4 @@
-//const wordList = new Array(1000).fill('tajitaji sakusaku');
+export const wordListExtra = new Array(1000).fill('tajitaji sakusaku');
 
 export const wordList = [
 'a',
