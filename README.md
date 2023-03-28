@@ -31,4 +31,4 @@ https://datuityping.x.fc2.com/
 * 効果音(on/off、音量調整もセット）
 * 諸々リファクタリング
 * 入力欄、inputじゃなくてdivでいいじゃん→よくないかも
-
+* NormalクリアでEXTRA出現みたいなの（いらんかも）
