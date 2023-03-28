@@ -315,7 +315,8 @@ function makeTweet () {
     const c = count.textContent;
     const k = kpm.textContent;
     const hashTags = "脱衣タイピング"
-    const tweet = `LEVEL${choosingLevel} cleared! ${c}keys in ${t} sec (${k}KPM) ＠脱衣タイピング（α）`;
+    //改行→ %0A
+    const tweet = `LEVEL${choosingLevel} 脱衣成功❤%0A${c}keys in ${t} sec (${k}KPM)`;
     const url = 'https://datuityping.x.fc2.com/';
     const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&hashtags=${hashTags}&url=${url}`;
     tweetButton.href = tweetText;
