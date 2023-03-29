@@ -8,7 +8,6 @@ about.addEventListener('click', displayAbout);
 window.addEventListener('DOMContentLoaded', displayAbout);
 
 
-
 function displayAbout() {
     let d = document.getElementById('area');
     let div = createAbout();
