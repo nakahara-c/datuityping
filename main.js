@@ -27,13 +27,8 @@ let order = [];
 let shuffledOrder;
 let choosingLevel = 1;
 
+const contentList = document.getElementsByClassName('difficulty');
 
-const lv1 = document.getElementById('lv1');
-const lv2 = document.getElementById('lv2');
-const lv3 = document.getElementById('lv3');
-const lv4 = document.getElementById('lv4');
-const lv5 = document.getElementById('lv5');
-const contentList = [lv1,lv2,lv3,lv4,lv5];
 
 for (let i = 0; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
