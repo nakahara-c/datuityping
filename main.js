@@ -182,7 +182,7 @@ function createBlocks(level) {
         let shuffledWordList = fisherYatesShuffle(wordList);
         typeText = shuffledWordList.join(' ');
 
-        typingArea.value = typeText.slice(0, cnt);
+        typingArea.value = typeText;
         order = [];
         for (let i = 0; i < cnt; i++) {
             order.push(i);
