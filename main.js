@@ -7,7 +7,6 @@ const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
 window.addEventListener('DOMContentLoaded', displayAbout);
 
-
 function displayAbout() {
     let d = document.getElementById('area');
     let div = createAbout();
@@ -15,12 +14,11 @@ function displayAbout() {
     d.appendChild(div);
 }
 
-let timerArray = new Array();
+let timerArray = [];
 
-let timer = document.getElementById('timer');
-let count = document.getElementById('count');
-let kpm = document.getElementById('kpm');
-
+const timer = document.getElementById('timer');
+const count = document.getElementById('count');
+const kpm = document.getElementById('kpm');
 
 let typeText = "";
 let order = [];
@@ -28,7 +26,6 @@ let shuffledOrder;
 let choosingLevel = 1;
 
 const contentList = document.getElementsByClassName('difficulty');
-
 
 for (let i = 0; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
@@ -40,22 +37,20 @@ for (let i = 0; i < contentList.length; i++) {
         kpm.textContent = '';
 
         stopInterval();
-        choosingLevel = i+1;
-        createBlocks(i+1);
-    })
+        choosingLevel = i;
+        createBlocks(i);
+    });
 }
 
 window.addEventListener('keydown', judgeEscape, true);
-function judgeEscape (e) {
+
+function judgeEscape(e) {
     if (e.key === 'Escape') {
-        contentList[choosingLevel-1].click();
+        contentList[choosingLevel - 1].click();
     }
 }
 
-
-
-function firstKeyPressed () {
-
+function firstKeyPressed() {
     timer.textContent = "30.0";
     count.textContent = "0";
     kpm.textContent = "0";
@@ -63,16 +58,13 @@ function firstKeyPressed () {
     timerArray.push(setInterval(startTimer, 100));
 }
 
-
-function startTimer () {
-
+function startTimer() {
     let nowTime = timer.textContent - 0.1;
     nowTime = Number.parseFloat(nowTime).toFixed(1);
     if (nowTime <= 0) {
         typeFinish(false);
     }
     timer.textContent = nowTime;
-
 }
 
 function stopInterval() {
@@ -81,14 +73,10 @@ function stopInterval() {
     }
 }
 
-
-
 function createBlocks(level) {
+    
     const area = document.getElementById('area');
 
-
-
-    //レベルに応じてブロック幅を指定。
     let w = 0;
     let xCount = 0;
     let yCount = 0;
@@ -110,21 +98,21 @@ function createBlocks(level) {
             break;
     }
 
-    createInputBox(xCount*yCount);
-    
+    createInputBox(xCount * yCount);
+
     let blockDOMs = [];
     for (let i = 0; i < yCount; i++) {
         for (let j = 0; j < xCount; j++) {
-            let [x, y] = [j*w, i*w];
+            let [x, y] = [j * w, i * w];
             let block = createImg();
             block.style = `left:${x}px;top:${y}px`;
-            //area.appendChild(block);
             blockDOMs.push(block);
         }
     }
 
     const girls = document.createElement('img');
-    girls.src = "img"+level+".png";
+    girls.src = "img" + level + ".png";
+
     if (level < 3) {
         girls.width = "500";
         girls.height = "750";
@@ -132,26 +120,23 @@ function createBlocks(level) {
         girls.width = "504";
         girls.height = "756";
     }
-    setTimeout(() => {
-        
-        //inputだけの場合
-        if (area.childElementCount === 1) {
-        for (const b of blockDOMs) area.appendChild(b);
-        area.appendChild(girls);
-        }
 
+    setTimeout(() => {
+        if (area.childElementCount === 1) {
+            for (const b of blockDOMs) area.appendChild(b);
+            area.appendChild(girls);
+        }
     }, 300);
 
-    function createImg () {
+    function createImg() {
         const img = document.createElement('img');
         img.src = "block.png";
         img.className = "block is-overlay";
-        img.width= w;
+        img.width = w;
         return img;
     }
 
     function createInputBox(cnt) {
-
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
@@ -167,12 +152,9 @@ function createBlocks(level) {
         makedDiv.appendChild(input);
 
         setWord(cnt, input);
-
     }
 
-
     function setWord(cnt, typingArea) {
-
         let shuffledWordList = fisherYatesShuffle(wordList);
         typeText = shuffledWordList.join(' ');
 
@@ -185,14 +167,12 @@ function createBlocks(level) {
 
         window.addEventListener('keydown', judgeKeys, false);
     }
-
 }
 
-
-function fisherYatesShuffle(arr){
-    for(let i = arr.length-1 ; i > 0; i--) {
-        let j = Math.floor( Math.random() * (i + 1) );
-        [arr[i],arr[j]]=[arr[j],arr[i]];
+function fisherYatesShuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
 }
@@ -211,78 +191,48 @@ function judgeKeys(e) {
     } else {
         incorrectType(typedKey);
     }
-
 }
 
 function correctType(key) {
-    
     typeText = typeText.slice(1);
     let typingArea = document.getElementById('typing_area');
     typingArea.value = typeText;
-
     deleteBlock();
-
 }
 
 function incorrectType(key) {
-    //要改善！！
     let typingArea = document.getElementById('typing_area');
     typingArea.classList.add('missed');
-    setTimeout(()=> {
+    setTimeout(() => {
         typingArea.classList.remove('missed');
     }, 1000);
-    //if (key !== 'Enter') addBlock();
 }
-
-/*//ミスペナ処理
-
-function addBlock() {
-
-    const blocks = document.getElementsByClassName('block');
-
-    for (let i = blocks.length; i >= 0; i--) {
-
-        if (blocks[i]?.id === 'typedBlock') {
-            blocks[i].id = 'missedBlock';
-            break;
-        }
-
-    }
-}
-*/
 
 function deleteBlock() {
-    
     let typedCount = Number(count.textContent);
     count.textContent = String(typedCount + 1);
     let elapsedTime = 30 - Number(timer.textContent);
     let kpmValue = Math.round(typedCount / elapsedTime * 60);
-
     kpm.textContent = String(kpmValue);
 
     const blocks = document.getElementsByClassName('block');
-    
 
     let topOrder = shuffledOrder.shift();
     blocks[topOrder].id = 'typedBlock';
     if (shuffledOrder.length === 0) {
-
         typeFinish(true);
-
     }
+
 }
 
-
 function typeFinish(isCompleted) {
-            
     stopInterval();
     let typingArea = document.getElementById('typing_area');
     if (isCompleted) {
-
         typingArea.value = 'Press Enter!';
         window.removeEventListener('keydown', judgeKeys, false);
         window.addEventListener('keydown', brokeInputBox, true);
-        function brokeInputBox (e) {
+        function brokeInputBox(e) {
             e.preventDefault();
             if (e.key === 'Enter') {
                 typingArea.id = 'typedBlock';
@@ -292,26 +242,20 @@ function typeFinish(isCompleted) {
     } else {
         window.removeEventListener('keydown', judgeKeys, false);
         typingArea.value = 'Press Escape...';
-
     }
 
     makeTweet();
-
 }
 
-
-function makeTweet () {
-
+function makeTweet() {
     const tweetButton = document.getElementById('tweet');
-    
     const t = String((30 - parseFloat(timer.textContent)).toFixed(1));
-
     const c = count.textContent;
     const k = kpm.textContent;
-    const hashTags = "脱衣タイピング"
-    //改行→ %0A
+    const hashTags = "脱衣タイピング";
     const tweet = `LEVEL${choosingLevel} 脱衣成功❤%0A${c}keys in ${t} sec (${k}KPM)`;
     const url = 'https://datuityping.x.fc2.com/';
     const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&hashtags=${hashTags}&url=${url}`;
     tweetButton.href = tweetText;
 }
+
