@@ -64,7 +64,7 @@ export function createAbout () {
     </table>
 
     </div>
-    `
+    `;
     
     return div;
 
