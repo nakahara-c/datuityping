@@ -142,16 +142,24 @@ function createBlocks(level) {
         div.className = 'is-overlay';
         div.style = 'top:350px';
 
-        let input = document.createElement('input');
-        input.id = 'typing_area';
-        input.className = 'input is-danger is-large is-rounded';
-        input.type = 'text';
+        let inputA = document.createElement('input');
+        inputA.id = 'word_area';
+        inputA.className = 'input is-danger is-large';
+        inputA.type = 'text';
+
+        let inputB = document.createElement('input');
+        inputB.id = 'typing_area';
+        inputB.className = 'input is-danger is-large';
+        inputB.type = 'text';
+
+        
 
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
-        makedDiv.appendChild(input);
+        makedDiv.appendChild(inputA);
+        makedDiv.appendChild(inputB);
 
-        setWord(cnt, input);
+        setWord(cnt, inputB);
     }
 
     function setWord(cnt, typingArea) {
