@@ -27,7 +27,7 @@ let choosingLevel = 1;
 
 const contentList = document.getElementsByClassName('difficulty');
 
-for (let i = 0; i < contentList.length; i++) {
+for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
         let d = document.getElementById('area');
 
