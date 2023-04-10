@@ -105,7 +105,7 @@ function createBlocks(level) {
         for (let j = 0; j < xCount; j++) {
             let [x, y] = [j * w, i * w];
             let block = createImg();
-            block.style = `left:${x}px;top:${y}px`;
+            block.style = `left:${j*(100/xCount)}%;top:${i*(100/yCount)}%`;
             blockDOMs.push(block);
         }
     }
@@ -113,7 +113,7 @@ function createBlocks(level) {
     const girls = document.createElement('img');
     girls.src = "img" + level + ".png";
 
-    if (level < 3) {
+    if (level === 1 || level === 2) {
         girls.width = "500";
         girls.height = "750";
     } else {
