@@ -132,7 +132,8 @@ function createBlocks(level) {
         const img = document.createElement('img');
         img.src = "block.png";
         img.className = "block is-overlay";
-        img.width = w;
+        let widthPercent = String(100/xCount) + "%";
+        img.setAttribute('width', widthPercent);
         return img;
     }
 
