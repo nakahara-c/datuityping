@@ -258,13 +258,13 @@ function typeFinish(isCompleted) {
 
 function makeTweet() {
     const tweetButton = document.getElementById('tweet');
-    const t = String((30 - parseFloat(timer.textContent)).toFixed(1));
-    const c = count.textContent;
-    const k = kpm.textContent;
+    const sec = String((30 - parseFloat(timer.textContent)).toFixed(1));
+    const cnt = count.textContent;
+    const KPM = kpm.textContent;
     const hashTags = "脱衣タイピング";
-    const tweet = `LEVEL${choosingLevel} 脱衣成功❤%0A${c}keys in ${t} sec (${k}KPM)`;
+    const tweetText = `LEVEL${choosingLevel} 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
     const url = 'https://datuityping.x.fc2.com/';
-    const tweetText = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweet}&hashtags=${hashTags}&url=${url}`;
-    tweetButton.href = tweetText;
+    const tweetURL = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweetText}&hashtags=${hashTags}&url=${url}`;
+    tweetButton.href = tweetURL;
 }
 
