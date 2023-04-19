@@ -1,6 +1,6 @@
 ![alt](./banner.png)
   
-***<div align="center">Let undress her with your typing.</div>***
+***<div align="center">Undress her with your typing.</div>***
   
   
 ---
