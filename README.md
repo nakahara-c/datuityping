@@ -1,9 +1,8 @@
 <img src="./banner.png" alt="">
-
-
-https://datuityping.x.fc2.com/
   
+
 ---
+  
   
 ## 義務
 * 画像にモザイクをかける
