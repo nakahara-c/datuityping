@@ -1,5 +1,9 @@
-# 脱衣タイピング（仮）@23/3/29
+<img src="./banner.png" alt="">
+
+
 https://datuityping.x.fc2.com/
+  
+---
   
 ## 義務
 * 画像にモザイクをかける
