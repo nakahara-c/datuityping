@@ -76,6 +76,8 @@ function stopInterval() {
 function createBlocks(level) {
     
     const area = document.getElementById('area');
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
 
     let w = 0;
     let xCount = 0;
@@ -100,15 +102,7 @@ function createBlocks(level) {
 
     createInputBox(xCount * yCount);
 
-    let blockDOMs = [];
-    for (let i = 0; i < yCount; i++) {
-        for (let j = 0; j < xCount; j++) {
-            let [x, y] = [j * w, i * w];
-            let block = createImg();
-            block.style = `left:${j*(100/xCount)}%;top:${i*(100/yCount)}%`;
-            blockDOMs.push(block);
-        }
-    }
+
 
     const girls = document.createElement('img');
 
@@ -116,13 +110,24 @@ function createBlocks(level) {
     let randint = Math.floor(Math.random() * 65) + 1;
     girls.src = "./img/" + randint + ".png";
 
+    const girlsAspectRatio = 512 / 768; // Assuming the aspect ratio of the girls image is 504:756
+    const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
 
-    if (level === 1 || level === 2) {
-        girls.width = "500";
-        girls.height = "750";
-    } else {
-        girls.width = "504";
-        girls.height = "756";
+    girls.height = windowHeight * girlsHeightRatio;
+    girls.width = girls.height * girlsAspectRatio;
+
+    const container = document.getElementById('container');
+
+    container.style.height = girls.height + "px";
+
+    let blockDOMs = [];
+    for (let i = 0; i < yCount; i++) {
+        for (let j = 0; j < xCount; j++) {
+            let block = createImg();
+            
+            block.style = `left:${j*(100/xCount)}%;top:${i * (102.5/yCount)}%`;
+            blockDOMs.push(block);
+        }
     }
 
     setTimeout(() => {
@@ -137,9 +142,15 @@ function createBlocks(level) {
         img.src = "./img/block.png";
         img.className = "block is-overlay";
         let widthPercent = String(100/xCount) + "%";
+        let heightPercent = String(100/yCount) + "%";
         img.setAttribute('width', widthPercent);
+        img.setAttribute('height', heightPercent);
         return img;
     }
+
+    // Rest of the code remains the same
+
+
 
     function createInputBox(cnt) {
         let div = document.createElement('div');
