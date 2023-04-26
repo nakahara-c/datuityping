@@ -46,7 +46,7 @@ window.addEventListener('keydown', judgeEscape, true);
 
 function judgeEscape(e) {
     if (e.key === 'Escape') {
-        contentList[choosingLevel - 1].click();
+        contentList[choosingLevel].click();
     }
 }
 
