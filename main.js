@@ -111,7 +111,7 @@ function createBlocks(level) {
     }
 
     const girls = document.createElement('img');
-    girls.src = "img" + level + ".png";
+    girls.src = "./img/img" + level + ".png";
 
     if (level === 1 || level === 2) {
         girls.width = "500";
@@ -130,7 +130,7 @@ function createBlocks(level) {
 
     function createImg() {
         const img = document.createElement('img');
-        img.src = "block.png";
+        img.src = "./img/block.png";
         img.className = "block is-overlay";
         let widthPercent = String(100/xCount) + "%";
         img.setAttribute('width', widthPercent);
