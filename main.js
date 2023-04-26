@@ -111,7 +111,11 @@ function createBlocks(level) {
     }
 
     const girls = document.createElement('img');
-    girls.src = "./img/img" + level + ".png";
+
+    //girls.src = "./img/img" + level + ".png";
+    let randint = Math.floor(Math.random() * 65) + 1;
+    girls.src = "./img/" + randint + ".png";
+
 
     if (level === 1 || level === 2) {
         girls.width = "500";
