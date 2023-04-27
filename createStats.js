@@ -1,7 +1,16 @@
 export function createStats () {
+    const div = document.createElement('div');
+    div.innerHTML = `
 
-    window.alert('stat button is clicked!');
 
-    return;
+
+    <div>
+    すたてぃすてぃっくす
+    </div>
+    
+    
+    `;
+
+    return div;
 
 }

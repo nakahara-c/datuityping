@@ -21,8 +21,8 @@ function displayAbout() {
 function displayStats() {
     let d = document.getElementById('area');
     let div = createStats();
-    //d.innerHTML = "";
-    //d.appendChild(div);
+    d.innerHTML = "";
+    d.appendChild(div);
 }
 
 let timerArray = [];
