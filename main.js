@@ -100,7 +100,7 @@ function createBlocks(level) {
             break;
     }
 
-    createInputBox(xCount * yCount);
+
 
 
 
@@ -110,7 +110,7 @@ function createBlocks(level) {
     let randint = Math.floor(Math.random() * 65) + 1;
     girls.src = "./img/" + randint + ".png";
 
-    const girlsAspectRatio = 512 / 768; // Assuming the aspect ratio of the girls image is 504:756
+    const girlsAspectRatio = 512 / 768;
     const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
 
     girls.height = windowHeight * girlsHeightRatio;
@@ -175,13 +175,13 @@ function createBlocks(level) {
         }
     }
 
-
+    createInputBox(xCount * yCount);
 
     function createInputBox(cnt) {
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
-        div.style = 'top:350px';
+        div.style = `top:50%`;
         
         let inputA = document.createElement('input');
         inputA.id = 'word_area';
