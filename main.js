@@ -1,7 +1,7 @@
 'use strict';
 
 import { createAbout } from './createAbout.js';
-import { createStats } from './createStats.js';
+import { createStats, openImageModal } from './createStats.js';
 import { wordList } from './wordList.js';
 
 const about = document.getElementById('about');
@@ -23,7 +23,27 @@ function displayStats() {
     let div = createStats();
     d.innerHTML = "";
     d.appendChild(div);
+
+    setTimeout(() => {
+        addModalListeners();
+    }, 0);
 }
+
+function addModalListeners() {
+    const closeModalButton = document.querySelector('#image-modal .modal-close');
+    closeModalButton.addEventListener('click', () => {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('is-active');
+    });
+
+    const modalBackground = document.querySelector('#image-modal .modal-background');
+    modalBackground.addEventListener('click', () => {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('is-active');
+    });
+}
+
+window.openImageModal = openImageModal;
 
 let timerArray = [];
 
