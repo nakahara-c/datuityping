@@ -24,6 +24,7 @@ let typeText = "";
 let order = [];
 let shuffledOrder;
 let choosingLevel = 1;
+let chosenImgNumber = 0;
 
 const contentList = document.getElementsByClassName('difficulty');
 
@@ -38,7 +39,7 @@ for (let i = 1; i < contentList.length; i++) {
 
         stopInterval();
         choosingLevel = i;
-        createBlocks(i);
+        chosenImgNumber = createBlocks(i);
     });
 }
 
@@ -99,10 +100,6 @@ function createBlocks(level) {
             [w, xCount, yCount] = [31.5, 16, 24];
             break;
     }
-
-
-
-
 
     const girls = document.createElement('img');
 
@@ -216,6 +213,8 @@ function createBlocks(level) {
 
         window.addEventListener('keydown', judgeKeys, false);
     }
+
+    return randint;
 }
 
 function fisherYatesShuffle(arr) {
@@ -294,7 +293,19 @@ function typeFinish(isCompleted) {
     }
 
     makeTweet();
+    writeChosenImgNumber();
+    
 }
+
+function writeChosenImgNumber() {
+    let cleared = JSON.parse(localStorage.getItem('cleared'));
+    if (cleared === null) cleared = [];
+    if (!cleared.includes(chosenImgNumber)) {
+        cleared.push(chosenImgNumber);
+        localStorage.setItem('cleared', JSON.stringify(cleared));
+    }
+}
+
 
 function makeTweet() {
     const tweetButton = document.getElementById('tweet');
