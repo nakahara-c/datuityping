@@ -125,10 +125,12 @@ function createBlocks(level) {
         for (let j = 0; j < xCount; j++) {
             let block = createImg();
             
-            block.style = `left:${j*(100/xCount)}%;top:${i * (102.5/yCount)}%`;
+            block.style = `left:${j*(100/xCount)}%;top:${girls.height * i / yCount}px`;
             blockDOMs.push(block);
         }
     }
+
+    adjustBlockPositions();
 
     setTimeout(() => {
         if (area.childElementCount === 1) {
@@ -148,7 +150,30 @@ function createBlocks(level) {
         return img;
     }
 
-    // Rest of the code remains the same
+
+
+
+    function adjustBlockPositions() {
+    
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+    
+        girls.height = windowHeight * girlsHeightRatio;
+        girls.width = girls.height * girlsAspectRatio;
+    
+        const blockHeight = girls.height / yCount;
+        const blockWidth = girls.width / xCount;
+    
+        for (let i = 0; i < yCount; i++) {
+            for (let j = 0; j < xCount; j++) {
+                let block = blockDOMs[i * xCount + j];
+                block.style.left = (j * blockWidth) + 'px';
+                block.style.top = (i * blockHeight) + 'px';
+                block.style.width = blockWidth + 'px';
+                block.style.height = blockHeight + 'px';
+            }
+        }
+    }
 
 
 
