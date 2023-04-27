@@ -1,17 +1,28 @@
 'use strict';
 
 import { createAbout } from './createAbout.js';
+import { createStats } from './createStats.js';
 import { wordList } from './wordList.js';
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
 window.addEventListener('DOMContentLoaded', displayAbout);
 
+const stat = document.getElementById('stat');
+stat.addEventListener('click', displayStats);
+
 function displayAbout() {
     let d = document.getElementById('area');
     let div = createAbout();
     d.innerHTML = "";
     d.appendChild(div);
+}
+
+function displayStats() {
+    let d = document.getElementById('area');
+    let div = createStats();
+    //d.innerHTML = "";
+    //d.appendChild(div);
 }
 
 let timerArray = [];
