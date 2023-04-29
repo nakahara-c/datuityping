@@ -347,8 +347,10 @@ function writeChosenImgNumber() {
 }
 
 function writeResult() {
+    let time = parseFloat(String(30.0-Number(timer.textContent))).toFixed(1);
     let result = {
         'level': choosingLevel,
+        'time': time,
         'kpm': kpm.textContent
     };
     let results = JSON.parse(localStorage.getItem('results'));

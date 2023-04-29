@@ -19,7 +19,7 @@ export function createStats() {
                         カーソルを当てるとレベルとタイムが表示されます。
                         </li>
                         <li class="has-text-danger has-background-danger-light has-text-centered mt-2 mb-4">
-                        クリックすると削除されます。
+                        クリックするとその一つの記録が削除されます。
                         </li>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@ export function createStats() {
                     borderWidth: 1,
                     pointBackgroundColor: 'rgba(255, 99, 132, 1)',
                     pointBorderColor: 'rgba(255, 99, 132, 1)',
-                    pointBorderWidth: 2,
+                    pointBorderWidth: 4,
                     pointRadius: 4
                 }]
             },
@@ -89,7 +89,8 @@ export function createStats() {
                             afterLabel: function (context) {
                                 const index = context.dataIndex;
                                 const level = data[index].level;
-                                return `Level: ${level}`;
+                                const time = data[index].time;
+                                return `Level: ${level}\nTime: ${time}`;
                             }
                         }
                     }
