@@ -13,8 +13,9 @@ export function createAbout () {
             使用しているイラストはAI製です。
         </li>
         <br>
-        <br>
+        <hr>
         <p>レベルを選んでキーを押すと始まります。Escでやり直しができます。</p>
+        <p>レベルの選択は1～5キーでも行えます。</p>
 
     </ul>
 
@@ -62,6 +63,12 @@ export function createAbout () {
             </tr>
         </tbody>
     </table>
+
+    <details>
+        <summary>ワードについて</summary>
+    <p>ベースはタイプウェル英単語の基本英単語1500です。</p>
+    <p>大文字や記号を含むものを取り除きました。(Mondayやo'clockなど)</p>
+    </details>
 
     </div>
     `;
