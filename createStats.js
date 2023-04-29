@@ -2,11 +2,6 @@ export function createStats() {
     //sort
     let cleared = JSON.parse(localStorage.getItem('cleared')).sort((a, b) => a - b);
 
-
-    for (const key in cleared) {
-        console.log(cleared[key]);
-    }
-
     const div = document.createElement('div');
 
     const tableString = generateTable(10, 10);
@@ -114,6 +109,7 @@ export function createStats() {
                 }
             }
         });
+
     }
 
     function generateTable(rows, cols) {
