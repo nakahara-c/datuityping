@@ -1,6 +1,6 @@
-export function createStats () {
+export function createStats() {
     //sort
-    let cleared = JSON.parse(localStorage.getItem('cleared')).sort((a,b) => a-b);
+    let cleared = JSON.parse(localStorage.getItem('cleared')).sort((a, b) => a - b);
 
 
     for (const key in cleared) {
@@ -13,35 +13,42 @@ export function createStats () {
 
     div.innerHTML = `
 
-    <div>
-        <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
-        <canvas id="chart"></canvas>
-        <ul>
-            <li class="has-text-link has-background-link-light has-text-centered mt-4">
-            カーソルを当てるとレベルとタイムが表示されます。
-            </li>
-            <li class="has-text-danger has-background-danger-light has-text-centered mt-2">
-            クリックすると削除されます。
-            </li>
-        </ul>
-
-
-    </div>
-    <hr>
-    <div>
-        <p class="has-text-centered title mt-4" style="opacity:0.7">解放した画像</p>
-        ${tableString}
-    </div>
-
-    <div class="modal" id="image-modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-            <p class="image is-2by3">
-                <img src="" alt="" id="modal-image">
-            </p>
+    <div class="container">
+        <div class="tile is-vertical">
+            <div class="tile is-parent">
+                <div class="tile is-child box" id="result">
+                    <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
+                    <canvas id="chart"></canvas>
+                    <ul>
+                        <li class="has-text-link has-background-link-light has-text-centered mt-4">
+                        カーソルを当てるとレベルとタイムが表示されます。
+                        </li>
+                        <li class="has-text-danger has-background-danger-light has-text-centered mt-2 mb-4">
+                        クリックすると削除されます。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tile is-parent">
+                <div class="tile is-child box" id="unlockedImages">
+                    <p class="has-text-centered title mt-4" style="opacity:0.7">解放した画像</p>
+                    ${tableString}
+                </div>
+            </div>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
-    </div>    
+
+        <div class="modal" id="image-modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <p class="image is-2by3">
+                    <img src="" alt="" id="modal-image">
+                </p>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+    </div>
+
+
     
     `;
 
@@ -53,11 +60,11 @@ export function createStats () {
 
     function drawChart() {
         const ctx = document.getElementById('chart').getContext('2d');
-        
+
         // データから labels および data 配列を作成
         const labels = data.map((item, index) => `Data ${index + 1}`);
         const chartData = data.map(item => parseInt(item.kpm));
-    
+
         const chart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -84,7 +91,7 @@ export function createStats () {
                     tooltip: {
                         callbacks: {
                             // ツールチップに level の値を追加
-                            afterLabel: function(context) {
+                            afterLabel: function (context) {
                                 const index = context.dataIndex;
                                 const level = data[index].level;
                                 return `Level: ${level}`;
@@ -96,10 +103,10 @@ export function createStats () {
                     if (elements.length > 0) {
                         const index = elements[0].index;
                         data.splice(index, 1); // データから要素を削除
-    
+
                         // localStorage のデータを更新
                         localStorage.setItem('results', JSON.stringify(data));
-    
+
                         // チャートを再描画
                         chart.destroy();
                         drawChart();
@@ -114,7 +121,7 @@ export function createStats () {
         for (let i = 1; i <= rows; i++) {
             table += '<tr>\n';
             for (let j = 1; j <= cols; j++) {
-                let tmp = (i-1)*10+j;
+                let tmp = (i - 1) * 10 + j;
                 if (cleared.includes(tmp)) {
                     table += `<td><img src="img/${tmp}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal(${tmp})"></td>\n`;
                 } else {
