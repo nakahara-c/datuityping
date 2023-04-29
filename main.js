@@ -236,7 +236,7 @@ function createBlocks(level) {
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
-        div.style = `top:50%`;
+        div.style = `top:35vh`;
 
         let inputA = document.createElement('input');
         inputA.id = 'word_area';
