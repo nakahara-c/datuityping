@@ -17,8 +17,6 @@ function displayAbout() {
     let d = document.getElementById('area');
     let div = createAbout();
     d.innerHTML = "";
-    
-    mainContent.classList.remove('main-content');
 
     d.appendChild(div);
 }
@@ -28,11 +26,12 @@ function displayStats() {
     let div = createStats();
     d.innerHTML = "";
     d.appendChild(div);
+    
 
     setTimeout(() => {
         addModalListeners();
     }, 0);
-    mainContent.classList.add('main-content');
+
 }
 
 function addModalListeners() {
@@ -67,7 +66,6 @@ const contentList = document.getElementsByClassName('difficulty');
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
-        mainContent.classList.remove('main-content');
 
         let d = document.getElementById('area');
 
@@ -135,7 +133,7 @@ function stopInterval() {
 function createBlocks(level) {
 
 
-    
+
     const area = document.getElementById('area');
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -175,14 +173,14 @@ function createBlocks(level) {
 
     const container = document.getElementById('container');
 
-    container.style.height = girls.height + "px";
+    //container.style.height = girls.height + "px";
 
     let blockDOMs = [];
     for (let i = 0; i < yCount; i++) {
         for (let j = 0; j < xCount; j++) {
             let block = createImg();
-            
-            block.style = `left:${j*(100/xCount)}%;top:${girls.height * i / yCount}px`;
+
+            block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
             blockDOMs.push(block);
         }
     }
@@ -200,8 +198,8 @@ function createBlocks(level) {
         const img = document.createElement('img');
         img.src = "./img/block.png";
         img.className = "block is-overlay";
-        let widthPercent = String(100/xCount) + "%";
-        let heightPercent = String(100/yCount) + "%";
+        let widthPercent = String(100 / xCount) + "%";
+        let heightPercent = String(100 / yCount) + "%";
         img.setAttribute('width', widthPercent);
         img.setAttribute('height', heightPercent);
         return img;
@@ -211,16 +209,16 @@ function createBlocks(level) {
 
 
     function adjustBlockPositions() {
-    
+
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
-    
+
         girls.height = windowHeight * girlsHeightRatio;
         girls.width = girls.height * girlsAspectRatio;
-    
+
         const blockHeight = girls.height / yCount;
         const blockWidth = girls.width / xCount;
-    
+
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
                 let block = blockDOMs[i * xCount + j];
@@ -244,7 +242,7 @@ function createBlocks(level) {
         inputA.id = 'word_area';
         inputA.className = 'input is-danger is-large';
         inputA.type = 'text';
-        
+
         let inputB = document.createElement('input');
         inputB.id = 'typing_area';
         inputB.className = 'input is-danger is-large';
@@ -318,7 +316,7 @@ function deleteBlock() {
     let typedCount = Number(count.textContent);
     count.textContent = String(typedCount + 1);
     let elapsedTime = 30 - Number(timer.textContent);
-    
+
     if (elapsedTime === 0) {
         kpm.textContent = "0";
     } else {
@@ -358,7 +356,7 @@ function typeFinish(isCompleted) {
     makeTweet();
     writeChosenImgNumber();
     writeResult();
-    
+
 }
 
 function writeChosenImgNumber() {
@@ -371,7 +369,7 @@ function writeChosenImgNumber() {
 }
 
 function writeResult() {
-    let time = parseFloat(String(30.0-Number(timer.textContent))).toFixed(1);
+    let time = parseFloat(String(30.0 - Number(timer.textContent))).toFixed(1);
     let result = {
         'level': choosingLevel,
         'time': time,
