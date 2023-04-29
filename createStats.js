@@ -14,11 +14,22 @@ export function createStats () {
     div.innerHTML = `
 
     <div>
+        <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
         <canvas id="chart"></canvas>
-    </div>
+        <ul>
+            <li class="has-text-link has-background-link-light has-text-centered mt-4">
+            カーソルを当てるとレベルとタイムが表示されます。
+            </li>
+            <li class="has-text-danger has-background-danger-light has-text-centered mt-2">
+            クリックすると削除されます。
+            </li>
+        </ul>
 
+
+    </div>
+    <hr>
     <div>
-        <p class="has-text-centered">解放した画像</p>
+        <p class="has-text-centered title mt-4" style="opacity:0.7">解放した画像</p>
         ${tableString}
     </div>
 
