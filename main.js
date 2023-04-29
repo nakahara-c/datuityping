@@ -11,10 +11,15 @@ window.addEventListener('DOMContentLoaded', displayAbout);
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
 
+const mainContent = document.getElementById('main-content');
+
 function displayAbout() {
     let d = document.getElementById('area');
     let div = createAbout();
     d.innerHTML = "";
+    
+    mainContent.classList.remove('main-content');
+
     d.appendChild(div);
 }
 
@@ -27,6 +32,7 @@ function displayStats() {
     setTimeout(() => {
         addModalListeners();
     }, 0);
+    mainContent.classList.add('main-content');
 }
 
 function addModalListeners() {
@@ -61,6 +67,8 @@ const contentList = document.getElementsByClassName('difficulty');
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
+        mainContent.classList.remove('main-content');
+
         let d = document.getElementById('area');
 
         d.innerHTML = '';
@@ -106,6 +114,8 @@ function stopInterval() {
 }
 
 function createBlocks(level) {
+
+
     
     const area = document.getElementById('area');
     const windowWidth = window.innerWidth;
