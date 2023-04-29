@@ -1,10 +1,15 @@
 export function createStats() {
+    
+
+
     //sort
     let cleared = JSON.parse(localStorage.getItem('cleared')).sort((a, b) => a - b);
 
     const div = document.createElement('div');
 
     const tableString = generateTable(10, 10);
+
+
 
     div.innerHTML = `
 
@@ -54,6 +59,8 @@ export function createStats() {
     const data = JSON.parse(localStorage.getItem('results')) || [];
 
     function drawChart() {
+        const requiredKpm = [192, 300, 432, 588, 768];
+
         const ctx = document.getElementById('chart').getContext('2d');
 
         // データから labels および data 配列を作成
@@ -81,7 +88,8 @@ export function createStats() {
                 scales: {
                     y: {
                         beginAtZero: true
-                    }
+                    },
+                    x: {}
                 },
                 plugins: {
                     tooltip: {
@@ -101,7 +109,17 @@ export function createStats() {
                                 return `Level: ${level}\nTime: ${time}`;
                             }
                         }
-                    }
+                    },
+                    annotation: {
+                        annotations: requiredKpm.map(value => ({
+                            type: 'line',
+                            mode: 'horizontal',
+                            scaleID: 'y',
+                            value: value,
+                            borderColor: 'rgba(0, 0, 230, 0.2)',
+                            borderWidth: 1
+                        }))
+                    } 
                 },
                 onClick: function (event, elements) {
                     if (elements.length > 0) {
