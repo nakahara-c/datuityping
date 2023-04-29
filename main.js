@@ -104,7 +104,7 @@ function judgeEscape(e) {
     }
 
     if (levelButton) {
-        levelButton.click(); // 対応するレベル選択ボタンをクリック
+        levelButton.click();
     }
 
 }
@@ -318,8 +318,13 @@ function deleteBlock() {
     let typedCount = Number(count.textContent);
     count.textContent = String(typedCount + 1);
     let elapsedTime = 30 - Number(timer.textContent);
-    let kpmValue = Math.round(typedCount / elapsedTime * 60);
-    kpm.textContent = String(kpmValue);
+    
+    if (elapsedTime === 0) {
+        kpm.textContent = "0";
+    } else {
+        let kpmValue = Math.round(typedCount / elapsedTime * 60);
+        kpm.textContent = String(kpmValue);
+    }
 
     const blocks = document.getElementsByClassName('block');
 
