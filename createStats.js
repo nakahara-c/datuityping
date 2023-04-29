@@ -57,7 +57,7 @@ export function createStats() {
         const ctx = document.getElementById('chart').getContext('2d');
 
         // データから labels および data 配列を作成
-        const labels = data.map((item, index) => `Data ${index + 1}`);
+        const labels = data.map((item, index) => `${index + 1}`);
         const chartData = data.map(item => parseInt(item.kpm));
 
         const chart = new Chart(ctx, {
@@ -84,6 +84,11 @@ export function createStats() {
                 },
                 plugins: {
                     tooltip: {
+                        titleColor: 'rgba(0, 0, 0, 1)', // Black title color
+                        bodyColor: 'rgba(0, 0, 0, 1)', // Black body color
+
+                        backgroundColor: 'rgba(248, 236, 243, 1)', // Light pink background color
+
                         callbacks: {
                             // ツールチップに level の値を追加
                             afterLabel: function (context) {
