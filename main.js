@@ -88,6 +88,25 @@ function judgeEscape(e) {
     if (e.key === 'Escape') {
         contentList[choosingLevel].click();
     }
+
+    let levelButton;
+
+    if (e.key === '1') {
+        levelButton = document.getElementById('lv1');
+    } else if (e.key === '2') {
+        levelButton = document.getElementById('lv2');
+    } else if (e.key === '3') {
+        levelButton = document.getElementById('lv3');
+    } else if (e.key === '4') {
+        levelButton = document.getElementById('lv4');
+    } else if (e.key === '5') {
+        levelButton = document.getElementById('lv5');
+    }
+
+    if (levelButton) {
+        levelButton.click(); // 対応するレベル選択ボタンをクリック
+    }
+
 }
 
 function firstKeyPressed() {
