@@ -210,7 +210,7 @@ function createBlocks(level) {
         div.id = 'type_area';
         div.className = 'is-overlay';
         div.style = `top:50%`;
-        
+
         let inputA = document.createElement('input');
         inputA.id = 'word_area';
         inputA.className = 'input is-danger is-large';
@@ -220,9 +220,7 @@ function createBlocks(level) {
         inputB.id = 'typing_area';
         inputB.className = 'input is-danger is-large';
         inputB.type = 'text';
-
         
-
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
         //makedDiv.appendChild(inputA);
