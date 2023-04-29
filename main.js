@@ -220,7 +220,7 @@ function createBlocks(level) {
         inputB.id = 'typing_area';
         inputB.className = 'input is-danger is-large';
         inputB.type = 'text';
-        
+
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
         //makedDiv.appendChild(inputA);
@@ -323,6 +323,7 @@ function typeFinish(isCompleted) {
 
     makeTweet();
     writeChosenImgNumber();
+    writeResult();
     
 }
 
@@ -333,6 +334,17 @@ function writeChosenImgNumber() {
         cleared.push(chosenImgNumber);
         localStorage.setItem('cleared', JSON.stringify(cleared));
     }
+}
+
+function writeResult() {
+    let result = {
+        'level': choosingLevel,
+        'kpm': kpm.textContent
+    };
+    let results = JSON.parse(localStorage.getItem('results'));
+    if (results === null) results = [];
+    results.push(result);
+    localStorage.setItem('results', JSON.stringify(results));
 }
 
 

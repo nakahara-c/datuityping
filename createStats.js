@@ -14,6 +14,10 @@ export function createStats () {
     div.innerHTML = `
 
     <div>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <div>
         <p class="has-text-centered">解放した画像</p>
         ${tableString}
     </div>
@@ -30,7 +34,69 @@ export function createStats () {
     
     `;
 
+    setTimeout(() => {
+        drawChart();
+    }, 0);
 
+    const data = JSON.parse(localStorage.getItem('results')) || [];
+
+    function drawChart() {
+        const ctx = document.getElementById('chart').getContext('2d');
+        
+        // データから labels および data 配列を作成
+        const labels = data.map((item, index) => `Data ${index + 1}`);
+        const chartData = data.map(item => parseInt(item.kpm));
+    
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'KPM',
+                    data: chartData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                    pointBorderColor: 'rgba(255, 99, 132, 1)',
+                    pointBorderWidth: 2,
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            // ツールチップに level の値を追加
+                            afterLabel: function(context) {
+                                const index = context.dataIndex;
+                                const level = data[index].level;
+                                return `Level: ${level}`;
+                            }
+                        }
+                    }
+                },
+                onClick: function (event, elements) {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        data.splice(index, 1); // データから要素を削除
+    
+                        // localStorage のデータを更新
+                        localStorage.setItem('results', JSON.stringify(data));
+    
+                        // チャートを再描画
+                        chart.destroy();
+                        drawChart();
+                    }
+                }
+            }
+        });
+    }
 
     function generateTable(rows, cols) {
         let table = '<table class="table is-bordered is-striped is-hoverable is-fullwidth">\n<tbody>\n';
