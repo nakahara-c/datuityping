@@ -70,6 +70,7 @@ export function createStats() {
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
+                    pointStyle: 'none',
                     pointBackgroundColor: 'rgba(255, 99, 132, 1)',
                     pointBorderColor: 'rgba(255, 99, 132, 1)',
                     pointBorderWidth: 4,
@@ -88,6 +89,8 @@ export function createStats() {
                         bodyColor: 'rgba(0, 0, 0, 1)', // Black body color
 
                         backgroundColor: 'rgba(248, 236, 243, 1)', // Light pink background color
+
+                        displayColors: false,
 
                         callbacks: {
                             // ツールチップに level の値を追加
