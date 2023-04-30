@@ -1,28 +1,19 @@
 export function createStats() {
     
-
-
-    //sort
     let cleared = JSON.parse(localStorage.getItem('cleared')).sort((a, b) => a - b);
-
     const div = document.createElement('div');
-
     const tableString = generateTable(10, 10);
+
+    const data = JSON.parse(localStorage.getItem('results')) || [];
+    let totalKeys = sumKeysCount(data);
 
     function sumKeysCount(data) {
         let sum = 0;
         for (let item of data) {
-            if (item.hasOwnProperty('keys')) {
-                sum += parseInt(item.keys);
-            }
+            sum += parseInt(item.keys ?? 0);
         }
         return sum;
     }
-
-    const data = JSON.parse(localStorage.getItem('results')) || [];
-    console.log(data);
-    let totalKeys = sumKeysCount(data);
-    console.log(totalKeys);
 
     div.innerHTML = `
 
@@ -77,7 +68,6 @@ export function createStats() {
 
         const ctx = document.getElementById('chart').getContext('2d');
 
-        // データから labels および data 配列を作成
         const labels = data.map((item, index) => `${index + 1}`);
         const chartData = data.map(item => parseInt(item.kpm));
 
@@ -94,7 +84,7 @@ export function createStats() {
                     pointStyle: 'none',
                     pointBackgroundColor: 'rgba(255, 99, 132, 1)',
                     pointBorderColor: 'rgba(255, 99, 132, 1)',
-                    pointBorderWidth: 4,
+                    pointBorderWidth: 2,
                     pointRadius: 4
                 }]
             },
@@ -107,15 +97,14 @@ export function createStats() {
                 },
                 plugins: {
                     tooltip: {
-                        titleColor: 'rgba(0, 0, 0, 1)', // Black title color
-                        bodyColor: 'rgba(0, 0, 0, 1)', // Black body color
+                        titleColor: 'rgba(0, 0, 0, 1)',
+                        bodyColor: 'rgba(0, 0, 0, 1)',
 
-                        backgroundColor: 'rgba(248, 236, 243, 1)', // Light pink background color
+                        backgroundColor: 'rgba(248, 236, 243, 1)',
 
                         displayColors: false,
 
                         callbacks: {
-                            // ツールチップに level の値を追加
                             afterLabel: function (context) {
                                 const index = context.dataIndex;
                                 const level = data[index].level;
@@ -140,10 +129,8 @@ export function createStats() {
                         const index = elements[0].index;
                         data.splice(index, 1); // データから要素を削除
 
-                        // localStorage のデータを更新
                         localStorage.setItem('results', JSON.stringify(data));
 
-                        // チャートを再描画
                         chart.destroy();
                         drawChart();
                     }
