@@ -9,7 +9,20 @@ export function createStats() {
 
     const tableString = generateTable(10, 10);
 
+    function sumKeysCount(data) {
+        let sum = 0;
+        for (let item of data) {
+            if (item.hasOwnProperty('keys')) {
+                sum += parseInt(item.keys);
+            }
+        }
+        return sum;
+    }
 
+    const data = JSON.parse(localStorage.getItem('results')) || [];
+    console.log(data);
+    let totalKeys = sumKeysCount(data);
+    console.log(totalKeys);
 
     div.innerHTML = `
 
@@ -18,6 +31,7 @@ export function createStats() {
             <div class="tile is-parent">
                 <div class="tile is-child box" id="result">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
+                    <p class="has-text-centered mt-4">総打鍵数: <span id="totalTypedCount">${totalKeys}</span>打</p>
                     <canvas id="chart"></canvas>
                     <ul>
                         <li class="has-text-link has-background-link-light has-text-centered mt-4">
@@ -56,7 +70,7 @@ export function createStats() {
         drawChart();
     }, 0);
 
-    const data = JSON.parse(localStorage.getItem('results')) || [];
+
 
     function drawChart() {
         const requiredKpm = [192, 300, 432, 588, 768];

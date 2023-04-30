@@ -373,7 +373,8 @@ function writeResult() {
     let result = {
         'level': choosingLevel,
         'time': time,
-        'kpm': kpm.textContent
+        'kpm': kpm.textContent,
+        'keys': count.textContent
     };
     let results = JSON.parse(localStorage.getItem('results'));
     if (results === null) results = [];

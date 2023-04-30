@@ -53,3 +53,8 @@ img {
 .main-content {
     min-height: calc(100vh - 6rem);
 }
+
+#totalTypedCount {
+    font-size: 1.5rem;
+    color:red;
+}
