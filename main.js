@@ -351,6 +351,12 @@ function typeFinish(isCompleted) {
     } else {
         window.removeEventListener('keydown', judgeKeys, false);
         typingArea.value = 'Press Escape...';
+        //KPMを再計算
+        let typedCount = Number(count.textContent);
+        let elapsedTime = 30;
+        let kpmValue = Math.round(typedCount / elapsedTime * 60);
+        kpm.textContent = String(kpmValue);
+
     }
 
     makeTweet();
