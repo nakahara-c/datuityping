@@ -1406,8 +1406,8 @@ export const wordList = [
 
 
 ////////////////////////////////////////////
-const wordListJapanese = {
-    
+export const wordListJapanese = {
+
     "次に": "つぎに", 
     "でれでれ": "でれでれ", 
     "あっさり": "あっさり", 
