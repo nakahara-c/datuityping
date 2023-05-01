@@ -3,7 +3,7 @@ export function createAbout () {
     div.innerHTML = `
 
     <div class="tile is-child box">
-    <p class="subtitle mt-2 mb-6">About</p>
+    <p class="has-text-centered title mt-2 mb-6" style="opacity:0.7">About</p>
     <ul class="mb-6">
         <li class="subtitle has-text-danger has-background-danger-light">
             成人向けコンテンツを含みます。18歳未満は閲覧禁止です。

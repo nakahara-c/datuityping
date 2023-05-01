@@ -37,7 +37,7 @@ export function createStats() {
             </div>
             <div class="tile is-parent">
                 <div class="tile is-child box" id="unlockedImages">
-                    <p class="has-text-centered title mt-4" style="opacity:0.7">解放した画像</p>
+                    <p class="has-text-centered title mt-4" style="opacity:0.7">ギャラリー</p>
                     ${tableString}
                 </div>
             </div>
