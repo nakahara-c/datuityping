@@ -3,6 +3,21 @@
 import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
 import { wordList } from './wordList.js';
+import { fetchImgID } from './fetchImgID.js';
+
+
+//API test///
+
+async function testGetID(level) {
+    const id = await fetchImgID(level);
+    console.log(id);
+    return id;
+}
+
+let tes = await testGetID(1);
+console.log(tes);
+
+/////
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
