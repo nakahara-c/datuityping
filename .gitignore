@@ -3,8 +3,8 @@ favicon
 .gitignore
 .vscode/settings.json
 
-/createBlocks.js
-/lib.js
+js/createBlocks.js
+js/lib.js
 /twitter_card.png
 
 api/values_set.py
