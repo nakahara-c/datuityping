@@ -21,7 +21,7 @@ console.log(tes);
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
-window.addEventListener('DOMContentLoaded', displayAbout);
+displayAbout();
 
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
