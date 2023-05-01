@@ -1,6 +1,8 @@
 import os
 import random
-from flask import jsonify, request
+from flask import Flask, jsonify, request, make_response
+
+app = Flask(__name__)
 
 values_set = {
     1: [10, 20, 30],
@@ -19,4 +21,6 @@ def datui_randomImgID(request):
     values = values_set[input_value]
     random_value = random.choice(values)
 
-    return jsonify({"randomValue": random_value}), 200
+    response = make_response(jsonify({"randomValue": random_value}), 200)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
