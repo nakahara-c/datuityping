@@ -3,16 +3,25 @@
 }
 
 #type_area {
-    z-index: 3;
+    z-index: 4;
 }
 
 #typing_area {
+    position: absolute;
     caret-color: transparent;
+    z-index: 5;
 }
 
-img {
-    z-index: 2;
+.block {
+    z-index: 3;
 }
+
+.block2 {
+    z-index: 2 !important;
+    opacity: 0.95;
+}
+
+
 
 #tweet {
     background-color: #1d9bf0;
