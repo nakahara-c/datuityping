@@ -146,18 +146,21 @@ async function createBlocks(level) {
     switch (level) {
         case 1:
             [w, xCount, yCount] = [62.5, 8, 12];
+            //[w, xCount, yCount] = [62.5, 6, 8];
             break;
         case 2:
             [w, xCount, yCount] = [50, 10, 15];
             break;
         case 3:
             [w, xCount, yCount] = [42, 12, 18];
+            //[w, xCount, yCount] = [42, 6, 9];
             break;
         case 4:
             [w, xCount, yCount] = [36, 14, 21];
             break;
         case 5:
             [w, xCount, yCount] = [31.5, 16, 24];
+            //[w, xCount, yCount] = [31.5, 8, 12];
             break;
     }
 
@@ -177,12 +180,42 @@ async function createBlocks(level) {
     //container.style.height = girls.height + "px";
 
     let blockDOMs = [];
-    for (let i = 0; i < yCount; i++) {
-        for (let j = 0; j < xCount; j++) {
-            let block = createImg();
+    //levelが1,3,5なら
+    if (level % 2 === 1) {
 
-            block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
-            blockDOMs.push(block);
+        let x = 6
+        let y = 8
+
+        for (let i = 0; i < y; i++) {
+            for (let j = 0; j < x; j++) {
+                let block = createImg("");
+
+                block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
+                blockDOMs.push(block);
+            }
+        }
+
+        for (let i = 0; i < y; i++) {
+            for (let j = 0; j < x; j++) {
+                let block = createImg("2");
+
+                block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
+                blockDOMs.push(block);
+            }
+        }
+
+        console.log(blockDOMs.length);
+
+
+    } else {
+
+        for (let i = 0; i < yCount; i++) {
+            for (let j = 0; j < xCount; j++) {
+                let block = createImg("");
+
+                block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
+                blockDOMs.push(block);
+            }
         }
     }
 
@@ -195,10 +228,14 @@ async function createBlocks(level) {
         }
     }, 300);
 
-    function createImg() {
+    function createImg(id) {
         const img = document.createElement('img');
-        img.src = "./img/block.png";
-        img.className = "block is-overlay";
+        img.src = `./img/block${id}.png`;
+        if (id === "") {
+        img.className = `block is-overlay`;
+        } else {
+        img.className = `block block${id} is-overlay`;
+        }
         let widthPercent = String(100 / xCount) + "%";
         let heightPercent = String(100 / yCount) + "%";
         img.setAttribute('width', widthPercent);
@@ -217,8 +254,11 @@ async function createBlocks(level) {
         girls.height = windowHeight * girlsHeightRatio;
         girls.width = girls.height * girlsAspectRatio;
 
-        const blockHeight = girls.height / yCount;
-        const blockWidth = girls.width / xCount;
+        //const blockHeight = girls.height / yCount;
+        //const blockWidth = girls.width / xCount;
+        const blockHeight = girls.height / 9;
+        const blockWidth = girls.width / 6;
+
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
@@ -269,6 +309,8 @@ async function createBlocks(level) {
         shuffledOrder = fisherYatesShuffle(order);
 
         window.addEventListener('keydown', judgeKeys, false);
+
+        console.log(typeText);
     }
 
     return imgID;
