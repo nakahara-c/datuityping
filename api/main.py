@@ -17,3 +17,9 @@ def datui_randomImgID(request):
     response = make_response(jsonify({"randomValue": random_value}), 200)
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
+
+"""to deploy to google cloud functions, run the following command in the terminal:
+
+gcloud functions deploy datui_randomImgID --runtime python310 --trigger-http --allow-unauthenticated --entry-point datui_randomImgID
+
+"""
