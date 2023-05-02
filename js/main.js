@@ -6,19 +6,6 @@ import { wordList } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
 
 
-//API test///
-
-async function testGetID(level) {
-    const id = await fetchImgID(level);
-    console.log(id);
-    return id;
-}
-
-let tes = await testGetID(1);
-console.log(tes);
-
-/////
-
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
 displayAbout();
@@ -145,7 +132,7 @@ function stopInterval() {
     }
 }
 
-function createBlocks(level) {
+async function createBlocks(level) {
 
 
 
@@ -176,9 +163,8 @@ function createBlocks(level) {
 
     const girls = document.createElement('img');
 
-    //girls.src = "./img/img" + level + ".png";
-    let randint = Math.floor(Math.random() * 65) + 1;
-    girls.src = "./img/" + randint + ".png";
+    let imgID = await fetchID(level);
+    girls.src = `./img/${imgID}.png`;
 
     const girlsAspectRatio = 512 / 768;
     const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
@@ -285,7 +271,7 @@ function createBlocks(level) {
         window.addEventListener('keydown', judgeKeys, false);
     }
 
-    return randint;
+    return imgID;
 }
 
 function fisherYatesShuffle(arr) {
@@ -381,6 +367,11 @@ function typeFinish(isCompleted) {
     writeChosenImgNumber();
     writeResult();
 
+}
+
+async function fetchID(level) {
+    const id = await fetchImgID(level);
+    return id;
 }
 
 function writeChosenImgNumber() {
