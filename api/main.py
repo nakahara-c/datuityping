@@ -20,6 +20,10 @@ def datui_randomImgID(request):
 
 """to deploy to google cloud functions, run the following command in the terminal:
 
+gcloud auth login
+
+gcloud config set project PROJECT_ID
+
 gcloud functions deploy datui_randomImgID --runtime python310 --trigger-http --allow-unauthenticated --entry-point datui_randomImgID
 
 """
