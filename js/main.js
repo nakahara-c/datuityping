@@ -320,11 +320,14 @@ function correctType(key) {
 }
 
 function incorrectType(key) {
-    let typingArea = document.getElementById('typing_area');
-    typingArea.classList.add('missed');
-    setTimeout(() => {
-        typingArea.classList.remove('missed');
-    }, 1000);
+    //もしキーが1～5以外なら（レベル選択時の除外）
+    if (key < '1' || key > '5') {
+        let typingArea = document.getElementById('typing_area');
+        typingArea.classList.add('missed');
+        setTimeout(() => {
+            typingArea.classList.remove('missed');
+        }, 1000);
+    }
 }
 
 function deleteBlock() {
