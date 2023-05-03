@@ -88,25 +88,6 @@ function judgeEscape(e) {
     if (e.key === 'Escape') {
         contentList[choosingLevel].click();
     }
-
-    let levelButton;
-
-    if (e.key === '1') {
-        levelButton = document.getElementById('lv1');
-    } else if (e.key === '2') {
-        levelButton = document.getElementById('lv2');
-    } else if (e.key === '3') {
-        levelButton = document.getElementById('lv3');
-    } else if (e.key === '4') {
-        levelButton = document.getElementById('lv4');
-    } else if (e.key === '5') {
-        levelButton = document.getElementById('lv5');
-    }
-
-    if (levelButton) {
-        levelButton.click();
-    }
-
 }
 
 function firstKeyPressed() {
@@ -302,7 +283,7 @@ async function createBlocks(level) {
         shuffledOrder = fisherYatesShuffle(order);
 
         window.addEventListener('keydown', judgeKeys, false);
-        
+
     }
 
     return imgID;
@@ -340,14 +321,13 @@ function correctType(key) {
 }
 
 function incorrectType(key) {
-    //もしキーが1～5以外なら（レベル選択時の除外）
-    if (key < '1' || key > '5') {
-        let typingArea = document.getElementById('typing_area');
-        typingArea.classList.add('missed');
-        setTimeout(() => {
-            typingArea.classList.remove('missed');
-        }, 1000);
-    }
+
+    let typingArea = document.getElementById('typing_area');
+    typingArea.classList.add('missed');
+    setTimeout(() => {
+        typingArea.classList.remove('missed');
+    }, 1000);
+
 }
 
 function deleteBlock() {
