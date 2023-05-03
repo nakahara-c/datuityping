@@ -146,21 +146,20 @@ async function createBlocks(level) {
     switch (level) {
         case 1:
             [w, xCount, yCount] = [62.5, 8, 12];
-            //[w, xCount, yCount] = [62.5, 6, 8];
             break;
         case 2:
             [w, xCount, yCount] = [50, 10, 15];
             break;
         case 3:
             [w, xCount, yCount] = [42, 12, 18];
-            //[w, xCount, yCount] = [42, 6, 9];
             break;
         case 4:
-            [w, xCount, yCount] = [36, 14, 21];
+            //[w, xCount, yCount] = [36, 14, 21];
+            [w, xCount, yCount] = [50, 10, 15];
             break;
         case 5:
-            [w, xCount, yCount] = [31.5, 16, 24];
-            //[w, xCount, yCount] = [31.5, 8, 12];
+            //[w, xCount, yCount] = [31.5, 16, 24];
+            [w, xCount, yCount] = [42, 12, 18];
             break;
     }
 
@@ -180,14 +179,10 @@ async function createBlocks(level) {
     //container.style.height = girls.height + "px";
 
     let blockDOMs = [];
-    //levelが1,3,5なら
-    if (level % 2 === 1) {
+    if (level === 4 || level === 5) {
 
-        let x = 6
-        let y = 8
-
-        for (let i = 0; i < y; i++) {
-            for (let j = 0; j < x; j++) {
+        for (let i = 0; i < yCount; i++) {
+            for (let j = 0; j < xCount; j++) {
                 let block = createImg("");
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
@@ -195,8 +190,8 @@ async function createBlocks(level) {
             }
         }
 
-        for (let i = 0; i < y; i++) {
-            for (let j = 0; j < x; j++) {
+        for (let i = 0; i < yCount; i++) {
+            for (let j = 0; j < xCount; j++) {
                 let block = createImg("2");
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
@@ -254,11 +249,8 @@ async function createBlocks(level) {
         girls.height = windowHeight * girlsHeightRatio;
         girls.width = girls.height * girlsAspectRatio;
 
-        //const blockHeight = girls.height / yCount;
-        //const blockWidth = girls.width / xCount;
-        const blockHeight = girls.height / 9;
-        const blockWidth = girls.width / 6;
-
+        const blockHeight = girls.height / yCount;
+        const blockWidth = girls.width / xCount;
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
@@ -303,14 +295,14 @@ async function createBlocks(level) {
 
         typingArea.value = typeText.slice(0, cnt);
         order = [];
+        if (level === 4 || level === 5) cnt *= 2;
         for (let i = 0; i < cnt; i++) {
             order.push(i);
         }
         shuffledOrder = fisherYatesShuffle(order);
 
         window.addEventListener('keydown', judgeKeys, false);
-
-        console.log(typeText);
+        
     }
 
     return imgID;
