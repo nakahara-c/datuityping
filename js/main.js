@@ -60,7 +60,7 @@ const kpm = document.getElementById('kpm');
 
 let typeText = "";
 let order = [];
-let shuffledOrder;
+let shuffledOrder = [];
 let choosingLevel = 1;
 let chosenImgNumber = 0;
 
@@ -135,11 +135,9 @@ async function createBlocks(level) {
             [w, xCount, yCount] = [42, 12, 18];
             break;
         case 4:
-            //[w, xCount, yCount] = [36, 14, 21];
             [w, xCount, yCount] = [50, 10, 15];
             break;
         case 5:
-            //[w, xCount, yCount] = [31.5, 16, 24];
             [w, xCount, yCount] = [42, 12, 18];
             break;
     }
@@ -179,9 +177,6 @@ async function createBlocks(level) {
                 blockDOMs.push(block);
             }
         }
-
-        console.log(blockDOMs.length);
-
 
     } else {
 
@@ -276,11 +271,30 @@ async function createBlocks(level) {
 
         typingArea.value = typeText.slice(0, cnt);
         order = [];
-        if (level === 4 || level === 5) cnt *= 2;
-        for (let i = 0; i < cnt; i++) {
-            order.push(i);
+        shuffledOrder = [];
+        if (level === 4 || level === 5) {
+            let cnt2 = cnt * 2;
+            for (let i = 0; i < cnt2; i++) order.push(i);
+            shuffledOrder = reorder(fisherYatesShuffle(order));
+
+            function reorder(array) {
+                let result = [...array];
+                for (let i = 0; i < array.length; i++) {
+                    let a = array[i];
+                    let b = (a + cnt) % cnt2;
+                    let aIndex = i;
+                    let bIndex = array.indexOf(b);
+                    if (a < b && aIndex > bIndex) {
+                        [result[aIndex], result[bIndex]] = [result[bIndex], result[aIndex]];
+                    }
+                }
+                return result;
+            }
+
+        } else {
+            for (let i = 0; i < cnt; i++) order.push(i);
+            shuffledOrder = fisherYatesShuffle(order);
         }
-        shuffledOrder = fisherYatesShuffle(order);
 
         window.addEventListener('keydown', judgeKeys, false);
 
