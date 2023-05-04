@@ -337,9 +337,9 @@ function correctType(key) {
 function incorrectType(key) {
 
     let typingArea = document.getElementById('typing_area');
-    typingArea.classList.add('missed');
+    typingArea?.classList.add('missed');
     setTimeout(() => {
-        typingArea.classList.remove('missed');
+        typingArea?.classList.remove('missed');
     }, 1000);
 
 }
