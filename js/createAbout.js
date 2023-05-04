@@ -15,7 +15,6 @@ export function createAbout () {
         <br>
         <hr>
         <p>レベルを選んでキーを押すと始まります。Escでやり直しができます。</p>
-        <p>レベルの選択は1～5キーでも行えます。</p>
 
     </ul>
 
@@ -51,15 +50,15 @@ export function createAbout () {
             </tr>
             <tr>
                 <td>4</td>
-                <td>294</td>
-                <td>588</td>
-                <td>XB</td>
+                <td>300</td>
+                <td>600</td>
+                <td>XA</td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>384</td>
-                <td>768</td>
-                <td>ZI</td>
+                <td>432</td>
+                <td>864</td>
+                <td>ZG</td>
             </tr>
         </tbody>
     </table>
