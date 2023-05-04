@@ -78,7 +78,8 @@ for (let i = 1; i < contentList.length; i++) {
 
         stopInterval();
         choosingLevel = i;
-        chosenImgNumber = createBlocks(i);
+        createBlocks(i);
+
     });
 }
 
@@ -146,6 +147,7 @@ async function createBlocks(level) {
 
     let imgID = await fetchID(level);
     girls.src = `./img/${imgID}.png`;
+    chosenImgNumber = imgID;
 
     const girlsAspectRatio = 512 / 768;
     const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
