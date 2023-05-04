@@ -403,11 +403,11 @@ async function fetchID(level) {
 }
 
 function writeChosenImgNumber() {
-    let cleared = JSON.parse(localStorage.getItem('cleared'));
-    if (cleared === null) cleared = [];
-    if (!cleared.includes(chosenImgNumber)) {
-        cleared.push(chosenImgNumber);
-        localStorage.setItem('cleared', JSON.stringify(cleared));
+    let unlocked = JSON.parse(localStorage.getItem('unlocked'));
+    if (unlocked === null) unlocked = [];
+    if (!unlocked.includes(chosenImgNumber)) {
+        unlocked.push(chosenImgNumber);
+        localStorage.setItem('unlocked', JSON.stringify(unlocked));
     }
 }
 

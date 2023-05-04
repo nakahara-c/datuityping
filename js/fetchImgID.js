@@ -1,4 +1,4 @@
-const API_ENDPOINT = 'https://us-central1-nkhr-c.cloudfunctions.net/datui_randomImgID';
+const API_ENDPOINT = 'https://us-west1-nkhr-c.cloudfunctions.net/datui_randomImgID';
 
 export async function fetchImgID(level) {
     const response = await fetch(`${API_ENDPOINT}?input=${level}`);

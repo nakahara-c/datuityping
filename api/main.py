@@ -18,12 +18,14 @@ def datui_randomImgID(request):
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
 
-"""to deploy to google cloud functions, run the following command in the terminal:
+"""cdto deploy to google cloud functions, run the following command in the terminal:
+
+cd api
 
 gcloud auth login
 
 gcloud config set project PROJECT_ID
 
-gcloud functions deploy datui_randomImgID --runtime python310 --trigger-http --allow-unauthenticated --entry-point datui_randomImgID
+gcloud functions deploy datui_randomImgID --runtime python311 --trigger-http --allow-unauthenticated --entry-point datui_randomImgID --region us-west1
 
 """
