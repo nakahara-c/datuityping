@@ -13,6 +13,8 @@ import { wordList } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
 import { parser } from './parser.js';
 
+parser();
+
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
