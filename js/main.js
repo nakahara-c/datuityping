@@ -153,6 +153,10 @@ async function createBlocks(level) {
         case 5:
             [w, xCount, yCount] = [42, 12, 18];
             break;
+        case 6:
+            [w, xCount, yCount] = [42, 12, 18];
+            break;
+
     }
 
     const girls = document.createElement('img');
@@ -340,6 +344,8 @@ async function createBlocks(level) {
         txt = txt.replaceAll(" ", "　");
 
         typingArea.value = txt;
+
+        window.addEventListener('keydown', judgeKeys, false);
             
     }
 
@@ -356,18 +362,30 @@ function fisherYatesShuffle(arr) {
 
 function judgeKeys(e) {
     e.preventDefault();
+    if (choosingLevel < 6) {
+        let typedKey = e.key;
+        let nextKey = typeText[0];
 
-    let typedKey = e.key;
-    let nextKey = typeText[0];
-
-    if (typedKey === nextKey) {
-        if (timer.textContent === '') {
-            firstKeyPressed();
+        if (typedKey === nextKey) {
+            if (timer.textContent === '') {
+                firstKeyPressed();
+            }
+            correctType(typedKey);
+        } else {
+            incorrectType(typedKey);
         }
-        correctType(typedKey);
+    //Extra用の入力うけつけ処理
     } else {
-        incorrectType(typedKey);
+        let typedKey = e.key;
+        
+        //judgeAutomaton受け取ってそれに応じて判定していく
+
+
+
+
+
     }
+    
 }
 
 function correctType(key) {
