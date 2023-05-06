@@ -75,6 +75,7 @@ let order = [];
 let shuffledOrder = [];
 let choosingLevel = 1;
 let chosenImgNumber = 0;
+let currentImgID = "";
 
 const contentList = document.getElementsByClassName('difficulty');
 
@@ -162,10 +163,9 @@ async function createBlocks(level) {
     const girls = document.createElement('img');
 
     let imgID = await fetchID(level);
-    girls.src = `./img/${imgID}.png`;
-    chosenImgNumber = imgID;
-
-    console.log(imgID);
+    girls.src = `./img/${imgID.imgID}.png`;
+    chosenImgNumber = imgID.randomValue;
+    currentImgID = imgID.imgID;
 
     const girlsAspectRatio = 512 / 768;
     const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
@@ -377,7 +377,7 @@ function judgeKeys(e) {
     //Extra用の入力うけつけ処理
     } else {
         let typedKey = e.key;
-        
+
         //judgeAutomaton受け取ってそれに応じて判定していく
 
 
@@ -466,10 +466,12 @@ async function fetchID(level) {
 function writeChosenImgNumber() {
     let unlocked = JSON.parse(localStorage.getItem('unlocked'));
     if (unlocked === null) unlocked = [];
+
     if (!unlocked.includes(chosenImgNumber)) {
-        unlocked.push(chosenImgNumber);
+        unlocked.push([chosenImgNumber, currentImgID]);
         localStorage.setItem('unlocked', JSON.stringify(unlocked));
     }
+
 }
 
 function writeResult() {

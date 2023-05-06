@@ -3,6 +3,5 @@ const API_ENDPOINT = 'https://us-west1-nkhr-c.cloudfunctions.net/datui_randomImg
 export async function fetchImgID(level) {
     const response = await fetch(`${API_ENDPOINT}?input=${level}`);
     const data = await response.json();
-    const value = data.randomValue;
-    return value;
+    return data;
 }

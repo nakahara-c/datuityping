@@ -1,6 +1,10 @@
 export function createStats() {
     
-    let unlocked = JSON.parse(localStorage.getItem('unlocked') ?? '[]').sort((a, b) => a - b);
+    let unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
+    let unlocked = new Object();
+    unlockedArray.forEach(pair => {
+        unlocked[pair[0]] = pair[1];
+    });
 
     const div = document.createElement('div');
     const tableString = generateTable(10, 10);
@@ -15,6 +19,8 @@ export function createStats() {
         }
         return sum;
     }
+
+
 
     div.innerHTML = `
 
@@ -147,8 +153,8 @@ export function createStats() {
             table += '<tr>\n';
             for (let j = 1; j <= cols; j++) {
                 let tmp = (i - 1) * 10 + j;
-                if (unlocked.includes(tmp)) {
-                    table += `<td><img src="img/${tmp}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal(${tmp})"></td>\n`;
+                if (tmp in unlocked) {
+                    table += `<td><img src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal(${tmp})"></td>\n`;
                 } else {
                     table += `<td><img src="img/block3.png" alt="0" width="40" height="60"></td>\n`;
                 }
@@ -158,6 +164,8 @@ export function createStats() {
         table += '</tbody>\n</table>';
         return table;
     }
+
+
 
     return div;
 
