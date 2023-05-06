@@ -149,6 +149,8 @@ async function createBlocks(level) {
     girls.src = `./img/${imgID}.png`;
     chosenImgNumber = imgID;
 
+    console.log(imgID);
+
     const girlsAspectRatio = 512 / 768;
     const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
 
