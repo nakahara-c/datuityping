@@ -1,7 +1,7 @@
 //にほんごろーまじにする
 
-export function parser() {
-    const mappingDict = loadMappingDict();
+export async function parser(word) {
+    const mappingDict = await loadMappingDict();
     let dict = new Object();
     for (let i = 0; i < mappingDict.length; i++) {
         let p = mappingDict[i].Pattern;
@@ -9,15 +9,15 @@ export function parser() {
         dict[p] = t;
     }
 
-    console.log(dict);
+    let res = constructTypeSentence(dict, word);
 
-    return;
+    return res;
 
 }
 
 async function loadMappingDict() {
     try {
-        const response = await fetch('./romanTypingParseDictionary.json');
+        const response = await fetch('./js/romanTypingParseDictionary.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -49,13 +49,9 @@ function constructTypeSentence(mappingDict, sentenceHiragana) {
             idx += 2;
             parsedStr.push(bi);
         }
-
         else {
             validTypeList = mappingDict[uni].slice();
-            if (uni === "ん" && sentenceHiragana.length - 1 === idx) {
-                validTypeList.splice(validTypeList.indexOf("n"), 1);
-            }
-            idx++;
+            idx += 1;
             parsedStr.push(uni);
         }
         judge.push(validTypeList);

@@ -11,9 +11,19 @@ import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
 import { wordList } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
+
+// This function is based on code from RomanTypeParser by Whitefox (MIT License)
 import { parser } from './parser.js';
 
-parser();
+let res = (async () => {
+
+    let res = await parser("ほんじつはいいてんきですね");
+    console.log(res);
+    console.log(res.judgeAutomaton);
+    console.log(res.parsedSentence);
+
+})();
+
 
 
 const about = document.getElementById('about');
