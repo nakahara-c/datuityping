@@ -1,6 +1,7 @@
-/*** using: RomanTypeParser
-Copyright (c) 2021 Whitefox
-https://github.com/WhiteFox-Lugh/RomanTypeParser
+/*** 
+ * Copyright (c) 2021 Whitefox
+ * This code is part of RomanTypeParser and is released under the MIT License.
+ * https://github.com/WhiteFox-Lugh/RomanTypeParser/blob/main/LICENSE
 ***/
 
 
@@ -10,6 +11,7 @@ import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
 import { wordList } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
+import { parser } from './parser.js';
 
 
 const about = document.getElementById('about');

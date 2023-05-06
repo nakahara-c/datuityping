@@ -1,0 +1,5 @@
+//にほんごろーまじにする
+
+export function parser() {
+    
+}
