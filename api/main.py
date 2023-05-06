@@ -25,7 +25,7 @@ def datui_randomImgID(request):
 
 
 
-"""cdto deploy to google cloud functions, run the following command in the terminal:
+"""to deploy to google cloud functions, run the following command in the terminal:
 
 cd api
 
