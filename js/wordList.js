@@ -3564,3 +3564,4 @@ export const wordListJapanese = {
     "除く": "のぞく", 
     "パイロット": "ぱいろっと",
 }
+
