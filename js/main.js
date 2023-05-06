@@ -1,3 +1,9 @@
+/*** using: RomanTypeParser
+Copyright (c) 2021 Whitefox
+https://github.com/WhiteFox-Lugh/RomanTypeParser
+***/
+
+
 'use strict';
 
 import { createAbout } from './createAbout.js';
