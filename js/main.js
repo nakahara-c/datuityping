@@ -9,20 +9,12 @@
 
 import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
-import { wordList } from './wordList.js';
+import { wordList, wordListExtra } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
 
 // This function is based on code from RomanTypeParser by Whitefox (MIT License)
 import { parser } from './parser.js';
 
-let res = (async () => {
-
-    let res = await parser("ほんじつはいいてんきですね");
-    console.log(res);
-    console.log(res.judgeAutomaton);
-    console.log(res.parsedSentence);
-
-})();
 
 
 
@@ -286,9 +278,14 @@ async function createBlocks(level) {
         //makedDiv.appendChild(inputA);
         makedDiv.appendChild(inputB);
 
-        setWord(cnt, inputB);
-    }
+        if (level !== 6) {
+            setWord(cnt, inputB);
+        } else{
+            setWordExtra(cnt, inputB);
+        }
 
+    }
+    //cntはブロックの数（xCount*yCount)
     function setWord(cnt, typingArea) {
         let shuffledWordList = fisherYatesShuffle(wordList);
         typeText = shuffledWordList.join(' ');
@@ -322,6 +319,28 @@ async function createBlocks(level) {
 
         window.addEventListener('keydown', judgeKeys, false);
 
+        return;
+
+    }
+
+    function setWordExtra(cnt, typingArea) {
+        let tmpLis = new Array();
+        for (let i = 0; i < 200; i++) {
+            let word = wordListExtra[Math.floor(Math.random() * wordListExtra.length)];
+            tmpLis.push(word);
+        }
+        let txt = tmpLis.join(" ");
+    
+        let tes = (async () => {
+            let res = await parser(txt);
+            console.log(res.judgeAutomaton);
+            console.log(res.parsedSentence);
+        })();
+    
+        txt = txt.replaceAll(" ", "　");
+
+        typingArea.value = txt;
+            
     }
 
     return imgID;
