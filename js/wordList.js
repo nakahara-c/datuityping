@@ -1,4 +1,3 @@
-export const wordListExtra = new Array(1000).fill('tajitaji sakusaku');
 ////////////////////////////////////////////
 export const wordList = [
 "forgot",
@@ -3565,3 +3564,19 @@ export const wordListJapanese = {
     "パイロット": "ぱいろっと",
 }
 
+export const wordListExtra = [
+    "たじたじ",
+    "さくさく",
+    "こせこせ",
+    "ひらひら",
+    "くらくら",
+    "わくわく",
+    "がくがく",
+    "たぷたぷ",
+    "じわじわ",
+    "ぽわぽわ",
+    "だくだく",
+    "にたにた",
+    "ぴらぴら",
+    "ぽたぽた",
+]
