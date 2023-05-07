@@ -337,13 +337,14 @@ async function createBlocks(level) {
         }
         let txt = tmpLis.join(" ");
 
+
         for (let i = 0; i < cnt; i++) order.push(i);
         shuffledOrder = fisherYatesShuffle(order);
     
         (async () => extraWord = await parser(txt))();
     
         txt = txt.replaceAll(" ", "　");
-
+        typeText = txt;
         typingArea.value = txt;
 
         window.addEventListener('keydown', judgeKeys, false);
