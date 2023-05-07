@@ -380,8 +380,19 @@ function judgeKeys(e) {
         extraWord.judgeAutomaton -> ["ta"], ["pu"],...
         extraWord.parsedSentence -> ["た"], ["ぷ"],...
         */
-        console.log(extraWord);
+        let currentHiragana = extraWord.parsedSentence[0];
+        let currentRoman = extraWord.judgeAutomaton[0];
+        console.log(currentHiragana); //た
+        console.log(currentRoman);  //["ta"]
 
+        if (typedKey === currentRoman[0]) {
+            if (timer.textContent === '') {
+                firstKeyPressed();
+            }
+            correctType(typedKey);
+            //extraWord.parsedSentence.shift();
+            //extraWord.judgeAutomaton.shift();
+        }
 
 
 
