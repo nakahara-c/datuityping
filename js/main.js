@@ -414,8 +414,9 @@ function judgeKeys(e) {
                 extraWord.parsedSentence.shift();
                 extraWord.judgeAutomaton.shift();
                 
-                correctType(typedKey);
-
+                typeText = typeText.slice(1);
+                let typingArea = document.getElementById('typing_area');
+                typingArea.value = typeText;
 
             }
 
