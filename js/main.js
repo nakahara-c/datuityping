@@ -403,11 +403,15 @@ function judgeKeys(e) {
                 firstKeyPressed();
             }
 
-            correctType(typedKey);
+            deleteBlock();
 
             if (isLast) {
                 extraWord.parsedSentence.shift();
-                extraWord.judgeAutomaton.shift();    
+                extraWord.judgeAutomaton.shift();
+                
+                correctType(typedKey);
+
+
             }
 
         }
