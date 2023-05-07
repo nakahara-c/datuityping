@@ -384,18 +384,33 @@ function judgeKeys(e) {
         let currentRoman = extraWord.judgeAutomaton[0];
         console.log(currentHiragana); //た
         console.log(currentRoman);  //["ta"]
+        let isOK = false;
+        let isLast = false;
+        for (let i = 0; i < currentRoman.length; i++) {
+            if (typedKey === currentRoman[i][0]) {
+                isOK = true;
+                if (currentRoman[i].length === 1){
+                    isLast = true;
+                } else {
+                    currentRoman[i] = currentRoman[i].slice(1);
+                }
+            }
+        }
 
-        if (typedKey === currentRoman[0]) {
+        if (isOK) {
+
             if (timer.textContent === '') {
                 firstKeyPressed();
             }
+
             correctType(typedKey);
-            //extraWord.parsedSentence.shift();
-            //extraWord.judgeAutomaton.shift();
+
+            if (isLast) {
+                extraWord.parsedSentence.shift();
+                extraWord.judgeAutomaton.shift();    
+            }
+
         }
-
-
-
 
     }
     
