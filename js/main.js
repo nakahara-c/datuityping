@@ -130,8 +130,6 @@ function stopInterval() {
 
 async function createBlocks(level) {
 
-
-
     const area = document.getElementById('area');
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -156,7 +154,7 @@ async function createBlocks(level) {
             [w, xCount, yCount] = [42, 12, 18];
             break;
         case 6:
-            [w, xCount, yCount] = [42, 14, 21];
+            [w, xCount, yCount] = [42, 18, 27];
             break;
 
     }
@@ -283,6 +281,8 @@ async function createBlocks(level) {
         //makedDiv.appendChild(inputA);
         makedDiv.appendChild(inputB);
 
+
+
         if (level !== 6) {
             setWord(cnt, inputB);
         } else{
@@ -298,6 +298,7 @@ async function createBlocks(level) {
         typingArea.value = typeText.slice(0, cnt);
         order = [];
         shuffledOrder = [];
+
         if (level === 4 || level === 5) {
             let cnt2 = cnt * 2;
             for (let i = 0; i < cnt2; i++) order.push(i);
@@ -335,6 +336,9 @@ async function createBlocks(level) {
             tmpLis.push(word);
         }
         let txt = tmpLis.join(" ");
+
+        for (let i = 0; i < cnt; i++) order.push(i);
+        shuffledOrder = fisherYatesShuffle(order);
     
         (async () => extraWord = await parser(txt))();
     
@@ -414,6 +418,8 @@ function judgeKeys(e) {
 
             }
 
+        } else {
+            incorrectType(typedKey);
         }
 
     }
@@ -452,7 +458,7 @@ function deleteBlock() {
     const blocks = document.getElementsByClassName('block');
 
     let topOrder = shuffledOrder.shift();
-    blocks[topOrder].id = 'typedBlock';
+    blocks[topOrder].classList.add('typedBlock');
     if (shuffledOrder.length === 0) {
         typeFinish(true);
     }
@@ -469,7 +475,7 @@ function typeFinish(isCompleted) {
         function brokeInputBox(e) {
             e.preventDefault();
             if (e.key === 'Enter') {
-                typingArea.id = 'typedBlock';
+                typingArea.classList.add('typedBlock');
             };
         }
 
