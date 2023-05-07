@@ -3579,4 +3579,5 @@ export const wordListExtra = [
     "にたにた",
     "ぴらぴら",
     "ぽたぽた",
+    "よれよれ",
 ]
