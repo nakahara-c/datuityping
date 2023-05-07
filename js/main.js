@@ -71,6 +71,7 @@ const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
 
 let typeText = "";
+let extraWord;
 let order = [];
 let shuffledOrder = [];
 let choosingLevel = 1;
@@ -155,7 +156,7 @@ async function createBlocks(level) {
             [w, xCount, yCount] = [42, 12, 18];
             break;
         case 6:
-            [w, xCount, yCount] = [42, 12, 18];
+            [w, xCount, yCount] = [42, 14, 21];
             break;
 
     }
@@ -335,11 +336,7 @@ async function createBlocks(level) {
         }
         let txt = tmpLis.join(" ");
     
-        let tes = (async () => {
-            let res = await parser(txt);
-            console.log(res.judgeAutomaton);
-            console.log(res.parsedSentence);
-        })();
+        (async () => extraWord = await parser(txt))();
     
         txt = txt.replaceAll(" ", "　");
 
@@ -379,6 +376,11 @@ function judgeKeys(e) {
         let typedKey = e.key;
 
         //judgeAutomaton受け取ってそれに応じて判定していく
+        /*
+        extraWord.judgeAutomaton -> ["ta"], ["pu"],...
+        extraWord.parsedSentence -> ["た"], ["ぷ"],...
+        */
+        console.log(extraWord);
 
 
 
