@@ -114,7 +114,8 @@ export function createStats() {
                         callbacks: {
                             afterLabel: function (context) {
                                 const index = context.dataIndex;
-                                const level = data[index].level;
+                                let level = data[index].level;
+                                if (level === 6) level = 'EX';
                                 const time = data[index].time;
                                 return `Level: ${level}\nTime: ${time}`;
                             }
