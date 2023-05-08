@@ -153,7 +153,7 @@ async function createBlocks(level) {
             [w, xCount, yCount] = [42, 12, 18];
             break;
         case 6:
-            [w, xCount, yCount] = [42, 18, 27];
+            [w, xCount, yCount] = [42, 16, 24];
             break;
 
     }
@@ -338,7 +338,7 @@ async function createBlocks(level) {
 
     function setWordExtra(cnt, typingArea) {
         let tmpLis = new Array();
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 300; i++) {
             let word = wordListExtra[Math.floor(Math.random() * wordListExtra.length)];
             tmpLis.push(word);
         }
@@ -415,8 +415,6 @@ function judgeKeys(e) {
                 firstKeyPressed();
             }
 
-            deleteBlock();
-
             if (isLast) {
                 extraWord.parsedSentence.shift();
                 extraWord.judgeAutomaton.shift();
@@ -426,6 +424,8 @@ function judgeKeys(e) {
                 typingArea.value = typeText;
 
             }
+
+            deleteBlock();
 
         } else {
             incorrectType(typedKey);
@@ -542,8 +542,12 @@ function makeTweet() {
     const cnt = count.textContent;
     const KPM = kpm.textContent;
     const hashTags = "脱衣タイピング";
-    const tweetText = `LEVEL${choosingLevel} 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
-    const url = 'https://datuityping.x.fc2.com/';
+    if (choosingLevel !== 6) {
+        const tweetText = `LEVEL${choosingLevel} 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+    } else {
+        const tweetText = `LEVELEX 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+    }
+    const url = 'https://nkhr-c.com/datuityping/';
     const tweetURL = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweetText}&hashtags=${hashTags}&url=${url}`;
     tweetButton.href = tweetURL;
 }
