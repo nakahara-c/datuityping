@@ -307,23 +307,11 @@ async function createBlocks(level) {
         if (level === 5) cnt -= 24;
 
         if (level === 4 || level === 5) {
-            let cnt2 = cnt * 2;
-            for (let i = 0; i < cnt2; i++) order.push(i);
-            shuffledOrder = reorder(fisherYatesShuffle(order));
 
-            function reorder(array) {
-                let result = [...array];
-                for (let i = 0; i < array.length; i++) {
-                    let a = array[i];
-                    let b = (a + cnt) % cnt2;
-                    let aIndex = i;
-                    let bIndex = array.indexOf(b);
-                    if (a < b && aIndex > bIndex) {
-                        [result[aIndex], result[bIndex]] = [result[bIndex], result[aIndex]];
-                    }
-                }
-                return result;
-            }
+            for (let i = 0; i < (cnt*2); i++) order.push(i);
+            shuffledOrder = reorder(fisherYatesShuffle(order), cnt);
+
+
 
         } else {
             for (let i = 0; i < cnt; i++) order.push(i);
@@ -347,10 +335,9 @@ async function createBlocks(level) {
 
         order = [];
         shuffledOrder = [];
-        let cnt2 = cnt * 2;
 
-        for (let i = 0; i < cnt2; i++) order.push(i);
-        shuffledOrder = reorder(fisherYatesShuffle(order));
+        for (let i = 0; i < (cnt*2); i++) order.push(i);
+        shuffledOrder = reorder(fisherYatesShuffle(order), cnt);
     
         (async () => extraWord = await parser(txt))();
     
@@ -360,25 +347,26 @@ async function createBlocks(level) {
 
         window.addEventListener('keydown', judgeKeys, false);
 
-        function reorder(array) {
-            let result = [...array];
-            for (let i = 0; i < array.length; i++) {
-                let a = array[i];
-                let b = (a + cnt) % cnt2;
-                let aIndex = i;
-                let bIndex = array.indexOf(b);
-                if (a < b && aIndex > bIndex) {
-                    [result[aIndex], result[bIndex]] = [result[bIndex], result[aIndex]];
-                }
-            }
-            return result;
-        }
-
         return;
             
     }
 
     return imgID;
+}
+
+function reorder(array, cnt) {
+    let result = [...array];
+    let cnt2 = cnt * 2;
+    for (let i = 0; i < array.length; i++) {
+        let a = array[i];
+        let b = (a + cnt) % cnt2;
+        let aIndex = i;
+        let bIndex = array.indexOf(b);
+        if (a < b && aIndex > bIndex) {
+            [result[aIndex], result[bIndex]] = [result[bIndex], result[aIndex]];
+        }
+    }
+    return result;
 }
 
 function fisherYatesShuffle(arr) {
