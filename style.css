@@ -58,6 +58,10 @@
     animation: rot 0.5s forwards;
 }
 
+.button[disabled] {
+    cursor: pointer;
+}
+
 .main-content {
     min-height: calc(100vh - 6rem);
 }

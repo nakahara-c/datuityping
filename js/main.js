@@ -16,7 +16,7 @@ import { wordList, wordListExtra } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
 
 
-
+const contentList = document.getElementsByClassName('difficulty');
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
 displayAbout();
@@ -26,10 +26,14 @@ stat.addEventListener('click', displayStats);
 
 const mainContent = document.getElementById('main-content');
 
+
 function displayAbout() {
     let d = document.getElementById('area');
     let div = createAbout();
     d.innerHTML = "";
+    for (let j = 1; j < contentList.length; j++) {
+        contentList[j].disabled = false;
+    }
 
     d.appendChild(div);
 }
@@ -38,6 +42,9 @@ function displayStats() {
     let d = document.getElementById('area');
     let div = createStats();
     d.innerHTML = "";
+    for (let j = 1; j < contentList.length; j++) {
+        contentList[j].disabled = false;
+    }
     d.appendChild(div);
     
 
@@ -77,7 +84,7 @@ let choosingLevel = 1;
 let chosenImgNumber = 0;
 let currentImgID = "";
 
-const contentList = document.getElementsByClassName('difficulty');
+
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
@@ -88,6 +95,11 @@ for (let i = 1; i < contentList.length; i++) {
         timer.textContent = '';
         count.textContent = '';
         kpm.textContent = '';
+        console.log(contentList);
+        for (let j = 1; j < contentList.length; j++) {
+            contentList[j].disabled = false;
+        }
+        contentList[i].disabled = true;
 
         stopInterval();
         choosingLevel = i;
