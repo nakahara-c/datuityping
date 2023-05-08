@@ -192,8 +192,6 @@ async function createBlocks(level) {
 
     const container = document.getElementById('container');
 
-    //container.style.height = girls.height + "px";
-
     let blockDOMs = [];
     if (level === 4 || level === 5 || level === 6) {
 
@@ -543,7 +541,9 @@ function writeChosenImgNumber() {
     let unlocked = JSON.parse(localStorage.getItem('unlocked'));
     if (unlocked === null) unlocked = [];
 
-    if (!unlocked.includes(chosenImgNumber)) {
+    let isInclude = unlocked.some(el => el[0] === chosenImgNumber && el[1] === currentImgID);
+
+    if (!isInclude) {
         unlocked.push([chosenImgNumber, currentImgID]);
         localStorage.setItem('unlocked', JSON.stringify(unlocked));
     }
