@@ -71,7 +71,7 @@ export function createStats() {
 
 
     function drawChart() {
-        const requiredKpm = [192, 300, 432, 588, 768];
+        const requiredKpm = [192, 300, 432, 600, 768];
 
         const ctx = document.getElementById('chart').getContext('2d');
 
@@ -154,7 +154,7 @@ export function createStats() {
             for (let j = 1; j <= cols; j++) {
                 let tmp = (i - 1) * 10 + j;
                 if (tmp in unlocked) {
-                    table += `<td><img src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal(${tmp})"></td>\n`;
+                    table += `<td><img src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal('${unlocked[tmp]}')"></td>\n`;
                 } else {
                     table += `<td><img src="img/block3.png" alt="0" width="40" height="60"></td>\n`;
                 }
@@ -171,7 +171,7 @@ export function createStats() {
 
 }
 
-export function openImageModal(imageNumber) {
+export function openImageModal(imageID) {
     const modal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
 
@@ -187,6 +187,6 @@ export function openImageModal(imageNumber) {
     modalImage.width = originalWidth * scaleFactor;
     modalImage.height = originalHeight * scaleFactor;
 
-    modalImage.src = `img/${imageNumber}.png`;
+    modalImage.src = `img/${imageID}.png`;
     modal.classList.add('is-active');
 }
