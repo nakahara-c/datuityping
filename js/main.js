@@ -7,14 +7,13 @@
 
 'use strict';
 
+// This function is based on code from RomanTypeParser by Whitefox (MIT License)
+import { parser } from './parser.js';
+
 import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
 import { wordList, wordListExtra } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
-
-// This function is based on code from RomanTypeParser by Whitefox (MIT License)
-import { parser } from './parser.js';
-
 
 
 
@@ -180,7 +179,7 @@ async function createBlocks(level) {
     if (level === 4 || level === 5) {
 
         for (let i = 0; i < yCount; i++) {
-            for (let j = 0; j < xCount; j++) {
+            for (let j = 0; j < xCount; j++) {               
                 let block = createImg("");
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
@@ -190,12 +189,18 @@ async function createBlocks(level) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
+                if (level === 5) {
+                    if (i < 2 || i > 15) {
+                        continue;
+                    }
+                }    
                 let block = createImg("2");
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
                 blockDOMs.push(block);
             }
         }
+
 
     } else {
 
@@ -298,6 +303,8 @@ async function createBlocks(level) {
         typingArea.value = typeText.slice(0, cnt);
         order = [];
         shuffledOrder = [];
+
+        if (level === 5) cnt -= 24;
 
         if (level === 4 || level === 5) {
             let cnt2 = cnt * 2;
