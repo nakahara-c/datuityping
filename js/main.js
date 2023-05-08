@@ -337,6 +337,7 @@ async function createBlocks(level) {
     }
 
     function setWordExtra(cnt, typingArea) {
+
         let tmpLis = new Array();
         for (let i = 0; i < 300; i++) {
             let word = wordListExtra[Math.floor(Math.random() * wordListExtra.length)];
@@ -344,6 +345,8 @@ async function createBlocks(level) {
         }
         let txt = tmpLis.join(" ");
 
+        order = [];
+        shuffledOrder = [];
 
         for (let i = 0; i < cnt; i++) order.push(i);
         shuffledOrder = fisherYatesShuffle(order);
@@ -468,6 +471,9 @@ function deleteBlock() {
 
     let topOrder = shuffledOrder.shift();
     blocks[topOrder].classList.add('typedBlock');
+
+    console.log(shuffledOrder);
+
     if (shuffledOrder.length === 0) {
         typeFinish(true);
     }
@@ -542,10 +548,11 @@ function makeTweet() {
     const cnt = count.textContent;
     const KPM = kpm.textContent;
     const hashTags = "脱衣タイピング";
+    let tweetText = '';
     if (choosingLevel !== 6) {
-        const tweetText = `LEVEL${choosingLevel} 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+        tweetText = `LEVEL${choosingLevel} 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
     } else {
-        const tweetText = `LEVELEX 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+        tweetText = `LEVELEX 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
     }
     const url = 'https://nkhr-c.com/datuityping/';
     const tweetURL = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweetText}&hashtags=${hashTags}&url=${url}`;
