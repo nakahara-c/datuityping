@@ -24,8 +24,12 @@ displayAbout();
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
 
-const mainContent = document.getElementById('main-content');
+const ex = document.getElementById('ex');
 
+if (localStorage.getItem('unlocked') !== null) {
+    const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
+    if (unlockedCount >= 20) ex.hidden = false;
+}
 
 function displayAbout() {
     let d = document.getElementById('area');
@@ -46,7 +50,7 @@ function displayStats() {
         contentList[j].disabled = false;
     }
     d.appendChild(div);
-    
+
 
     setTimeout(() => {
         addModalListeners();
@@ -95,7 +99,7 @@ for (let i = 1; i < contentList.length; i++) {
         timer.textContent = '';
         count.textContent = '';
         kpm.textContent = '';
-        console.log(contentList);
+
         for (let j = 1; j < contentList.length; j++) {
             contentList[j].disabled = false;
         }
@@ -191,7 +195,7 @@ async function createBlocks(level) {
     if (level === 4 || level === 5 || level === 6) {
 
         for (let i = 0; i < yCount; i++) {
-            for (let j = 0; j < xCount; j++) {               
+            for (let j = 0; j < xCount; j++) {
                 let block = createImg("");
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
@@ -205,7 +209,7 @@ async function createBlocks(level) {
                     if (i < 2 || i > 15) {
                         continue;
                     }
-                }    
+                }
                 let block = createImg("2");
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
@@ -239,9 +243,9 @@ async function createBlocks(level) {
         const img = document.createElement('img');
         img.src = `./img/block${id}.png`;
         if (id === "") {
-        img.className = `block is-overlay`;
+            img.className = `block is-overlay`;
         } else {
-        img.className = `block block${id} is-overlay`;
+            img.className = `block block${id} is-overlay`;
         }
         let widthPercent = String(100 / xCount) + "%";
         let heightPercent = String(100 / yCount) + "%";
@@ -302,7 +306,7 @@ async function createBlocks(level) {
 
         if (level !== 6) {
             setWord(cnt, inputB);
-        } else{
+        } else {
             setWordExtra(cnt, inputB);
         }
 
@@ -320,7 +324,7 @@ async function createBlocks(level) {
 
         if (level === 4 || level === 5) {
 
-            for (let i = 0; i < (cnt*2); i++) order.push(i);
+            for (let i = 0; i < (cnt * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), cnt);
 
 
@@ -348,11 +352,11 @@ async function createBlocks(level) {
         order = [];
         shuffledOrder = [];
 
-        for (let i = 0; i < (cnt*2); i++) order.push(i);
+        for (let i = 0; i < (cnt * 2); i++) order.push(i);
         shuffledOrder = reorder(fisherYatesShuffle(order), cnt);
-    
+
         (async () => extraWord = await parser(txt))();
-    
+
         txt = txt.replaceAll(" ", "　");
         typeText = txt;
         typingArea.value = txt;
@@ -360,7 +364,7 @@ async function createBlocks(level) {
         window.addEventListener('keydown', judgeKeys, false);
 
         return;
-            
+
     }
 
     return imgID;
@@ -403,7 +407,8 @@ function judgeKeys(e) {
         } else {
             incorrectType(typedKey);
         }
-    //Extra用の入力うけつけ処理
+
+        //Extra用の入力うけつけ処理
     } else {
         let typedKey = e.key;
 
@@ -412,16 +417,16 @@ function judgeKeys(e) {
         extraWord.judgeAutomaton -> ["ta"], ["pu"],...
         extraWord.parsedSentence -> ["た"], ["ぷ"],...
         */
+
         let currentHiragana = extraWord.parsedSentence[0];
         let currentRoman = extraWord.judgeAutomaton[0];
-        console.log(currentHiragana); //た
-        console.log(currentRoman);  //["ta"]
+
         let isOK = false;
         let isLast = false;
         for (let i = 0; i < currentRoman.length; i++) {
             if (typedKey === currentRoman[i][0]) {
                 isOK = true;
-                if (currentRoman[i].length === 1){
+                if (currentRoman[i].length === 1) {
                     isLast = true;
                 } else {
                     currentRoman[i] = currentRoman[i].slice(1);
@@ -438,7 +443,7 @@ function judgeKeys(e) {
             if (isLast) {
                 extraWord.parsedSentence.shift();
                 extraWord.judgeAutomaton.shift();
-                
+
                 typeText = typeText.slice(1);
                 let typingArea = document.getElementById('typing_area');
                 typingArea.value = typeText;
@@ -452,7 +457,7 @@ function judgeKeys(e) {
         }
 
     }
-    
+
 }
 
 function correctType(key) {
@@ -488,8 +493,6 @@ function deleteBlock() {
 
     let topOrder = shuffledOrder.shift();
     blocks[topOrder].classList.add('typedBlock');
-
-    console.log(shuffledOrder);
 
     if (shuffledOrder.length === 0) {
         typeFinish(true);

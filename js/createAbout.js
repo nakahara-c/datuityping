@@ -25,7 +25,7 @@ export function createAbout () {
     </details>
     <br>
     <!--難易度対応表 table-->
-    <p class="mb-1 has-text-centered">難易度対応表（目安）</p>
+    <p class="mt-2 mb-1">難易度対応表（目安）</p>
     <table class="table is-bordered is-striped">
         <thead>
             <tr>
