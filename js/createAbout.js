@@ -18,8 +18,14 @@ export function createAbout () {
     <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
     <li>特定条件を満たす事でLEVEL EXが解放されます。</li>
     <br>
+    <details>
+        <summary>ワードについて</summary>
+        <p>ベースはタイプウェル英単語の基本英単語1500です。</p>
+        <p>大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
+    </details>
+    <br>
     <!--難易度対応表 table-->
-    <p class="mb-1">難易度対応表（目安）</p>
+    <p class="mb-1 has-text-centered">難易度対応表（目安）</p>
     <table class="table is-bordered is-striped">
         <thead>
             <tr>
@@ -69,12 +75,9 @@ export function createAbout () {
         </tbody>
     </table>
 
-    <br>
-    <details>
-        <summary>ワードについて</summary>
-    <p>ベースはタイプウェル英単語の基本英単語1500です。</p>
-    <p>大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
-    </details>
+    <hr>
+
+    中原ここあ(<a href="https://twitter.com/tt_cocoan" target="_blank">@tt_cocoan</a>)
 
     </div>
     `;
