@@ -24,12 +24,7 @@ displayAbout();
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
 
-const ex = document.getElementById('ex');
-
-if (localStorage.getItem('unlocked') !== null) {
-    const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
-    if (unlockedCount >= 20) ex.hidden = false;
-}
+displayEx();
 
 function displayAbout() {
     let d = document.getElementById('area');
@@ -56,6 +51,14 @@ function displayStats() {
         addModalListeners();
     }, 0);
 
+}
+
+function displayEx() {
+    if (localStorage.getItem('unlocked') !== null) {
+        const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
+        const ex = document.getElementById('ex');
+        if (unlockedCount >= 20) ex.hidden = false;
+    }
 }
 
 function addModalListeners() {
@@ -116,7 +119,6 @@ window.addEventListener('keydown', judgeEscape, true);
 
 function judgeEscape(e) {
     if (e.key === 'Escape') {
-        console.log(contentList);
         contentList[choosingLevel].click();
     }
 }
@@ -545,6 +547,8 @@ function writeChosenImgNumber() {
         unlocked.push([chosenImgNumber, currentImgID]);
         localStorage.setItem('unlocked', JSON.stringify(unlocked));
     }
+
+    displayEx();
 
 }
 
