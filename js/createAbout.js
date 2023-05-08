@@ -8,16 +8,16 @@ export function createAbout () {
         <li class="subtitle has-text-danger has-background-danger-light">
             成人向けコンテンツを含みます。18歳未満は閲覧禁止です。
         </li>
-        <br>
         <li class="subtitle has-text-link has-background-link-light">
             使用しているイラストはAI製です。
         </li>
-        <br>
-        <hr>
-        <p>レベルを選んでキーを押すと始まります。Escでやり直しができます。</p>
-
     </ul>
 
+    <hr>
+
+    <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
+    <li>特定条件を満たす事でLEVEL EXが解放されます。</li>
+    <br>
     <!--難易度対応表 table-->
     <p class="mb-1">難易度対応表（目安）</p>
     <table class="table is-bordered is-striped">
@@ -56,17 +56,24 @@ export function createAbout () {
             </tr>
             <tr>
                 <td>5</td>
-                <td>432</td>
-                <td>864</td>
-                <td>ZG</td>
+                <td>384</td>
+                <td>768</td>
+                <td>ZI</td>
             </tr>
+            <tr>
+            <td>EX</td>
+            <td>???</td>
+            <td>???</td>
+            <td>??</td>
+        </tr>
         </tbody>
     </table>
 
+    <br>
     <details>
         <summary>ワードについて</summary>
     <p>ベースはタイプウェル英単語の基本英単語1500です。</p>
-    <p>大文字や記号を含むものを取り除きました。(Mondayやo'clockなど)</p>
+    <p>大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
     </details>
 
     </div>
