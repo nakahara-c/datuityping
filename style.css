@@ -58,8 +58,8 @@
     animation: rot 0.5s forwards;
 }
 
-.button[disabled] {
-    cursor: pointer;
+.activeLevel {
+    opacity:0.6;
 }
 
 .main-content {

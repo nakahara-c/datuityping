@@ -36,7 +36,7 @@ function displayAbout() {
     let div = createAbout();
     d.innerHTML = "";
     for (let j = 1; j < contentList.length; j++) {
-        contentList[j].disabled = false;
+        contentList[j].classList.remove('activeLevel');
     }
 
     d.appendChild(div);
@@ -47,7 +47,7 @@ function displayStats() {
     let div = createStats();
     d.innerHTML = "";
     for (let j = 1; j < contentList.length; j++) {
-        contentList[j].disabled = false;
+        contentList[j].classList.remove('activeLevel');
     }
     d.appendChild(div);
 
@@ -101,9 +101,9 @@ for (let i = 1; i < contentList.length; i++) {
         kpm.textContent = '';
 
         for (let j = 1; j < contentList.length; j++) {
-            contentList[j].disabled = false;
+            contentList[j].classList.remove('activeLevel');
         }
-        contentList[i].disabled = true;
+        contentList[i].classList.add('activeLevel');
 
         stopInterval();
         choosingLevel = i;
@@ -116,6 +116,7 @@ window.addEventListener('keydown', judgeEscape, true);
 
 function judgeEscape(e) {
     if (e.key === 'Escape') {
+        console.log(contentList);
         contentList[choosingLevel].click();
     }
 }
