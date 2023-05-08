@@ -153,7 +153,7 @@ async function createBlocks(level) {
             [w, xCount, yCount] = [42, 12, 18];
             break;
         case 6:
-            [w, xCount, yCount] = [42, 16, 24];
+            [w, xCount, yCount] = [42, 12, 18];
             break;
 
     }
@@ -176,7 +176,7 @@ async function createBlocks(level) {
     //container.style.height = girls.height + "px";
 
     let blockDOMs = [];
-    if (level === 4 || level === 5) {
+    if (level === 4 || level === 5 || level === 6) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {               
@@ -347,9 +347,10 @@ async function createBlocks(level) {
 
         order = [];
         shuffledOrder = [];
+        let cnt2 = cnt * 2;
 
-        for (let i = 0; i < cnt; i++) order.push(i);
-        shuffledOrder = fisherYatesShuffle(order);
+        for (let i = 0; i < cnt2; i++) order.push(i);
+        shuffledOrder = reorder(fisherYatesShuffle(order));
     
         (async () => extraWord = await parser(txt))();
     
@@ -358,6 +359,22 @@ async function createBlocks(level) {
         typingArea.value = txt;
 
         window.addEventListener('keydown', judgeKeys, false);
+
+        function reorder(array) {
+            let result = [...array];
+            for (let i = 0; i < array.length; i++) {
+                let a = array[i];
+                let b = (a + cnt) % cnt2;
+                let aIndex = i;
+                let bIndex = array.indexOf(b);
+                if (a < b && aIndex > bIndex) {
+                    [result[aIndex], result[bIndex]] = [result[bIndex], result[aIndex]];
+                }
+            }
+            return result;
+        }
+
+        return;
             
     }
 
