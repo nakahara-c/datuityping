@@ -29,7 +29,7 @@ export function createStats() {
             <div class="tile is-parent">
                 <div class="tile is-child box" id="result">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
-                    <p class="has-text-centered mt-4">総打鍵数: <span id="totalTypedCount">${totalKeys}</span>打</p>
+                    <p class="has-text-centered mt-4">総打鍵数: <span class="statCount">${totalKeys}</span>打</p>
                     <canvas id="chart"></canvas>
                     <ul>
                         <li class="has-text-link has-background-link-light has-text-centered mt-4">
@@ -44,6 +44,7 @@ export function createStats() {
             <div class="tile is-parent">
                 <div class="tile is-child box" id="unlockedImages">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">ギャラリー</p>
+                    <p class="has-text-centered mb-4">解放済み: <span class="statCount">${Object.keys(unlocked).length}</span> / 100枚</p>
                     ${tableString}
                 </div>
             </div>
