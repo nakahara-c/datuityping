@@ -10,7 +10,7 @@ export function createStats() {
     const tableString = generateTable(10, 10);
 
     const data = JSON.parse(localStorage.getItem('results')) || [];
-    let totalKeys = localStorage.getItem('totalKeys') || 0;
+    let totalKeys = localStorage.getItem('typedCount') || 0;
 
     div.innerHTML = `
 
@@ -131,7 +131,7 @@ export function createStats() {
                         localStorage.setItem('results', JSON.stringify(data));
 
                         chart.destroy();
-                        drawChart();
+                        setTimeout(drawChart, 10);
                     }
                 }
             }

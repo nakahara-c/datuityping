@@ -119,8 +119,10 @@ window.addEventListener('keydown', judgeEscape, true);
 
 function judgeEscape(e) {
     if (e.key === 'Escape') {
+        if (timerArray.length !== 0) addTypeCount();
         contentList[choosingLevel].click();
     }
+
 }
 
 function firstKeyPressed() {
@@ -512,6 +514,7 @@ function typeFinish(isCompleted) {
             e.preventDefault();
             if (e.key === 'Enter') {
                 typingArea.classList.add('typedBlock');
+                window.removeEventListener('keydown', brokeInputBox, true);
             };
         }
 
