@@ -54,11 +54,10 @@ export function createStats() {
 
     
     `;
-
+    let chart = null;
     setTimeout(() => {
         drawChart();
     }, 0);
-
 
 
     function drawChart() {
@@ -68,8 +67,8 @@ export function createStats() {
 
         const labels = data.map((item, index) => `${index + 1}`);
         const chartData = data.map(item => parseInt(item.kpm));
-
-        const chart = new Chart(ctx, {
+        
+        chart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: labels,
@@ -129,9 +128,8 @@ export function createStats() {
                         data.splice(index, 1); // データから要素を削除
 
                         localStorage.setItem('results', JSON.stringify(data));
-
                         chart.destroy();
-                        setTimeout(drawChart, 10);
+                        drawChart();
                     }
                 }
             }
