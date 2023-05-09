@@ -15,8 +15,10 @@ import { createStats, openImageModal } from './createStats.js';
 import { wordList, wordListExtra } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
 
-
+const area = document.getElementById('area');
 const contentList = document.getElementsByClassName('difficulty');
+let loader;
+
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
 displayAbout();
@@ -27,25 +29,23 @@ stat.addEventListener('click', displayStats);
 displayEx();
 
 function displayAbout() {
-    let d = document.getElementById('area');
     let div = createAbout();
-    d.innerHTML = "";
+    area.innerHTML = "";
     for (let j = 1; j < contentList.length; j++) {
         contentList[j].classList.remove('activeLevel');
     }
 
-    d.appendChild(div);
+    area.appendChild(div);
 }
 
 function displayStats() {
-    let d = document.getElementById('area');
+
     let div = createStats();
-    d.innerHTML = "";
+    area.innerHTML = "";
     for (let j = 1; j < contentList.length; j++) {
         contentList[j].classList.remove('activeLevel');
     }
-    d.appendChild(div);
-
+    area.appendChild(div);
 
     setTimeout(() => {
         addModalListeners();
@@ -96,9 +96,7 @@ let currentImgID = "";
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
 
-        let d = document.getElementById('area');
-
-        d.innerHTML = '';
+        area.innerHTML = '';
         timer.textContent = '';
         count.textContent = '';
         kpm.textContent = '';
@@ -150,7 +148,6 @@ function stopInterval() {
 
 async function createBlocks(level) {
 
-    const area = document.getElementById('area');
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
 
@@ -181,7 +178,13 @@ async function createBlocks(level) {
 
     const girls = document.createElement('img');
 
-    let imgID = await fetchID(level);
+    let imgID;
+    try {
+        imgID = await fetchID(level);
+    } catch (e) {
+        console.error('Error:', e);
+    }
+
     girls.src = `./img/${imgID.imgID}.png`;
     chosenImgNumber = imgID.randomValue;
     currentImgID = imgID.imgID;
@@ -191,8 +194,6 @@ async function createBlocks(level) {
 
     girls.height = windowHeight * girlsHeightRatio;
     girls.width = girls.height * girlsAspectRatio;
-
-    const container = document.getElementById('container');
 
     let blockDOMs = [];
     if (level === 4 || level === 5 || level === 6) {
@@ -303,8 +304,9 @@ async function createBlocks(level) {
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
         //makedDiv.appendChild(inputA);
-        makedDiv.appendChild(inputB);
-
+        setTimeout(() => {
+            makedDiv.appendChild(inputB);
+        }, 300);
 
 
         if (level !== 6) {
@@ -411,7 +413,7 @@ function judgeKeys(e) {
             incorrectType(typedKey);
         }
 
-        //Extra用の入力うけつけ処理
+    //Extra用の入力うけつけ処理
     } else {
         let typedKey = e.key;
 
@@ -537,7 +539,15 @@ function typeFinish(isCompleted) {
 }
 
 async function fetchID(level) {
+    let loader = document.createElement('div');
+    loader.classList.add('loader');
+    loader.style.display = 'block';
+    loader.style = 'top:30vh;';
+    area.appendChild(loader);
+
     const id = await fetchImgID(level);
+    //loaderを削除
+    loader.remove();
     return id;
 }
 
