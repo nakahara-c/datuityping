@@ -529,6 +529,7 @@ function typeFinish(isCompleted) {
     makeTweet();
     writeChosenImgNumber();
     writeResult();
+    addTypeCount();
 
 }
 
@@ -564,6 +565,16 @@ function writeResult() {
     if (results === null) results = [];
     results.push(result);
     localStorage.setItem('results', JSON.stringify(results));
+    
+    return;
+}
+
+function addTypeCount() {
+    let currentTypedCount = localStorage.getItem('typedCount') ?? 0;
+    let typedCount = Number(count.textContent);
+    localStorage.setItem('typedCount', String(Number(currentTypedCount) + typedCount));
+
+    return;
 }
 
 

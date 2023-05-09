@@ -10,17 +10,7 @@ export function createStats() {
     const tableString = generateTable(10, 10);
 
     const data = JSON.parse(localStorage.getItem('results')) || [];
-    let totalKeys = sumKeysCount(data);
-
-    function sumKeysCount(data) {
-        let sum = 0;
-        for (let item of data) {
-            sum += parseInt(item.keys ?? 0);
-        }
-        return sum;
-    }
-
-
+    let totalKeys = localStorage.getItem('totalKeys') || 0;
 
     div.innerHTML = `
 
