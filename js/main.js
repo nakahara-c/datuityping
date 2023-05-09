@@ -17,7 +17,6 @@ import { fetchImgID } from './fetchImgID.js';
 
 const area = document.getElementById('area');
 const contentList = document.getElementsByClassName('difficulty');
-let loader;
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
@@ -83,6 +82,7 @@ const timer = document.getElementById('timer');
 const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
 
+
 let typeText = "";
 let extraWord;
 let order = [];
@@ -91,7 +91,13 @@ let choosingLevel = 1;
 let chosenImgNumber = 0;
 let currentImgID = "";
 
-
+let isEnglish = true;
+document.getElementById('english').addEventListener('click', () => {
+    isEnglish = true;
+});
+document.getElementById('japanese').addEventListener('click', () => {
+    isEnglish = false;
+});
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
