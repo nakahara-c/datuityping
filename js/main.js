@@ -12,7 +12,7 @@ import { parser } from './parser.js';
 
 import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
-import { wordList, wordListExtra } from './wordList.js';
+import { wordList, wordListExtra, wordListJapanese } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
 
 const area = document.getElementById('area');
@@ -324,9 +324,15 @@ async function createBlocks(level) {
     }
     //cntはブロックの数（xCount*yCount)
     function setWord(cnt, typingArea) {
-        let shuffledWordList = fisherYatesShuffle(wordList);
-        typeText = shuffledWordList.join(' ');
-
+        let shuffledWordList;
+        if (isEnglish) {
+            shuffledWordList = fisherYatesShuffle(wordList);
+            typeText = shuffledWordList.join(' ');
+        } else {
+            shuffledWordList = fisherYatesShuffle(Object.keys(wordListJapanese));
+            typeText = shuffledWordList.join('　');
+        }
+        
         typingArea.value = typeText.slice(0, cnt);
         order = [];
         shuffledOrder = [];
