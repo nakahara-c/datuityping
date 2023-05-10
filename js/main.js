@@ -534,10 +534,12 @@ function writeResult() {
         'kpm': kpm.textContent,
         'keys': count.textContent
     };
-    let results = JSON.parse(localStorage.getItem('results'));
+    let resultKey = (isEnglish) ? 'resultsEN' : 'resultsJP';
+    if (choosingLevel === 6) resultKey = 'resultsEX';
+    let results = JSON.parse(localStorage.getItem(resultKey));
     if (results === null) results = [];
     results.push(result);
-    localStorage.setItem('results', JSON.stringify(results));
+    localStorage.setItem(resultKey, JSON.stringify(results));
     
     return;
 }
@@ -562,7 +564,7 @@ function displayAbout() {
 
 function displayStats() {
 
-    let div = createStats();
+    let div = createStats(isEnglish);
     area.innerHTML = "";
     for (let j = 1; j < contentList.length; j++) {
         contentList[j].classList.remove('activeLevel');

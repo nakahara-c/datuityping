@@ -1,4 +1,4 @@
-export function createStats() {
+export function createStats(isEnglish) {
     
     let unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
     let unlocked = new Object();
@@ -8,8 +8,8 @@ export function createStats() {
 
     const div = document.createElement('div');
     const tableString = generateTable(10, 10);
-
-    const data = JSON.parse(localStorage.getItem('results')) || [];
+    let resultKey = 'resultsEN';
+    let data = JSON.parse(localStorage.getItem(resultKey)) || [];
     let totalKeys = localStorage.getItem('typedCount') || 0;
 
     div.innerHTML = `
@@ -24,6 +24,7 @@ export function createStats() {
                         <ul>
                             <li id="statEN" class="is-active"><a>英語</a></li>
                             <li id="statJP"><a>ローマ字</a></li>
+                            <li id="statEX"><a>EXTRA</a></li>
                         </ul>
                     </div>
 
@@ -57,10 +58,37 @@ export function createStats() {
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
     </div>
-
-
     
     `;
+
+    div.querySelector('#statEN').addEventListener('click', () => {
+        resultKey = 'resultsEN';
+        data = JSON.parse(localStorage.getItem(resultKey)) || [];
+        chart.destroy();
+        drawChart();
+        div.querySelector('#statEN').classList.add('is-active');
+        div.querySelector('#statJP').classList.remove('is-active');
+        div.querySelector('#statEX').classList.remove('is-active');
+    });
+    div.querySelector('#statJP').addEventListener('click', () => {
+        resultKey = 'resultsJP';
+        data = JSON.parse(localStorage.getItem(resultKey)) || [];
+        chart.destroy();
+        drawChart();
+        div.querySelector('#statJP').classList.add('is-active');
+        div.querySelector('#statEN').classList.remove('is-active');
+        div.querySelector('#statEX').classList.remove('is-active');
+    });
+    div.querySelector('#statEX').addEventListener('click', () => {
+        resultKey = 'resultsEX';
+        data = JSON.parse(localStorage.getItem(resultKey)) || [];
+        chart.destroy();
+        drawChart();
+        div.querySelector('#statEX').classList.add('is-active');
+        div.querySelector('#statEN').classList.remove('is-active');
+        div.querySelector('#statJP').classList.remove('is-active');
+    });
+
     let chart = null;
     setTimeout(() => {
         drawChart();
@@ -68,8 +96,8 @@ export function createStats() {
 
 
     function drawChart() {
-        const requiredKpm = [192, 300, 432, 600, 768];
-
+        let requiredKpm = isEnglish ? [192, 300, 432, 600, 768] : [192, 300, 432, 600, 768];
+        if (resultKey === 'resultsEX') requiredKpm = [864];
         const ctx = document.getElementById('chart').getContext('2d');
 
         const labels = data.map((item, index) => `${index + 1}`);
@@ -134,7 +162,7 @@ export function createStats() {
                         const index = elements[0].index;
                         data.splice(index, 1); // データから要素を削除
 
-                        localStorage.setItem('results', JSON.stringify(data));
+                        localStorage.setItem(resultKey, JSON.stringify(data));
                         chart.destroy();
                         drawChart();
                     }
