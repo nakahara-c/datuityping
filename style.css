@@ -99,3 +99,7 @@
         transform: rotate(360deg);
     }
 }
+
+.unlockedGirl {
+    cursor: pointer;
+}

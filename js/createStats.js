@@ -19,7 +19,14 @@ export function createStats() {
             <div class="tile is-parent">
                 <div class="tile is-child box" id="result">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
-                    <p class="has-text-centered mt-4">総打鍵数: <span class="statCount">${totalKeys}</span>打</p>
+                    <p class="has-text-centered mt-4 mb-2">総打鍵数: <span class="statCount">${totalKeys}</span>打</p>
+                    <div class="tabs is-centered">
+                        <ul>
+                            <li id="statEN" class="is-active"><a>英語</a></li>
+                            <li id="statJP"><a>ローマ字</a></li>
+                        </ul>
+                    </div>
+
                     <canvas id="chart"></canvas>
                     <ul>
                         <li class="has-text-link has-background-link-light has-text-centered mt-4">
@@ -144,7 +151,7 @@ export function createStats() {
             for (let j = 1; j <= cols; j++) {
                 let tmp = (i - 1) * 10 + j;
                 if (tmp in unlocked) {
-                    table += `<td><img src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal('${unlocked[tmp]}')"></td>\n`;
+                    table += `<td><img class="unlockedGirl" src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal('${unlocked[tmp]}')"></td>\n`;
                 } else {
                     table += `<td><img src="img/block3.png" alt="0" width="40" height="60"></td>\n`;
                 }
