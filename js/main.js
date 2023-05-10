@@ -325,25 +325,21 @@ async function createBlocks(level) {
         }, 300);
 
 
-        if (level !== 6) {
+        if (level !== 6 && isEnglish) {
             setWord(cnt, inputB);
         } else {
-            setWordExtra(cnt, inputB);
+            setWordJapanese(cnt, inputB);
         }
 
     }
     //cntはブロックの数（xCount*yCount)
     function setWord(cnt, typingArea) {
+
         let shuffledWordList;
-        if (isEnglish) {
-            shuffledWordList = fisherYatesShuffle(wordList);
-            typeText = shuffledWordList.join(' ');
-        } else {
-            shuffledWordList = fisherYatesShuffle(wordListJapanese);
-            typeText = shuffledWordList.join('　');
-        }
-        
+        shuffledWordList = fisherYatesShuffle(wordList);
+        typeText = shuffledWordList.join(' ');
         typingArea.value = typeText.slice(0, cnt);
+        
         order = [];
         shuffledOrder = [];
 
@@ -367,11 +363,12 @@ async function createBlocks(level) {
 
     }
 
-    function setWordExtra(cnt, typingArea) {
+    function setWordJapanese(cnt, typingArea) {
 
         let tmpLis = new Array();
+        let wLis = (level === 6) ? wordListExtra : wordListJapanese;        
         for (let i = 0; i < 300; i++) {
-            let word = wordListExtra[Math.floor(Math.random() * wordListExtra.length)];
+            let word = wLis[Math.floor(Math.random() * wLis.length)];
             tmpLis.push(word);
         }
         let txt = tmpLis.join(" ");
@@ -422,8 +419,9 @@ function fisherYatesShuffle(arr) {
 
 function judgeKeys(e) {
     e.preventDefault();
-    if (choosingLevel < 6) {
-        let typedKey = e.key;
+    let typedKey = e.key;
+    if (choosingLevel < 6 && isEnglish) {
+
         let nextKey = typeText[0];
 
         if (typedKey === nextKey) {
@@ -437,7 +435,6 @@ function judgeKeys(e) {
 
     //Extra用の入力うけつけ処理
     } else {
-        let typedKey = e.key;
 
         //judgeAutomaton受け取ってそれに応じて判定していく
         /*
