@@ -17,6 +17,9 @@ import { fetchImgID } from './fetchImgID.js';
 
 const area = document.getElementById('area');
 const contentList = document.getElementsByClassName('difficulty');
+const timer = document.getElementById('timer');
+const count = document.getElementById('count');
+const kpm = document.getElementById('kpm');
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
@@ -24,65 +27,11 @@ displayAbout();
 
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
-
 displayEx();
-
-function displayAbout() {
-    let div = createAbout();
-    area.innerHTML = "";
-    for (let j = 1; j < contentList.length; j++) {
-        contentList[j].classList.remove('activeLevel');
-    }
-
-    area.appendChild(div);
-}
-
-function displayStats() {
-
-    let div = createStats();
-    area.innerHTML = "";
-    for (let j = 1; j < contentList.length; j++) {
-        contentList[j].classList.remove('activeLevel');
-    }
-    area.appendChild(div);
-
-    setTimeout(() => {
-        addModalListeners();
-    }, 0);
-
-}
-
-function displayEx() {
-    if (localStorage.getItem('unlocked') !== null) {
-        const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
-        const ex = document.getElementById('ex');
-        if (unlockedCount >= 20) ex.hidden = false;
-    }
-}
-
-function addModalListeners() {
-    const closeModalButton = document.querySelector('#image-modal .modal-close');
-    closeModalButton.addEventListener('click', () => {
-        const modal = document.getElementById('image-modal');
-        modal.classList.remove('is-active');
-    });
-
-    const modalBackground = document.querySelector('#image-modal .modal-background');
-    modalBackground.addEventListener('click', () => {
-        const modal = document.getElementById('image-modal');
-        modal.classList.remove('is-active');
-    });
-}
 
 window.openImageModal = openImageModal;
 
 let timerArray = [];
-
-const timer = document.getElementById('timer');
-const count = document.getElementById('count');
-const kpm = document.getElementById('kpm');
-
-
 let typeText = "";
 let extraWord;
 let order = [];
@@ -103,13 +52,7 @@ document.getElementById('japanese').addEventListener('click', () => {
     contentList[choosingLevel].click();
 });
 
-function initializeDataBox () {
-    area.innerHTML = '';
-    timer.textContent = '';
-    count.textContent = '';
-    kpm.textContent = '';
-    return;
-}
+
 
 
 for (let i = 1; i < contentList.length; i++) {
@@ -259,6 +202,9 @@ async function createBlocks(level) {
         }
     }, 300);
 
+    createInputBox(xCount * yCount);
+
+
     function createImg(id) {
         const img = document.createElement('img');
         img.src = `./img/block${id}.png`;
@@ -273,9 +219,6 @@ async function createBlocks(level) {
         img.setAttribute('height', heightPercent);
         return img;
     }
-
-
-
 
     function adjustBlockPositions() {
 
@@ -299,9 +242,7 @@ async function createBlocks(level) {
         }
     }
 
-    createInputBox(xCount * yCount);
-
-    function createInputBox(cnt) {
+    function createInputBox(blocksCount) {
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
@@ -326,34 +267,34 @@ async function createBlocks(level) {
 
 
         if (level !== 6 && isEnglish) {
-            setWord(cnt, inputB);
+            setWord(blocksCount, inputB);
         } else {
-            setWordJapanese(cnt, inputB);
+            setWordJapanese(blocksCount, inputB);
         }
 
     }
-    //cntはブロックの数（xCount*yCount)
-    function setWord(cnt, typingArea) {
+
+    function setWord(blocksCount, typingArea) {
 
         let shuffledWordList;
         shuffledWordList = fisherYatesShuffle(wordList);
         typeText = shuffledWordList.join(' ');
-        typingArea.value = typeText.slice(0, cnt);
+        typingArea.value = typeText.slice(0, blocksCount);
         
         order = [];
         shuffledOrder = [];
 
-        if (level === 5) cnt -= 24;
+        if (level === 5) blocksCount -= 24;
 
         if (level === 4 || level === 5) {
 
-            for (let i = 0; i < (cnt * 2); i++) order.push(i);
-            shuffledOrder = reorder(fisherYatesShuffle(order), cnt);
+            for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
+            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
 
 
 
         } else {
-            for (let i = 0; i < cnt; i++) order.push(i);
+            for (let i = 0; i < blocksCount; i++) order.push(i);
             shuffledOrder = fisherYatesShuffle(order);
         }
 
@@ -363,7 +304,7 @@ async function createBlocks(level) {
 
     }
 
-    function setWordJapanese(cnt, typingArea) {
+    function setWordJapanese(blocksCount, typingArea) {
 
         let tmpLis = new Array();
         let wLis = (level === 6) ? wordListExtra : wordListJapanese;        
@@ -376,8 +317,8 @@ async function createBlocks(level) {
         order = [];
         shuffledOrder = [];
 
-        for (let i = 0; i < (cnt * 2); i++) order.push(i);
-        shuffledOrder = reorder(fisherYatesShuffle(order), cnt);
+        for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
+        shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
 
         (async () => extraWord = await parser(txt))();
 
@@ -433,7 +374,7 @@ function judgeKeys(e) {
             incorrectType(typedKey);
         }
 
-    //Extra用の入力うけつけ処理
+    //にほんご用の入力うけつけ処理
     } else {
 
         //judgeAutomaton受け取ってそれに応じて判定していく
@@ -609,6 +550,60 @@ function addTypeCount() {
     return;
 }
 
+function displayAbout() {
+    let div = createAbout();
+    area.innerHTML = "";
+    for (let j = 1; j < contentList.length; j++) {
+        contentList[j].classList.remove('activeLevel');
+    }
+
+    area.appendChild(div);
+}
+
+function displayStats() {
+
+    let div = createStats();
+    area.innerHTML = "";
+    for (let j = 1; j < contentList.length; j++) {
+        contentList[j].classList.remove('activeLevel');
+    }
+    area.appendChild(div);
+
+    setTimeout(() => {
+        addModalListeners();
+    }, 0);
+
+}
+
+function displayEx() {
+    if (localStorage.getItem('unlocked') !== null) {
+        const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
+        const ex = document.getElementById('ex');
+        if (unlockedCount >= 20) ex.hidden = false;
+    }
+}
+
+function addModalListeners() {
+    const closeModalButton = document.querySelector('#image-modal .modal-close');
+    closeModalButton.addEventListener('click', () => {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('is-active');
+    });
+
+    const modalBackground = document.querySelector('#image-modal .modal-background');
+    modalBackground.addEventListener('click', () => {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('is-active');
+    });
+}
+
+function initializeDataBox () {
+    area.innerHTML = '';
+    timer.textContent = '';
+    count.textContent = '';
+    kpm.textContent = '';
+    return;
+}
 
 function makeTweet() {
     const tweetButton = document.getElementById('tweet');
