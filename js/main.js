@@ -33,7 +33,7 @@ window.openImageModal = openImageModal;
 
 let timerArray = [];
 let typeText = "";
-let extraWord;
+let japaneseWord;
 let order = [];
 let shuffledOrder = [];
 let choosingLevel = 0;
@@ -287,11 +287,8 @@ async function createBlocks(level) {
         if (level === 5) blocksCount -= 24;
 
         if (level === 4 || level === 5) {
-
             for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
-
-
 
         } else {
             for (let i = 0; i < blocksCount; i++) order.push(i);
@@ -316,11 +313,16 @@ async function createBlocks(level) {
 
         order = [];
         shuffledOrder = [];
+        if (level < 4) {
+            for (let i = 0; i < blocksCount; i++) order.push(i);
+            shuffledOrder = fisherYatesShuffle(order);
+        } else {
+            for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
+            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
+        }
 
-        for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
-        shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
 
-        (async () => extraWord = await parser(txt))();
+        (async () => japaneseWord = await parser(txt))();
 
         txt = txt.replaceAll(" ", "　");
         typeText = txt;
@@ -379,12 +381,13 @@ function judgeKeys(e) {
 
         //judgeAutomaton受け取ってそれに応じて判定していく
         /*
-        extraWord.judgeAutomaton -> ["ta"], ["pu"],...
-        extraWord.parsedSentence -> ["た"], ["ぷ"],...
+        japaneseWord.parsedSentence -> ["た"], ["ぷ"],...
+        japaneseWord.judgeAutomaton -> ["ta"], ["pu"],...
+
         */
 
-        let currentHiragana = extraWord.parsedSentence[0];
-        let currentRoman = extraWord.judgeAutomaton[0];
+        let currentHiraganaLength = japaneseWord.parsedSentence[0].length;
+        let currentRoman = japaneseWord.judgeAutomaton[0];
 
         let isOK = false;
         let isLast = false;
@@ -394,7 +397,7 @@ function judgeKeys(e) {
                 if (currentRoman[i].length === 1) {
                     isLast = true;
                 } else {
-                    currentRoman[i] = currentRoman[i].slice(1);
+                    currentRoman[i] = currentRoman[i].slice(currentHiraganaLength);
                 }
             }
         }
@@ -406,10 +409,10 @@ function judgeKeys(e) {
             }
 
             if (isLast) {
-                extraWord.parsedSentence.shift();
-                extraWord.judgeAutomaton.shift();
+                japaneseWord.parsedSentence.shift();
+                japaneseWord.judgeAutomaton.shift();
 
-                typeText = typeText.slice(1);
+                typeText = typeText.slice(currentHiraganaLength);
                 let typingArea = document.getElementById('typing_area');
                 typingArea.value = typeText;
 
@@ -506,7 +509,6 @@ async function fetchID(level) {
     area.appendChild(loader);
 
     const id = await fetchImgID(level);
-    //loaderを削除
     loader.remove();
     return id;
 }
