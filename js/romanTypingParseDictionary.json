@@ -3250,6 +3250,10 @@
     "TypePattern": ["n,", "nn,", "xn,"]
   },
   {
+    "Pattern": "ん ",
+    "TypePattern": ["n ", "nn ", "xn "]
+  },
+  {
     "Pattern": "っか",
     "TypePattern": [
       "kka",
