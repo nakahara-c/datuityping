@@ -87,25 +87,35 @@ let typeText = "";
 let extraWord;
 let order = [];
 let shuffledOrder = [];
-let choosingLevel = 1;
+let choosingLevel = 0;
 let chosenImgNumber = 0;
 let currentImgID = "";
 
 let isEnglish = true;
 document.getElementById('english').addEventListener('click', () => {
     isEnglish = true;
+    initializeDataBox();
+    contentList[choosingLevel].click();
 });
 document.getElementById('japanese').addEventListener('click', () => {
     isEnglish = false;
+    initializeDataBox();
+    contentList[choosingLevel].click();
 });
+
+function initializeDataBox () {
+    area.innerHTML = '';
+    timer.textContent = '';
+    count.textContent = '';
+    kpm.textContent = '';
+    return;
+}
+
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
 
-        area.innerHTML = '';
-        timer.textContent = '';
-        count.textContent = '';
-        kpm.textContent = '';
+        initializeDataBox();
 
         for (let j = 1; j < contentList.length; j++) {
             contentList[j].classList.remove('activeLevel');
@@ -329,7 +339,7 @@ async function createBlocks(level) {
             shuffledWordList = fisherYatesShuffle(wordList);
             typeText = shuffledWordList.join(' ');
         } else {
-            shuffledWordList = fisherYatesShuffle(Object.keys(wordListJapanese));
+            shuffledWordList = fisherYatesShuffle(wordListJapanese);
             typeText = shuffledWordList.join('　');
         }
         
