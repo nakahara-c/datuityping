@@ -1,4 +1,71 @@
 export function createAbout() {
+
+    let tbodyEN = `
+        <tr>
+            <td>1</td>
+            <td>96</td>
+            <td>192</td>
+            <td>F</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>150</td>
+            <td>300</td>
+            <td>SJ</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>216</td>
+            <td>432</td>
+            <td>XI</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>300</td>
+            <td>600</td>
+            <td>XA</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>384</td>
+            <td>768</td>
+            <td>ZI</td>
+        </tr>
+    `;
+
+    let tbodyJP = `
+        <tr>
+            <td>1</td>
+            <td>150</td>
+            <td>300</td>
+            <td>A</td>
+        </tr>
+            <tr>
+            <td>2</td>
+            <td>216</td>
+            <td>432</td>
+            <td>SS</td>
+        </tr>
+            <tr>
+            <td>3</td>
+            <td>300</td>
+            <td>600</td>
+            <td>XC</td>
+        </tr>
+            <tr>
+            <td>4</td>
+            <td>384</td>
+            <td>768</td>
+            <td>XX</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>476</td>
+            <td>952</td>
+            <td>ZH</td>
+        </tr>
+    `;
+
     const div = document.createElement('div');
     div.innerHTML = `
 
@@ -27,94 +94,23 @@ export function createAbout() {
     <br>
     <!--難易度対応表 table-->
     <p class="mt-2 mb-1">難易度対応表（目安）</p>
+    <div class="tabs">
+        <ul>
+            <li id="diffEN" class="is-active"><a>英語</a></li>
+            <li id="diffJP"><a>ローマ字</a></li>
+        </ul>
+    </div>
     <table class="table is-bordered is-striped">
         <thead>
             <tr>
             <th>LEVEL</th>
-            <th>英／ロ</th>
             <th>ブロック数</th>
             <th>KPM</th>
             <th>TW換算</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>英語</td>
-                <td>96</td>
-                <td>192</td>
-                <td>F</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ローマ字</td>
-                <td>150</td>
-                <td>300</td>
-                <td>A</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>英語</td>
-                <td>150</td>
-                <td>300</td>
-                <td>SJ</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>ローマ字</td>
-                <td>216</td>
-                <td>432</td>
-                <td>SS</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>英語</td>
-                <td>216</td>
-                <td>432</td>
-                <td>XI</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>ローマ字</td>
-                <td>300</td>
-                <td>600</td>
-                <td>XC</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>英語</td>
-                <td>300</td>
-                <td>600</td>
-                <td>XA</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>ローマ字</td>
-                <td>384</td>
-                <td>768</td>
-                <td>XX</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>英語</td>
-                <td>384</td>
-                <td>768</td>
-                <td>ZI</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>ローマ字</td>
-                <td>476</td>
-                <td>952</td>
-                <td>ZH</td>
-            </tr>
-            <tr>
-                <td>EX</td>
-                <td>ローマ字</td>
-                <td>???</td>
-                <td>???</td>
-                <td>??</td>
-            </tr>
+        <tbody id="diff">
+            ${tbodyEN}
         </tbody>
     </table>
 
@@ -124,6 +120,22 @@ export function createAbout() {
 
     </div>
     `;
+
+    const tbody = div.querySelector('#diff');
+
+    div.querySelector('#diffEN').addEventListener('click', () => {
+        div.querySelector('#diffEN').classList.add('is-active');
+        div.querySelector('#diffJP').classList.remove('is-active');
+        tbody.innerHTML = tbodyEN;
+        console.log(1);
+    });
+    div.querySelector('#diffJP').addEventListener('click', () => {
+        div.querySelector('#diffJP').classList.add('is-active');
+        div.querySelector('#diffEN').classList.remove('is-active');
+        tbody.innerHTML = tbodyJP;
+    });
+
+
 
     return div;
 
