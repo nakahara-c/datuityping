@@ -71,7 +71,7 @@ export function createAbout() {
 
     <div class="tile is-child box">
     <p class="has-text-centered title mt-2 mb-6" style="opacity:0.7">About</p>
-    <ul class="mb-6">
+    <ul>
         <li class="subtitle has-text-danger has-background-danger-light">
             成人向けコンテンツを含みます。18歳未満は閲覧禁止です。
         </li>
@@ -79,20 +79,16 @@ export function createAbout() {
             使用しているイラストはAI製です。
         </li>
     </ul>
-
     <hr>
-
     <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
     <li>特定条件を満たす事でLEVEL EXが解放されます。</li>
-    <br>
-    <details>
+    <details class="mt-2">
         <summary>ワードについて</summary>
         <p>ベースはタイプウェル英単語の基本英単語1500・国語Rの漢字です。</p>
         <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
         <p>ローマ字では「ざ」を含むものを取り除いています。(「あざやか」など)</p>
     </details>
-    <br>
-    <!--難易度対応表 table-->
+    <hr>
     <p class="mt-2 mb-1">難易度対応表（目安）</p>
     <div class="tabs">
         <ul>
@@ -127,7 +123,6 @@ export function createAbout() {
         div.querySelector('#diffEN').classList.add('is-active');
         div.querySelector('#diffJP').classList.remove('is-active');
         tbody.innerHTML = tbodyEN;
-        console.log(1);
     });
     div.querySelector('#diffJP').addEventListener('click', () => {
         div.querySelector('#diffJP').classList.add('is-active');
