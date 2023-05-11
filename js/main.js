@@ -28,6 +28,21 @@ displayAbout();
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
 displayEx();
+let ta;
+const fontSize = document.getElementById('fontSize');
+fontSize.addEventListener('change', () => {
+    ta = document.getElementById('typing_area') ?? undefined;
+    console.log(ta);
+    if (ta !== undefined) {
+        if (fontSize.value === '0') {
+            ta.style.fontSize = '1.5em';
+        } else if (fontSize.value === '1') {
+            ta.style.fontSize = '2em';
+        } else if (fontSize.value === '2') {
+            ta.style.fontSize = '2.5em';
+        }
+    }
+});
 
 window.openImageModal = openImageModal;
 
@@ -280,6 +295,10 @@ async function createBlocks(level) {
         let input = document.createElement('input');
         input.id = 'typing_area';
         input.className = 'input is-danger is-large';
+        let fs = '1.5em';
+        if (fontSize.value === '1') fs = '2em';
+        else if (fontSize.value === '2') fs = '2.5em';
+        input.style.fontSize = fs;
         input.type = 'text';
 
         area.appendChild(div);
