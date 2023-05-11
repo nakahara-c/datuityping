@@ -317,6 +317,7 @@ async function createBlocks(level) {
             for (let i = 0; i < blocksCount; i++) order.push(i);
             shuffledOrder = fisherYatesShuffle(order);
         } else {
+            if (level === 5) blocksCount -= 24;
             for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
         }
@@ -421,7 +422,7 @@ function judgeKeys(e) {
             deleteBlock();
 
         } else {
-            incorrectType(typedKey);
+            //incorrectType(typedKey);
         }
 
     }
