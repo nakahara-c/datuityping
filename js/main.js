@@ -132,7 +132,9 @@ async function createBlocks(level) {
     let w = 0;
     let xCount = 0;
     let yCount = 0;
-    switch (level) {
+    let lv = isEnglish ? level : level + 1;
+    if (level === 5 && !isEnglish) lv = 7;
+    switch (lv) {
         case 1:
             [w, xCount, yCount] = [62.5, 8, 12];
             break;
@@ -150,6 +152,9 @@ async function createBlocks(level) {
             break;
         case 6:
             [w, xCount, yCount] = [42, 12, 18];
+            break;
+        case 7:
+            [w, xCount, yCount] = [42, 14, 21];
             break;
 
     }
@@ -174,7 +179,7 @@ async function createBlocks(level) {
     girls.width = girls.height * girlsAspectRatio;
 
     let blockDOMs = [];
-    if (level === 4 || level === 5 || level === 6) {
+    if (lv === 4 || lv === 5 || lv === 6 || lv === 7) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
@@ -187,8 +192,13 @@ async function createBlocks(level) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
-                if (level === 5) {
+                if (lv === 5) {
                     if (i < 2 || i > 15) {
+                        continue;
+                    }
+                }
+                else if (lv === 7) {
+                    if (i < 4 || i > 16) {
                         continue;
                     }
                 }
@@ -286,14 +296,14 @@ async function createBlocks(level) {
 
 
         if (level !== 6 && isEnglish) {
-            setWord(blocksCount, inputB);
+            setWordEnglish(blocksCount, inputB);
         } else {
             setWordJapanese(blocksCount, inputB);
         }
 
     }
 
-    function setWord(blocksCount, typingArea) {
+    function setWordEnglish(blocksCount, typingArea) {
 
         let shuffledWordList;
         shuffledWordList = fisherYatesShuffle(wordList);
@@ -332,11 +342,13 @@ async function createBlocks(level) {
 
         order = [];
         shuffledOrder = [];
-        if (level < 4) {
+        if (lv < 4) {
             for (let i = 0; i < blocksCount; i++) order.push(i);
             shuffledOrder = fisherYatesShuffle(order);
         } else {
-            if (level === 5) blocksCount -= 24;
+            if (lv === 5) blocksCount -= 24;
+            else if (lv === 7) blocksCount -= 56;
+            console.log(blocksCount);
             for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
         }
