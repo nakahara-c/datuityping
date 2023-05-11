@@ -173,7 +173,7 @@ async function createBlocks(level) {
     currentImgID = imgID.imgID;
 
     const girlsAspectRatio = 512 / 768;
-    const girlsHeightRatio = 0.75; // Change this to adjust the girls height relative to the window height
+    const girlsHeightRatio = 0.75;
 
     girls.height = windowHeight * girlsHeightRatio;
     girls.width = girls.height * girlsAspectRatio;
@@ -277,28 +277,23 @@ async function createBlocks(level) {
         div.className = 'is-overlay';
         div.style = `top:35vh`;
 
-        let inputA = document.createElement('input');
-        inputA.id = 'word_area';
-        inputA.className = 'input is-danger is-large';
-        inputA.type = 'text';
-
-        let inputB = document.createElement('input');
-        inputB.id = 'typing_area';
-        inputB.className = 'input is-danger is-large';
-        inputB.type = 'text';
+        let input = document.createElement('input');
+        input.id = 'typing_area';
+        input.className = 'input is-danger is-large';
+        input.type = 'text';
 
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
         //makedDiv.appendChild(inputA);
         setTimeout(() => {
-            makedDiv.appendChild(inputB);
+            makedDiv.appendChild(input);
         }, 300);
 
 
         if (level !== 6 && isEnglish) {
-            setWordEnglish(blocksCount, inputB);
+            setWordEnglish(blocksCount, input);
         } else {
-            setWordJapanese(blocksCount, inputB);
+            setWordJapanese(blocksCount, input);
         }
 
     }
@@ -415,7 +410,6 @@ function judgeKeys(e) {
         /*
         japaneseWord.parsedSentence -> ["た"], ["ぷ"],...
         japaneseWord.judgeAutomaton -> ["ta"], ["pu"],...
-
         */
 
         let currentHiraganaLength = japaneseWord.parsedSentence[0].length;
