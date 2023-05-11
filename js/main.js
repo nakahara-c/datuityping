@@ -646,10 +646,11 @@ function makeTweet() {
     const sec = String((30 - parseFloat(timer.textContent)).toFixed(1));
     const cnt = count.textContent;
     const KPM = kpm.textContent;
+    const ENorJP = isEnglish ? '英語' : 'ローマ字';
     const hashTags = "脱衣タイピング";
     let tweetText = '';
     if (choosingLevel !== 6) {
-        tweetText = `LEVEL${choosingLevel} 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+        tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
     } else {
         tweetText = `LEVELEX 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
     }
