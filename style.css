@@ -107,3 +107,8 @@
 .hidden {
     display: none;
 }
+
+.fixed {
+    position: fixed;
+    bottom: 3vh;
+}
