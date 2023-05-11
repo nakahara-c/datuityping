@@ -96,8 +96,9 @@ export function createStats(isEnglish) {
 
 
     function drawChart() {
-        let requiredKpm = isEnglish ? [192, 300, 432, 600, 768] : [192, 300, 432, 600, 768];
-        if (resultKey === 'resultsEX') requiredKpm = [864];
+        let requiredKpm = [192, 300, 432, 600, 768];
+        if (resultKey === 'resultsJP') requiredKpm = [300, 432, 600, 768, 952];
+        else if (resultKey === 'resultsEX') requiredKpm = [864];
         const ctx = document.getElementById('chart').getContext('2d');
 
         const labels = data.map((item, index) => `${index + 1}`);
