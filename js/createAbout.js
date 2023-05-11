@@ -1,4 +1,4 @@
-export function createAbout () {
+export function createAbout() {
     const div = document.createElement('div');
     div.innerHTML = `
 
@@ -20,8 +20,9 @@ export function createAbout () {
     <br>
     <details>
         <summary>ワードについて</summary>
-        <p>ベースはタイプウェル英単語の基本英単語1500です。</p>
-        <p>大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
+        <p>ベースはタイプウェル英単語の基本英単語1500・国語Rの漢字です。</p>
+        <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
+        <p>ローマ字では「ざ」を含むものを取り除いています。(「あざやか」など)</p>
     </details>
     <br>
     <!--難易度対応表 table-->
@@ -30,48 +31,90 @@ export function createAbout () {
         <thead>
             <tr>
             <th>LEVEL</th>
+            <th>英／ロ</th>
             <th>ブロック数</th>
             <th>KPM</th>
-            <th>TW英単語換算</th>
+            <th>TW換算</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
+                <td>英語</td>
                 <td>96</td>
                 <td>192</td>
                 <td>F</td>
             </tr>
             <tr>
+                <td>1</td>
+                <td>ローマ字</td>
+                <td>150</td>
+                <td>300</td>
+                <td>A</td>
+            </tr>
+            <tr>
                 <td>2</td>
+                <td>英語</td>
                 <td>150</td>
                 <td>300</td>
                 <td>SJ</td>
             </tr>
             <tr>
+                <td>2</td>
+                <td>ローマ字</td>
+                <td>216</td>
+                <td>432</td>
+                <td>SS</td>
+            </tr>
+            <tr>
                 <td>3</td>
+                <td>英語</td>
                 <td>216</td>
                 <td>432</td>
                 <td>XI</td>
             </tr>
             <tr>
+                <td>3</td>
+                <td>ローマ字</td>
+                <td>300</td>
+                <td>600</td>
+                <td>XC</td>
+            </tr>
+            <tr>
                 <td>4</td>
+                <td>英語</td>
                 <td>300</td>
                 <td>600</td>
                 <td>XA</td>
             </tr>
             <tr>
+                <td>4</td>
+                <td>ローマ字</td>
+                <td>384</td>
+                <td>768</td>
+                <td>XX</td>
+            </tr>
+            <tr>
                 <td>5</td>
+                <td>英語</td>
                 <td>384</td>
                 <td>768</td>
                 <td>ZI</td>
             </tr>
             <tr>
-            <td>EX</td>
-            <td>???</td>
-            <td>???</td>
-            <td>??</td>
-        </tr>
+                <td>5</td>
+                <td>ローマ字</td>
+                <td>476</td>
+                <td>952</td>
+                <td>ZH</td>
+            </tr>
+            <tr>
+                <td>EX</td>
+                <td>ローマ字</td>
+                <td>???</td>
+                <td>???</td>
+                <td>??</td>
+            </tr>
         </tbody>
     </table>
 
@@ -81,7 +124,7 @@ export function createAbout () {
 
     </div>
     `;
-    
+
     return div;
 
 }
