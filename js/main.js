@@ -46,13 +46,13 @@ fontSize.addEventListener('change', () => {
 window.openImageModal = openImageModal;
 
 let timerArray = [];
-let typeText = "";
+let typeText = '';
 let japaneseWord;
 let order = [];
 let shuffledOrder = [];
 let choosingLevel = 0;
 let chosenImgNumber = 0;
-let currentImgID = "";
+let currentImgID = '';
 
 let isEnglish = true;
 document.getElementById('english').addEventListener('click', () => {
@@ -65,9 +65,6 @@ document.getElementById('japanese').addEventListener('click', () => {
     initializeDataBox();
     contentList[choosingLevel].click();
 });
-
-
-
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
@@ -97,9 +94,9 @@ function judgeEscape(e) {
 }
 
 function firstKeyPressed() {
-    timer.textContent = "30.0";
-    count.textContent = "0";
-    kpm.textContent = "0";
+    timer.textContent = '30.0';
+    count.textContent = '0';
+    kpm.textContent = '0';
 
     timerArray.push(setInterval(startTimer, 100));
 }
@@ -119,6 +116,15 @@ function stopInterval() {
     }
 }
 
+const dataBox = document.getElementById('dataBox');
+window.addEventListener('scroll', function() {
+    if (isInViewport(dataBox)) {
+        dataBox.classList.remove('fixed');
+    } else {
+        dataBox.classList.add('fixed');
+    }
+}, false);
+
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -128,15 +134,6 @@ function isInViewport(element) {
         rect.right <= window.innerWidth
     );
 }
-
-const dataBox = document.getElementById('dataBox');
-window.addEventListener('scroll', function() {
-    if (isInViewport(dataBox)) {
-        dataBox.classList.remove('fixed');
-    } else {
-        dataBox.classList.add('fixed');
-    }
-}, false);
 
 async function createBlocks(level) {
 
@@ -197,7 +194,7 @@ async function createBlocks(level) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
-                let block = createImg("");
+                let block = createImg('');
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
                 blockDOMs.push(block);
@@ -216,7 +213,7 @@ async function createBlocks(level) {
                         continue;
                     }
                 }
-                let block = createImg("2");
+                let block = createImg('2');
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
                 blockDOMs.push(block);
@@ -228,7 +225,7 @@ async function createBlocks(level) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
-                let block = createImg("");
+                let block = createImg('');
 
                 block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
                 blockDOMs.push(block);
@@ -251,13 +248,13 @@ async function createBlocks(level) {
     function createImg(id) {
         const img = document.createElement('img');
         img.src = `./img/block${id}.png`;
-        if (id === "") {
+        if (id === '') {
             img.className = `block is-overlay`;
         } else {
             img.className = `block block${id} is-overlay`;
         }
-        let widthPercent = String(100 / xCount) + "%";
-        let heightPercent = String(100 / yCount) + "%";
+        let widthPercent = String(100 / xCount) + '%';
+        let heightPercent = String(100 / yCount) + '%';
         img.setAttribute('width', widthPercent);
         img.setAttribute('height', heightPercent);
         return img;
@@ -351,7 +348,7 @@ async function createBlocks(level) {
             let word = wLis[Math.floor(Math.random() * wLis.length)];
             tmpLis.push(word);
         }
-        let txt = tmpLis.join(" ");
+        let txt = tmpLis.join(' ');
 
         order = [];
         shuffledOrder = [];
@@ -368,7 +365,7 @@ async function createBlocks(level) {
 
         (async () => japaneseWord = await parser(txt))();
 
-        txt = txt.replaceAll(" ", "　");
+        txt = txt.replaceAll(' ', '　');
         typeText = txt;
         typingArea.value = txt;
 
@@ -425,8 +422,8 @@ function judgeKeys(e) {
 
         //judgeAutomaton受け取ってそれに応じて判定していく
         /*
-        japaneseWord.parsedSentence -> ["た"], ["ぷ"],...
-        japaneseWord.judgeAutomaton -> ["ta"], ["pu"],...
+        japaneseWord.parsedSentence -> ['た'], ['ぷ'],...
+        japaneseWord.judgeAutomaton -> ['ta'], ['pu'],...
         */
 
         let currentHiraganaLength = japaneseWord.parsedSentence[0].length;
@@ -494,7 +491,7 @@ function deleteBlock() {
     let elapsedTime = 30 - Number(timer.textContent);
 
     if (elapsedTime === 0) {
-        kpm.textContent = "0";
+        kpm.textContent = '0';
     } else {
         let kpmValue = Math.round(typedCount / elapsedTime * 60);
         kpm.textContent = String(kpmValue);
@@ -599,7 +596,7 @@ function addTypeCount() {
 
 function displayAbout() {
     let div = createAbout();
-    area.innerHTML = "";
+    area.innerHTML = '';
     for (let j = 1; j < contentList.length; j++) {
         contentList[j].classList.remove('activeLevel');
     }
@@ -610,7 +607,7 @@ function displayAbout() {
 function displayStats() {
 
     let div = createStats(isEnglish);
-    area.innerHTML = "";
+    area.innerHTML = '';
     for (let j = 1; j < contentList.length; j++) {
         contentList[j].classList.remove('activeLevel');
     }
@@ -658,7 +655,7 @@ function makeTweet(isCompleted) {
     const cnt = count.textContent;
     const KPM = kpm.textContent;
     const ENorJP = isEnglish ? '英語' : 'ローマ字';
-    const hashTags = "脱衣タイピング";
+    const hashTags = '脱衣タイピング';
     let tweetText = '';
     if (isCompleted) {
         if (choosingLevel !== 6) {
