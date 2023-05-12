@@ -32,7 +32,6 @@ let ta;
 const fontSize = document.getElementById('fontSize');
 fontSize.addEventListener('change', () => {
     ta = document.getElementById('typing_area') ?? undefined;
-    console.log(ta);
     if (ta !== undefined) {
         if (fontSize.value === '0') {
             ta.style.fontSize = '1.5em';
@@ -362,7 +361,6 @@ async function createBlocks(level) {
         } else {
             if (lv === 5) blocksCount -= 24;
             else if (lv === 7) blocksCount -= 56;
-            console.log(blocksCount);
             for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
         }
@@ -541,7 +539,7 @@ function typeFinish(isCompleted) {
 
     makeTweet(isCompleted);
     writeChosenImgNumber();
-    writeResult();
+    writeResult(isCompleted);
     addTypeCount();
 
 }
@@ -573,8 +571,8 @@ function writeChosenImgNumber() {
 
 }
 
-function writeResult() {
-    let time = parseFloat(String(30.0 - Number(timer.textContent))).toFixed(1);
+function writeResult(isCompleted) {
+    let time = isCompleted ? parseFloat(String(30.0 - Number(timer.textContent))).toFixed(1) : '30.0';
     let result = {
         'level': choosingLevel,
         'time': time,
