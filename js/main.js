@@ -539,7 +539,7 @@ function typeFinish(isCompleted) {
 
     }
 
-    makeTweet();
+    makeTweet(isCompleted);
     writeChosenImgNumber();
     writeResult();
     addTypeCount();
@@ -654,7 +654,7 @@ function initializeDataBox () {
     return;
 }
 
-function makeTweet() {
+function makeTweet(isCompleted) {
     const tweetButton = document.getElementById('tweet');
     const sec = String((30 - parseFloat(timer.textContent)).toFixed(1));
     const cnt = count.textContent;
@@ -662,10 +662,18 @@ function makeTweet() {
     const ENorJP = isEnglish ? '英語' : 'ローマ字';
     const hashTags = "脱衣タイピング";
     let tweetText = '';
-    if (choosingLevel !== 6) {
-        tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+    if (isCompleted) {
+        if (choosingLevel !== 6) {
+            tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
+        } else {
+            tweetText = `LEVELEX 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
+        }
     } else {
-        tweetText = `LEVELEX 脱衣成功❤%0A${cnt}keys in ${sec} sec (${KPM}KPM)`;
+        if (choosingLevel !== 6) {
+            tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
+        } else {
+            tweetText = `LEVELEX 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
+        }
     }
     const url = 'https://nkhr-c.com/datuityping/';
     const tweetURL = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweetText}&hashtags=${hashTags}&url=${url}`;
