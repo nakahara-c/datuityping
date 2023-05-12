@@ -11,6 +11,11 @@ export function createStats(isEnglish) {
     let resultKey = 'resultsEN';
     let data = JSON.parse(localStorage.getItem(resultKey)) || [];
     let totalKeys = localStorage.getItem('typedCount') || 0;
+    let ex = `<li id="statEX" style="display:none;"><a>EXTRA</a></li>`
+    if (localStorage.getItem('unlocked') !== null) {
+        const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
+        if (unlockedCount >= 20) ex = `<li id="statEX""><a>EXTRA</a></li>`;
+    }
 
     div.innerHTML = `
 
@@ -24,7 +29,7 @@ export function createStats(isEnglish) {
                         <ul>
                             <li id="statEN" class="is-active"><a>英語</a></li>
                             <li id="statJP"><a>ローマ字</a></li>
-                            <li id="statEX"><a>EXTRA</a></li>
+                            ${ex}
                         </ul>
                     </div>
 
