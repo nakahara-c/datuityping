@@ -20,6 +20,7 @@ const contentList = document.getElementsByClassName('difficulty');
 const timer = document.getElementById('timer');
 const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
+const dataBox = document.getElementById('dataBox');
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
@@ -76,6 +77,8 @@ for (let i = 1; i < contentList.length; i++) {
         }
         contentList[i].classList.add('activeLevel');
 
+        adjustDataBox();
+
         stopInterval();
         choosingLevel = i;
         createBlocks(i);
@@ -116,14 +119,14 @@ function stopInterval() {
     }
 }
 
-const dataBox = document.getElementById('dataBox');
-window.addEventListener('scroll', function() {
+function adjustDataBox() {
+    dataBox.classList.remove('fixed');
     if (isInViewport(dataBox)) {
         dataBox.classList.remove('fixed');
     } else {
         dataBox.classList.add('fixed');
     }
-}, false);
+}
 
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
@@ -204,14 +207,10 @@ async function createBlocks(level) {
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
                 if (lv === 5) {
-                    if (i < 2 || i > 15) {
-                        continue;
-                    }
+                    if (i < 2 || i > 15) continue; //0,1行目と14,15行目は灰ブロックを置かない
                 }
                 else if (lv === 7) {
-                    if (i < 4 || i > 16) {
-                        continue;
-                    }
+                    if (i < 4 || i > 16) continue; //0-3行目と17-20行目は灰ブロックを置かない
                 }
                 let block = createImg('2');
 
