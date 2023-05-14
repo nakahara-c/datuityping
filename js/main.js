@@ -120,7 +120,7 @@ function stopInterval() {
 }
 
 function adjustDataBox() {
-    dataBox.classList.remove('fixed');
+    
     if (isInViewport(dataBox)) {
         dataBox.classList.remove('fixed');
     } else {

@@ -2,16 +2,25 @@
 <html lang="ja">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keyword" content="脱衣タイピング,タイピングゲーム,タイピング,typing,typing game,typinggame,脱衣,脱衣ゲーム">
+    <meta name="description" content="全100種の美少女AIイラストを使用した中～超上級者向けの18禁タイピングゲーム。ローマ字入力・英語入力に対応、成績のグラフ表示機能を搭載。">
+
+    <meta property="og:title" content="【R-18】脱衣タイピング（β）">
+    <meta property="og:description" content="全100種の美少女AIイラストを使用した中～超上級者向けの18禁タイピングゲーム。ローマ字入力・英語入力に対応、成績のグラフ表示機能を搭載。">
+    <meta property="og:image" content="https://nkhr-c.com/datuityping/twitter_card.png">
+    <meta property="og:url" content="https://nkhr-c.com/datuityping">
+    <meta property="og:type" content="website">
 
     <!--ここからtwitter card-->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:domain" content="nkhr-c.com">
     <meta name="twitter:site" content="@tt_cocoan">
     <meta name="twitter:title" content="【R-18】脱衣タイピング（β）">
-    <meta name="twitter:description" content="AIイラストを使用した成人向けタイピングゲーム">
-    <meta name="twitter:image" content="./twitter_card.png">
+    <meta name="twitter:description" content="全100種の美少女AIイラストを使用した中～超上級者向けの18禁タイピングゲーム。ローマ字入力・英語入力に対応、成績のグラフ表示機能を搭載。">
+    <meta name="twitter:image" content="https://nkhr-c.com/datuityping/twitter_card.png">
     <!--ここまでtwitter card-->
 
     <!--ここからfavicon-->
@@ -22,7 +31,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <!--ここまでfavicon-->
-    
+
     <!--ここからGoogle Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,29 +72,29 @@
                         Stat
                     </div>
                     <hr>
-                        <div id="levelButtons">
+                    <div id="levelButtons">
 
-                            <button id="lv1" class="button notification is-primary is-medium difficulty">
-                                LEVEL 1
-                            </button><br>
-                            <button id="lv2" class="button notification is-success is-medium difficulty">
-                                LEVEL 2
-                            </button><br>
-                            <button id="lv3" class="button notification is-info is-medium difficulty">
-                                LEVEL 3
-                            </button><br>
-                            <button id="lv4" class="button notification is-warning is-medium difficulty">
-                                LEVEL 4
-                            </button><br>
-                            <button id="lv5" class="button notification is-danger is-medium difficulty">
-                                LEVEL 5
-                            </button><br>
-                            <div id="ex" hidden>
-                                <button id="lvex" class="button notification is-medium difficulty">
-                                    LEVEL EX
-                                </button>
-                            </div>
+                        <button id="lv1" class="button notification is-primary is-medium difficulty">
+                            LEVEL 1
+                        </button><br>
+                        <button id="lv2" class="button notification is-success is-medium difficulty">
+                            LEVEL 2
+                        </button><br>
+                        <button id="lv3" class="button notification is-info is-medium difficulty">
+                            LEVEL 3
+                        </button><br>
+                        <button id="lv4" class="button notification is-warning is-medium difficulty">
+                            LEVEL 4
+                        </button><br>
+                        <button id="lv5" class="button notification is-danger is-medium difficulty">
+                            LEVEL 5
+                        </button><br>
+                        <div id="ex" hidden>
+                            <button id="lvex" class="button notification is-medium difficulty">
+                                LEVEL EX
+                            </button>
                         </div>
+                    </div>
 
 
 
@@ -115,15 +124,96 @@
                         </div>
 
                         <div class="mb-4"></div>
-                        <a class="button" id="tweet" target="_blank" href="https://twitter.com/intent/tweet?ref_src=twsrc&hashtags=脱衣タイピング&url=https://nkhr-c.com/datuityping">結果をツイート</a>
+                        <a class="button" id="tweet" target="_blank"
+                            href="https://twitter.com/intent/tweet?ref_src=twsrc&hashtags=脱衣タイピング&url=https://nkhr-c.com/datuityping">結果をツイート</a>
                     </div>
                 </div>
 
             </div>
 
             <div id="container" class="tile is-parent container">
-
                 <div id="area" class="is-relative mx-auto">
+
+                    <div>
+
+                        <div class="tile is-child box">
+                            <p class="has-text-centered title mt-2 mb-6" style="opacity:0.7">About</p>
+                            <ul>
+                                <li class="subtitle has-text-danger has-background-danger-light">
+                                    成人向けコンテンツを含みます。18歳未満は閲覧禁止です。
+                                </li>
+                                <li class="subtitle has-text-link has-background-link-light">
+                                    使用しているイラストはAI製です。
+                                </li>
+                            </ul>
+                            <hr>
+                            <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
+                            <li>特定条件を満たす事でLEVEL EXが解放されます。</li>
+                            <details class="mt-2">
+                                <summary>ワードについて</summary>
+                                <p>ベースはタイプウェル英単語の基本英単語1500・国語Rの漢字です。</p>
+                                <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
+                                <p>ローマ字では「ざ」を含むものを取り除いています。(「あざやか」など)</p>
+                            </details>
+                            <hr>
+                            <p class="mt-2 mb-1">難易度対応表（目安）</p>
+                            <div class="tabs">
+                                <ul>
+                                    <li id="diffEN" class="is-active"><a>英語</a></li>
+                                    <li id="diffJP"><a>ローマ字</a></li>
+                                </ul>
+                            </div>
+                            <table class="table is-bordered is-striped">
+                                <thead>
+                                    <tr>
+                                        <th>LEVEL</th>
+                                        <th>ブロック数</th>
+                                        <th>KPM</th>
+                                        <th>TW換算</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="diff">
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>96</td>
+                                        <td>192</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>150</td>
+                                        <td>300</td>
+                                        <td>SJ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>216</td>
+                                        <td>432</td>
+                                        <td>XI</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>300</td>
+                                        <td>600</td>
+                                        <td>XA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>384</td>
+                                        <td>768</td>
+                                        <td>ZI</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <hr>
+
+                            中原ここあ(<a href="https://twitter.com/tt_cocoan" target="_blank">@tt_cocoan</a>)
+
+                        </div>
+                    </div>
 
                 </div>
 
