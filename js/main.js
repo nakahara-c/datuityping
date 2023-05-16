@@ -55,6 +55,9 @@ let choosingLevel = 0;
 let chosenImgNumber = 0;
 let currentImgID = '';
 
+let startTime;
+let intervalId;
+
 let isEnglish = true;
 document.getElementById('english').addEventListener('click', () => {
     isEnglish = true;
@@ -79,7 +82,7 @@ for (let i = 1; i < contentList.length; i++) {
 
         adjustDataBox();
 
-        stopInterval();
+        clearInterval(intervalId);
         choosingLevel = i;
         createBlocks(i);
 
@@ -96,9 +99,6 @@ function judgeEscape(e) {
 
 }
 
-let startTime;
-let intervalId;
-
 function firstKeyPressed() {
     timer.textContent = '30.0';
     count.textContent = '0';
@@ -110,9 +110,9 @@ function firstKeyPressed() {
 
 function startTimer() {
     
-    //負荷かけるやつ　あとではずす
-    stressFunc();
-    
+    //負荷かけるやつ
+    //stressFunc();
+
     let elapsedTime = (performance.now() - startTime) / 1000;
     let remaining = 30.0 - elapsedTime;
     timer.textContent = remaining.toFixed(1);
@@ -127,12 +127,6 @@ function startTimer() {
 function stressFunc() {
     let st = Date.now();
     while (Date.now() - st < 300) {
-    }
-}
-
-function stopInterval() {
-    if (timerArray.length > 0) {
-        clearInterval(timerArray.shift());
     }
 }
 
@@ -525,7 +519,7 @@ function deleteBlock() {
 }
 
 function typeFinish(isCompleted) {
-    stopInterval();
+    clearInterval(intervalId);
     let typingArea = document.getElementById('typing_area');
     if (isCompleted) {
         typingArea.value = 'Press Enter!';
