@@ -104,7 +104,17 @@ function firstKeyPressed() {
     timerArray.push(setInterval(startTimer, 100));
 }
 
+function stressFunc() {
+    let startTime = Date.now();
+    while (Date.now() - startTime < 300) {
+    }
+}
+
 function startTimer() {
+    
+    //負荷かけるやつ　あとではずす
+    stressFunc();
+
     let nowTime = timer.textContent - 0.1;
     nowTime = Number.parseFloat(nowTime).toFixed(1);
     if (nowTime <= 0) {
