@@ -96,31 +96,38 @@ function judgeEscape(e) {
 
 }
 
+let startTime;
+let intervalId;
+
 function firstKeyPressed() {
     timer.textContent = '30.0';
     count.textContent = '0';
     kpm.textContent = '0';
 
-    timerArray.push(setInterval(startTimer, 100));
-}
-
-function stressFunc() {
-    let startTime = Date.now();
-    while (Date.now() - startTime < 300) {
-    }
+    startTime = performance.now();
+    intervalId = setInterval(startTimer, 100);
 }
 
 function startTimer() {
     
     //負荷かけるやつ　あとではずす
     stressFunc();
+    
+    let elapsedTime = (performance.now() - startTime) / 1000;
+    let remaining = 30.0 - elapsedTime;
+    timer.textContent = remaining.toFixed(1);
 
-    let nowTime = timer.textContent - 0.1;
-    nowTime = Number.parseFloat(nowTime).toFixed(1);
-    if (nowTime <= 0) {
+    if (remaining <= 0) {
+        clearInterval(intervalId);
+        timer.textContent = '0.0';
         typeFinish(false);
     }
-    timer.textContent = nowTime;
+}
+
+function stressFunc() {
+    let st = Date.now();
+    while (Date.now() - st < 300) {
+    }
 }
 
 function stopInterval() {
