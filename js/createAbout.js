@@ -112,6 +112,8 @@ export function createAbout() {
 
     <hr>
 
+    <p>23/5/16: タイマーの精度修正に伴っていくらか難しくなりました。すみません！</p>
+
     中原ここあ(<a href="https://twitter.com/tt_cocoan" target="_blank">@tt_cocoan</a>)
 
     </div>

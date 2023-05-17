@@ -126,7 +126,7 @@ function startTimer() {
 
 function stressFunc() {
     let st = Date.now();
-    while (Date.now() - st < 300) {
+    while (Date.now() - st < 20000) {
     }
 }
 
