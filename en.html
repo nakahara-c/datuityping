@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keyword" content="">
+    <meta property="og:title" content="[R-18] Eroge Typing">
+    <meta property="og:description" content="An adult-only typing game for intermediate to ultra-advanced players, featuring 100 kinds of beautiful AI-generated Anime illustrations. It includes a feature for displaying performance graphs.">
+    <meta property="og:image" content="https://nkhr-c.com/datuityping/twitter_card.png">
+    <meta property="og:url" content="https://nkhr-c.com/datuityping">
+    <meta property="og:type" content="website">
+
+    <!--ここからtwitter card-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="nkhr-c.com">
+    <meta name="twitter:site" content="@tt_cocoan">
+    <meta name="twitter:creator" content="@tt_cocoan">
+
+    <!--ここまでtwitter card-->
+
+    <!--ここからfavicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!--ここまでfavicon-->
+
+    <!--ここからGoogle Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&Kaisei+Opti:wght@500;700&display=swap" rel="stylesheet">
+    <!--ここまでGoogle Fonts-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>[R-18] Eroge Typing</title>
+</head>
+
+<body>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1 has-text-centered" style="opacity:0.6; font-family: 'Rampart One', cursive;
+                ">
+                    Eroge Typing
+                </h1>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section container is-widescreen" id="main-content">
+
+        <div class="tile is-ancestor">
+            <div class="tile is-3 is-vertical is-parent m-1">
+
+                <div id="sidebar" class="tile is-child box">
+
+                    <div id="about" class="button is-medium difficulty mb-2">
+                        About
+                    </div>
+                    <div id="stat" class="button is-medium">
+                        Stat
+                    </div>
+                    <hr>
+                    <div id="levelButtons">
+
+                        <button id="lv1" class="button notification is-primary is-medium difficulty">
+                            LEVEL 1
+                        </button><br>
+                        <button id="lv2" class="button notification is-success is-medium difficulty">
+                            LEVEL 2
+                        </button><br>
+                        <button id="lv3" class="button notification is-info is-medium difficulty">
+                            LEVEL 3
+                        </button><br>
+                        <button id="lv4" class="button notification is-warning is-medium difficulty">
+                            LEVEL 4
+                        </button><br>
+                        <button id="lv5" class="button notification is-danger is-medium difficulty">
+                            LEVEL 5
+                        </button><br>
+
+                    </div>
+
+
+
+                    <div id="dataBox" class="box mt-4" style="width: 200px;">
+                        <span id="timer" style="font-size:2em" class="has-text-danger"></span>s / 30s
+                        <br>
+                        <span id="count" style="font-size:1.5em"></span>keys
+                        <span id="kpm" style="font-size:1.5em"></span>kpm
+
+                        <div class="select is-small">
+                            <select id="fontSize">
+                                <option value="0">normal</option>
+                                <option value="1">large</option>
+                                <option value="2">very large</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4"></div>
+                        <a class="button" id="tweet" target="_blank"
+                            href="https://twitter.com/intent/tweet?ref_src=twsrc&hashtags=脱衣タイピング&url=https://nkhr-c.com/datuityping">Tweet Result</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="container" class="tile is-parent container">
+                <div id="area" class="is-relative mx-auto">
+
+                    <div>
+
+                        <div class="tile is-child box">
+                            <p class="has-text-centered title mt-2 mb-6" style="opacity:0.7">About</p>
+                            <ul>
+                                <li class="subtitle has-text-danger has-background-danger-light">
+                                    This content contains adult material.<br>
+                                    It is prohibited for individuals under 18 to view it.
+                                </li>
+                                <li class="subtitle has-text-link has-background-link-light">
+                                    The illustrations used are produced by AI.
+                                </li>
+                            </ul>
+                            <hr>
+                            <li>Choose a level, the game begins when you press a correct key.</li>
+                            <li>You can restart with the Escape key.</li>
+
+                            <p class="mt-2">Words are based on the words used in the "TypeWell".</p>
+
+                            <hr>
+                            <p class="mt-2 mb-1">Here is the difficulty level correspondence table.</p>
+
+                            <table class="table is-bordered is-striped has-text-centered">
+                                <thead>
+                                    <tr>
+                                        <th>LEVEL</th>
+                                        <th>Count</th>
+                                        <th>KPM(keys/minute)</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="diff">
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>96</td>
+                                        <td>192</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>150</td>
+                                        <td>300</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>216</td>
+                                        <td>432</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>300</td>
+                                        <td>600</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>384</td>
+                                        <td>768</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <hr>
+
+                            Nakahara Cocoa(<a href="https://twitter.com/tt_cocoan" target="_blank">@tt_cocoan</a>)
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer py-6">
+        <ul class="has-text-centered">
+            <li class="has-text-danger">
+                It is prohibited for individuals under 18 to view it.
+            </li>
+            <br>
+            <li class="has-text-link">
+                The illustrations used are produced by AI.
+            </li>
+        </ul>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+        VANTA.FOG({
+            el: ".hero",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 100.00,
+            minWidth: 100.00,
+            highlightColor: 0xfafafa,
+            midtoneColor: 0xeb76d2,
+            lowlightColor: 0xd6d4de,
+            zoom: 0.6
+        })
+    </script>
+
+    <script src="./js/mainEN.js" type="module"></script>
+
+
+</body>
+
+</html>
