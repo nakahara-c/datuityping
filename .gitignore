@@ -8,3 +8,6 @@ js/lib.js
 /twitter_card.png
 
 api/values_set.py
+
+node_modules
+package-lock.json
