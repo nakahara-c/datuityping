@@ -112,7 +112,7 @@
 }
 
 #language-switcher {
-    position: fixed;
+    position: absolute;
     background-color: #f8ecf3;
     font-size:1.5em;
     font-family: 'Kaisei Opti', serif;
