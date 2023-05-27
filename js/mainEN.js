@@ -521,6 +521,7 @@ function typeFinish(isCompleted) {
                 window.removeEventListener('keydown', brokeInputBox, true);
             };
         }
+        writeChosenImgNumber();
 
     } else {
         window.removeEventListener('keydown', judgeKeys, false);
@@ -534,7 +535,6 @@ function typeFinish(isCompleted) {
     }
 
     makeTweet(isCompleted);
-    writeChosenImgNumber();
     writeResult(isCompleted);
     addTypeCount();
 
