@@ -114,7 +114,8 @@ export function createAbout() {
 
     <p>23/5/16: タイマーの精度を修正しました。</p>
 
-    中原ここあ(<a href="https://twitter.com/tt_cocoan" target="_blank">@tt_cocoan</a>)
+    <br>
+    <a href="https://nkhr-c.com/">ちゃんここちゃんねる</a>
 
     </div>
     `;

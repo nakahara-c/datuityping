@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@creativebulma/bulma-collapsible": "^1.0.4",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "bulma-extensions": "^6.2.7"
   }
 }
