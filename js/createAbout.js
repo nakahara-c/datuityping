@@ -81,7 +81,7 @@ export function createAbout() {
     </ul>
     <hr>
     <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
-    <li>特定条件を満たす事でLEVEL EXが解放されます。</li>
+    <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
     <details class="mt-2">
         <summary>ワードについて</summary>
         <p>ベースはタイプウェル英単語の基本英単語1500・国語Rの漢字です。</p>

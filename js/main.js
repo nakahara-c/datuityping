@@ -14,6 +14,7 @@ import { createAbout } from './createAbout.js';
 import { createStats, openImageModal } from './createStats.js';
 import { wordList, wordListExtra, wordListJapanese } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
+import { displaySecret } from './secret.js';
 
 const area = document.getElementById('area');
 const contentList = document.getElementsByClassName('difficulty');
@@ -575,7 +576,6 @@ function writeChosenImgNumber() {
     }
 
     displayEx();
-
 }
 
 function writeResult(isCompleted) {
@@ -634,6 +634,7 @@ function displayEx() {
         const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
         const ex = document.getElementById('ex');
         if (unlockedCount >= 20) ex.hidden = false;
+        if (unlockedCount >= 40) displaySecret();
     }
 }
 
