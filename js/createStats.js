@@ -46,6 +46,11 @@ export function createStats(isEnglish) {
                     ${tableString}
                 </div>
             </div>
+            <div class="tile is-parent">
+                <div class="tile is-child box">
+                    <button id="gallery_reset" class="button is-danger is-small"">解放したギャラリーのリセット</button>
+                </div>
+            </div>
         </div>
 
         <div class="modal" id="image-modal">
@@ -87,6 +92,14 @@ export function createStats(isEnglish) {
         div.querySelector('#statEX').classList.add('is-active');
         div.querySelector('#statEN').classList.remove('is-active');
         div.querySelector('#statJP').classList.remove('is-active');
+    });
+
+    div.querySelector('#gallery_reset').addEventListener('click', () => {
+        const confirm = window.confirm('解放したギャラリーをリセットしますか？');
+        if (confirm) {
+            localStorage.removeItem('unlocked');
+            location.reload();
+        }
     });
 
     let chart = null;
