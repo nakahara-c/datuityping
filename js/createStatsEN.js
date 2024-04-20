@@ -23,37 +23,26 @@ export function createStats(isEnglish) {
         <div class="tile is-vertical">
             <div class="tile is-parent">
                 <div class="tile is-child box" id="result">
-                    <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
-                    <p class="has-text-centered mt-4 mb-2">総打鍵数: <span class="statCount">${totalKeys}</span>打</p>
-                    <div class="tabs is-centered">
-                        <ul>
-                            <li id="statEN" class="is-active"><a>英語</a></li>
-                            <li id="statJP"><a>ローマ字</a></li>
-                            ${ex}
-                        </ul>
-                    </div>
+                    <p class="has-text-centered title mt-4" style="opacity:0.7">Result</p>
+                    <p class="has-text-centered mt-4 mb-2">TotalTyped: <span class="statCount">${totalKeys}</span>keys</p>
+
 
                     <canvas id="chart"></canvas>
                     <ul>
                         <li class="has-text-link has-background-link-light has-text-centered mt-4">
-                        カーソルを当てるとレベルとタイムが表示されます。
+                        When you hover over it, the level and time will be displayed.
                         </li>
                         <li class="has-text-danger has-background-danger-light has-text-centered mt-2 mb-4">
-                        クリックするとその一つの記録が削除されます。
+                        Clicking will delete that particular record.
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="tile is-parent">
                 <div class="tile is-child box" id="unlockedImages">
-                    <p class="has-text-centered title mt-4" style="opacity:0.7">ギャラリー</p>
-                    <p class="has-text-centered mb-4">解放済み: <span class="statCount">${Object.keys(unlocked).length}</span> / 100枚</p>
+                    <p class="has-text-centered title mt-4" style="opacity:0.7">Gallery</p>
+                    <p class="has-text-centered mb-4">Unlocked: <span class="statCount">${Object.keys(unlocked).length}</span> / 100</p>
                     ${tableString}
-                </div>
-            </div>
-            <div class="tile is-parent">
-                <div class="tile is-child box">
-                    <button id="gallery_reset" class="button is-danger is-small"">解放したギャラリーのリセット</button>
                 </div>
             </div>
         </div>
@@ -70,42 +59,6 @@ export function createStats(isEnglish) {
     </div>
     
     `;
-
-    div.querySelector('#statEN').addEventListener('click', () => {
-        resultKey = 'resultsEN';
-        data = JSON.parse(localStorage.getItem(resultKey)) || [];
-        chart.destroy();
-        drawChart();
-        div.querySelector('#statEN').classList.add('is-active');
-        div.querySelector('#statJP').classList.remove('is-active');
-        div.querySelector('#statEX').classList.remove('is-active');
-    });
-    div.querySelector('#statJP').addEventListener('click', () => {
-        resultKey = 'resultsJP';
-        data = JSON.parse(localStorage.getItem(resultKey)) || [];
-        chart.destroy();
-        drawChart();
-        div.querySelector('#statJP').classList.add('is-active');
-        div.querySelector('#statEN').classList.remove('is-active');
-        div.querySelector('#statEX').classList.remove('is-active');
-    });
-    div.querySelector('#statEX').addEventListener('click', () => {
-        resultKey = 'resultsEX';
-        data = JSON.parse(localStorage.getItem(resultKey)) || [];
-        chart.destroy();
-        drawChart();
-        div.querySelector('#statEX').classList.add('is-active');
-        div.querySelector('#statEN').classList.remove('is-active');
-        div.querySelector('#statJP').classList.remove('is-active');
-    });
-
-    div.querySelector('#gallery_reset').addEventListener('click', () => {
-        const confirm = window.confirm('解放したギャラリーをリセットしますか？');
-        if (confirm) {
-            localStorage.removeItem('unlocked');
-            location.reload();
-        }
-    });
 
     let chart = null;
     setTimeout(() => {

@@ -10,11 +10,10 @@
 // This function is based on code from RomanTypeParser by Whitefox (MIT License)
 import { parser } from './parser.js';
 
-import { createAbout } from './createAbout.js';
-import { createStats, openImageModal } from './createStats.js';
+import { createAbout } from './createAboutEN.js';
+import { createStats, openImageModal } from './createStatsEN.js';
 import { wordList, wordListExtra, wordListJapanese } from './wordList.js';
 import { fetchImgID } from './fetchImgID.js';
-import { displaySecret } from './secret.js';
 
 const area = document.getElementById('area');
 const contentList = document.getElementsByClassName('difficulty');
@@ -25,11 +24,10 @@ const dataBox = document.getElementById('dataBox');
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
-displayAbout();
 
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
-displayEx();
+
 let ta;
 const fontSize = document.getElementById('fontSize');
 fontSize.addEventListener('change', () => {
@@ -60,16 +58,6 @@ let startTime;
 let intervalId;
 
 let isEnglish = true;
-document.getElementById('english').addEventListener('click', () => {
-    isEnglish = true;
-    initializeDataBox();
-    contentList[choosingLevel].click();
-});
-document.getElementById('japanese').addEventListener('click', () => {
-    isEnglish = false;
-    initializeDataBox();
-    contentList[choosingLevel].click();
-});
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
@@ -574,8 +562,6 @@ function writeChosenImgNumber() {
         unlocked.push([chosenImgNumber, currentImgID]);
         localStorage.setItem('unlocked', JSON.stringify(unlocked));
     }
-
-    displayEx();
 }
 
 function writeResult(isCompleted) {
@@ -629,15 +615,6 @@ function displayStats() {
 
 }
 
-function displayEx() {
-    if (localStorage.getItem('unlocked') !== null) {
-        const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
-        const ex = document.getElementById('ex');
-        if (unlockedCount >= 20) ex.hidden = false;
-        if (unlockedCount >= 40) displaySecret();
-    }
-}
-
 function addModalListeners() {
     const closeModalButton = document.querySelector('#image-modal .modal-close');
     closeModalButton.addEventListener('click', () => {
@@ -665,23 +642,15 @@ function makeTweet(isCompleted) {
     const sec = String((30 - parseFloat(timer.textContent)).toFixed(1));
     const cnt = count.textContent;
     const KPM = kpm.textContent;
-    const ENorJP = isEnglish ? '英語' : 'ローマ字';
-    const hashTags = '脱衣タイピング';
+
+    const hashTags = 'ErogeTyping';
     let tweetText = '';
     if (isCompleted) {
-        if (choosingLevel !== 6) {
-            tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
-        } else {
-            tweetText = `LEVELEX 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
-        }
+        tweetText = `LEVEL${choosingLevel} CLEAR❤${cnt}keys/${sec}sec(${KPM}KPM)`;
     } else {
-        if (choosingLevel !== 6) {
-            tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
-        } else {
-            tweetText = `LEVELEX 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
-        }
+        tweetText = `LEVEL${choosingLevel} FAILED...${cnt}keys/30.0sec(${KPM}KPM)`;
     }
-    const url = 'https://nkhr-c.com/datuityping/';
+    const url = 'https://nkhr-c.com/datuityping/en.html';
     const tweetURL = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweetText}&hashtags=${hashTags}&url=${url}`;
     tweetButton.href = tweetURL;
 }
