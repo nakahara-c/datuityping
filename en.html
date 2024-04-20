@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja" prefix="og: http://ogp.me/ns#">
+<html lang="en" prefix="og: http://ogp.me/ns#">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="全100種の美少女AIイラストを使用した中～超上級者向けの18禁タイピングゲーム。ローマ字入力・英語入力に対応、成績のグラフ表示機能を搭載。">
+    <meta name="description" content="An adult-only typing game for intermediate to ultra-advanced players, featuring 100 kinds of beautiful AI-generated Anime illustrations. It includes a feature for displaying performance graphs.">
     <meta name="keyword" content="">
     <meta name="robots" content="max-image-preview:standard">
     <meta name="thumbnail" content="https://nkhr-c.com/datuityping/twitter_card.png">
 
-    <meta property="og:title" content="【R-18】脱衣タイピング（β）">
-    <meta property="og:description" content="全100種の美少女AIイラストを使用した中～超上級者向けの18禁タイピングゲーム。ローマ字入力・英語入力に対応、成績のグラフ表示機能を搭載。">
-    <meta property="og:image" content="https://nkhr-c.com/datuityping/twitter_card.png?1">
+    <meta property="og:title" content="[R-18] Eroge Typing">
+    <meta property="og:description" content="An adult-only typing game for intermediate to ultra-advanced players, featuring 100 kinds of beautiful AI-generated Anime illustrations. It includes a feature for displaying performance graphs.">
+    <meta property="og:image" content="https://nkhr-c.com/datuityping/twitter_card.png">
     <meta property="og:url" content="https://nkhr-c.com/datuityping">
     <meta property="og:type" content="website">
 
@@ -36,13 +36,13 @@
     <!--ここからGoogle Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&Kaisei+Opti:wght@500;700&display=swap" rel="stylesheet">
     <!--ここまでGoogle Fonts-->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./style.css">
 
-    <title>【R-18】脱衣タイピング（β）</title>
+    <title>[R-18] Eroge Typing</title>
 </head>
 
 <body>
@@ -58,12 +58,15 @@
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title is-2 has-text-centered" style="opacity:0.7">
-                    脱衣タイピング(β)
+                <h1 class="title is-1 has-text-centered" style="opacity:0.6; font-family: 'Rampart One', cursive;
+                ">
+                    Eroge Typing
                 </h1>
             </div>
         </div>
     </section>
+
+
 
     <section class="section container is-widescreen" id="main-content">
 
@@ -72,13 +75,11 @@
 
                 <div id="sidebar" class="tile is-child box">
 
-                    <div id="info">
-                        <div id="about" class="button is-medium difficulty mb-2">
-                            About
-                        </div>
-                        <div id="stat" class="button is-medium">
-                            Stat
-                        </div>
+                    <div id="about" class="button is-medium difficulty mb-2">
+                        About
+                    </div>
+                    <div id="stat" class="button is-medium">
+                        Stat
                     </div>
                     <hr>
                     <div id="levelButtons">
@@ -98,12 +99,10 @@
                         <button id="lv5" class="button notification is-danger is-medium difficulty">
                             LEVEL 5
                         </button><br>
-                        <div id="ex" hidden>
-                            <button id="lvex" class="button notification is-medium difficulty">
-                                LEVEL EX
-                            </button>
-                        </div>
+
                     </div>
+
+
 
                     <div id="dataBox" class="box mt-4" style="width: 200px;">
                         <span id="timer" style="font-size:2em" class="has-text-danger"></span>s / 30s
@@ -111,28 +110,17 @@
                         <span id="count" style="font-size:1.5em"></span>keys
                         <span id="kpm" style="font-size:1.5em"></span>kpm
 
-                        <div class="control mt-2">
-                            <label class="radio">
-                                <input type="radio" id="english" name="enorjp" checked>
-                                英語
-                            </label><br>
-                            <label class="radio">
-                                <input type="radio" id="japanese" name="enorjp">
-                                ローマ字(β)
-                            </label>
-                        </div>
-
                         <div class="select is-small">
                             <select id="fontSize">
-                                <option value="0">標準</option>
-                                <option value="1">大</option>
-                                <option value="2">特大</option>
+                                <option value="0">normal</option>
+                                <option value="1">large</option>
+                                <option value="2">very large</option>
                             </select>
                         </div>
 
                         <div class="mb-4"></div>
                         <a class="button" id="tweet" target="_blank"
-                            href="https://twitter.com/intent/tweet?ref_src=twsrc&hashtags=脱衣タイピング&url=https://nkhr-c.com/datuityping">結果をツイート</a>
+                            href="https://twitter.com/intent/tweet?ref_src=twsrc&hashtags=脱衣タイピング&url=https://nkhr-c.com/datuityping">Tweet Result</a>
                     </div>
                 </div>
 
@@ -141,21 +129,99 @@
             <div id="container" class="tile is-parent container">
                 <div id="area" class="is-relative mx-auto">
 
+                    <div>
+
+                        <div class="tile is-child box">
+                            <p class="has-text-centered title mt-2 mb-6" style="opacity:0.7">About</p>
+                            <ul>
+                                <li class="subtitle has-text-danger has-background-danger-light">
+                                    This content contains adult material.<br>
+                                    It is prohibited for individuals under 18 to view it.
+                                </li>
+                                <li class="subtitle has-text-link has-background-link-light">
+                                    The illustrations used are produced by AI.
+                                </li>
+                            </ul>
+                            <hr>
+                            <li>Choose a level, the game begins when you press a correct key.</li>
+                            <li>You can restart with the Escape key.</li>
+
+                            <p class="mt-2">Words are based on the words used in the "TypeWell".</p>
+
+                            <hr>
+                            <p class="mt-2 mb-1">Here is the difficulty level correspondence table.</p>
+
+                            <table class="table is-bordered is-striped has-text-centered">
+                                <thead>
+                                    <tr>
+                                        <th>LEVEL</th>
+                                        <th>Count</th>
+                                        <th>KPM(keys/minute)</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="diff">
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>96</td>
+                                        <td>192</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>150</td>
+                                        <td>300</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>216</td>
+                                        <td>432</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>300</td>
+                                        <td>600</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>384</td>
+                                        <td>768</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <hr>
+
+                            Nakahara Cocoa(<a href="https://twitter.com/tt_cocoan" target="_blank">@tt_cocoan</a>)
+
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+
+
 
         </div>
 
     </section>
 
+
     <footer class="footer py-6">
         <ul class="has-text-centered">
             <li class="has-text-danger">
-                成人向けコンテンツを含みます。18歳未満は閲覧禁止です。
+                It is prohibited for individuals under 18 to view it.
             </li>
             <br>
             <li class="has-text-link">
-                使用しているイラストはAI製です。
+                The illustrations used are produced by AI.
             </li>
         </ul>
     </footer>
@@ -179,7 +245,8 @@
         })
     </script>
 
-    <script src="./js/main.js" type="module"></script>
+    <script src="./js/mainEN.js" type="module"></script>
+
 
 </body>
 
