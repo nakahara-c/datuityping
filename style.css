@@ -123,3 +123,19 @@
     cursor: pointer;
     z-index: 5;
 }
+
+.row-gradient-1 {
+    background-color: #fffbfd !important;
+}
+.row-gradient-2 {
+    background-color: #f7f0f4 !important;
+}
+.row-gradient-3 {
+    background-color: #fff1f9 !important;
+}
+.row-gradient-4 {
+    background-color: #fae6f4 !important;
+}
+.row-gradient-5 {
+    background-color: #ffe6f9 !important;
+}

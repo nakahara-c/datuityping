@@ -188,13 +188,17 @@ export function createStats(isEnglish) {
                 }
             }
         });
-
     }
 
     function generateTable(rows, cols) {
         let table = '<table class="table is-bordered is-striped is-hoverable is-fullwidth">\n<tbody>\n';
+        const getRowClass = (i) => {
+            return 'row-gradient-' + String(Math.ceil(i / 2));
+        };
+
         for (let i = 1; i <= rows; i++) {
-            table += '<tr>\n';
+            let rowClass = getRowClass(i);
+            table += `<tr class="${rowClass}">\n`;
             for (let j = 1; j <= cols; j++) {
                 let tmp = (i - 1) * 10 + j;
                 if (tmp in unlocked) {
@@ -208,11 +212,8 @@ export function createStats(isEnglish) {
         table += '</tbody>\n</table>';
         return table;
     }
-
-
-
+    
     return div;
-
 }
 
 export function openImageModal(imageID) {
