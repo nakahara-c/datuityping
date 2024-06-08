@@ -30,6 +30,9 @@ displayAbout();
 const stat = document.getElementById('stat');
 stat.addEventListener('click', displayStats);
 displayEx();
+
+renderUnlockedCount();
+
 let ta;
 const fontSize = document.getElementById('fontSize');
 fontSize.addEventListener('change', () => {
@@ -97,7 +100,15 @@ function judgeEscape(e) {
         if (timerArray.length !== 0) addTypeCount();
         contentList[choosingLevel].click();
     }
+}
 
+function renderUnlockedCount() {
+    const unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
+    const unlocked = new Object();
+    unlockedArray.forEach(pair => {
+        unlocked[pair[0]] = pair[1];
+    });
+    document.getElementById('unlockedCount').textContent = Object.keys(unlocked).length;
 }
 
 function firstKeyPressed() {
@@ -549,6 +560,7 @@ function typeFinish(isCompleted) {
     makeTweet(isCompleted);
     writeResult(isCompleted);
     addTypeCount();
+    renderUnlockedCount();
 
 }
 
