@@ -70,53 +70,46 @@ export function createAbout() {
     div.innerHTML = `
 
     <div class="tile is-child box">
-    <p class="has-text-centered title mt-2 mb-6" style="opacity:0.7">About</p>
-    <ul>
-        <li class="subtitle has-text-danger has-background-danger-light">
-            成人向けコンテンツを含みます。18歳未満は閲覧禁止です。
-        </li>
-        <li class="subtitle has-text-link has-background-link-light">
-            使用しているイラストはAI製です。
-        </li>
-    </ul>
-    <hr>
-    <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
-    <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
-    <details class="mt-2">
-        <summary>ワードについて</summary>
-        <p>ベースはタイプウェル英単語の基本英単語1500・国語Rの漢字です。</p>
-        <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
-        <p>ローマ字では「ざ」を含むものを取り除いています。(「あざやか」など)</p>
-    </details>
-    <hr>
-    <p class="mt-2 mb-1">難易度対応表（目安）</p>
-    <div class="tabs">
-        <ul>
-            <li id="diffEN" class="is-active"><a>英語</a></li>
-            <li id="diffJP"><a>ローマ字</a></li>
-        </ul>
-    </div>
-    <table class="table is-bordered is-striped">
-        <thead>
-            <tr>
-            <th>LEVEL</th>
-            <th>ブロック数</th>
-            <th>KPM</th>
-            <th>TW換算</th>
-            </tr>
-        </thead>
-        <tbody id="diff">
-            ${tbodyEN}
-        </tbody>
-    </table>
+        <p class="has-text-centered title mt-2 mb-4" style="opacity:0.7">About</p>
+        <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
+        <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
 
-    <hr>
+        <details class="mt-2">
+            <summary>難易度対応表（目安）</summary>
+            <div class="tabs">
+                <ul>
+                    <li id="diffEN" class="is-active"><a>英語</a></li>
+                    <li id="diffJP"><a>ローマ字</a></li>
+                </ul>
+            </div>
+            <table class="table is-bordered is-striped">
+                <thead>
+                    <tr>
+                    <th>LEVEL</th>
+                    <th>ブロック数</th>
+                    <th>KPM</th>
+                    <th>TW換算</th>
+                    </tr>
+                </thead>
+                <tbody id="diff">
+                    ${tbodyEN}
+                </tbody>
+            </table>
+        </details>
+        <details class="mt-2">
+            <summary>ワードについて</summary>
+            <p>ベースはタイプウェル英単語の基本英単語1500・国語Rの漢字です。</p>
+            <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
+            <p>ローマ字では「ざ」を含むものを取り除いています。(「座禅」など)</p>
+        </details>
 
-    <p>23/5/16: タイマーの精度を修正しました。</p>
-
-    <br>
-    <a href="https://nkhr-c.com/">ちゃんここちゃんねる</a>
-
+        <hr>
+        <div class="has-text-centered">
+            <picture>
+                <source srcset="./img/datui_sample.webp" type="image/webp">
+                <img src="./img/datui_sample.png" alt="">
+            </picture>
+        </div>
     </div>
     `;
 
