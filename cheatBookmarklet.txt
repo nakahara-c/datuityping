@@ -1,1 +1,5 @@
-javascript:(function(){function e(e,n){const t={'key':n,'keyCode':n.charCodeAt(0),'which':n.charCodeAt(0),'bubbles':!0,'cancelable':!0,'view':window};return new KeyboardEvent(e,t)}const t=document.getElementById('typing_area');for(let n=0;n<1e3;n++){const o=t.value;if(""===o)break;const c=o[0],r=e('keydown',c);t.dispatchEvent(r);const d=e('keyup',c);t.dispatchEvent(d)}})();
+javascript:(function(){function e(e,n){const t={'key':n,'keyCode':n.charCodeAt(0),'which':n.charCodeAt(0),'bubbles':!0,'cancelable':!0,'view':window};return new KeyboardEvent(e,t)}const t=document.getElementById('typing_area');
+for(let n=0;n<1e3;n++){const o=t.value;if(""===o)break;const c=o[0],r=e('keydown',c);t.dispatchEvent(r);const d=e('keyup',c);t.dispatchEvent(d)}})();
+
+javascript:(function(){function e(e,n){const t={'key':n,'keyCode':n.charCodeAt(0),'which':n.charCodeAt(0),'bubbles':!0,'cancelable':!0,'view':window};return new KeyboardEvent(e,t)}const t=document.getElementById('typing_area');
+(function n(i){if(i>=96)return;const o=t.value;const c=o[0],r=e('keydown',c);t.dispatchEvent(r);const d=e('keyup',c);t.dispatchEvent(d);t.value=o.slice(1);setTimeout(()=>n(i+1),40)})(0);})();
