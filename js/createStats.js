@@ -62,7 +62,7 @@ export function createStats(isEnglish) {
             <div class="modal-background"></div>
             <div class="modal-content">
                 <p class="image is-2by3">
-                    <img src="" alt="" id="modal-image">
+                    <img loading="lazy" src="" alt="" id="modal-image">
                 </p>
             </div>
             <button class="modal-close is-large" aria-label="close"></button>
@@ -202,9 +202,9 @@ export function createStats(isEnglish) {
             for (let j = 1; j <= cols; j++) {
                 let tmp = (i - 1) * 10 + j;
                 if (tmp in unlocked) {
-                    table += `<td><img class="unlockedGirl" src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal('${unlocked[tmp]}')"></td>\n`;
+                    table += `<td><img loading="lazy" class="unlockedGirl" src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal('${unlocked[tmp]}')"></td>\n`;
                 } else {
-                    table += `<td><img src="img/block3.png" alt="0" width="40" height="60"></td>\n`;
+                    table += `<td><img loading="lazy" src="img/block3.png" alt="0" width="40" height="60"></td>\n`;
                 }
             }
             table += '</tr>\n';
