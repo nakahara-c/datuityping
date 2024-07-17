@@ -22,6 +22,8 @@ const timer = document.getElementById('timer');
 const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
 const dataBox = document.getElementById('dataBox');
+const heartPower = document.getElementById('heartPower');
+heartPower.textContent = localStorage.getItem('heartPower') ?? 0;
 
 const about = document.getElementById('about');
 about.addEventListener('click', displayAbout);
@@ -88,7 +90,7 @@ for (let i = 1; i < contentList.length; i++) {
 
         clearInterval(intervalId);
         choosingLevel = i;
-        createBlocks(i);
+        createBlocks(i, false);
 
     });
 }
@@ -161,7 +163,7 @@ function isInViewport(element) {
     );
 }
 
-async function createBlocks(level) {
+async function createBlocks(level, isPowerUsed) {
 
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -169,8 +171,14 @@ async function createBlocks(level) {
     let w = 0;
     let xCount = 0;
     let yCount = 0;
-    let lv = isEnglish ? level : level + 1;
-    if (level === 5 && !isEnglish) lv = 7;
+    let lv;
+    if (isPowerUsed) {
+        lv = isEnglish ? choosingLevel : choosingLevel + 1;
+        if (choosingLevel === 5 && !isEnglish) lv = 7;
+    } else {
+        lv = isEnglish ? level : level + 1;
+        if (level === 5 && !isEnglish) lv = 7;
+    }
     switch (lv) {
         case 1:
             [w, xCount, yCount] = [62.5, 8, 12];
@@ -264,7 +272,7 @@ async function createBlocks(level) {
         }
     }, 300);
 
-    createInputBox(xCount * yCount);
+    createInputBox(xCount * yCount, isPowerUsed);
 
 
     function createImg(id) {
@@ -304,7 +312,7 @@ async function createBlocks(level) {
         }
     }
 
-    function createInputBox(blocksCount) {
+    function createInputBox(blocksCount, isPowerUsed) {
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
@@ -318,6 +326,7 @@ async function createBlocks(level) {
         else if (fontSize.value === '2') fs = '2.5em';
         input.style.fontSize = fs;
         input.type = 'text';
+        if (isPowerUsed) input.classList.add('heart-powered');
 
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
@@ -327,7 +336,7 @@ async function createBlocks(level) {
         }, 300);
 
 
-        if (level !== 6 && isEnglish) {
+        if (choosingLevel !== 6 && isEnglish) {
             setWordEnglish(blocksCount, input);
         } else {
             setWordJapanese(blocksCount, input);
@@ -345,9 +354,9 @@ async function createBlocks(level) {
         order = [];
         shuffledOrder = [];
 
-        if (level === 5) blocksCount -= 24;
+        if (choosingLevel === 5) blocksCount -= 24;
 
-        if (level === 4 || level === 5) {
+        if (choosingLevel === 4 || choosingLevel === 5) {
             for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
 
@@ -365,7 +374,7 @@ async function createBlocks(level) {
     function setWordJapanese(blocksCount, typingArea) {
 
         let tmpLis = new Array();
-        let wLis = (level === 6) ? wordListExtra : wordListJapanese;        
+        let wLis = (choosingLevel === 6) ? wordListExtra : wordListJapanese;        
         for (let i = 0; i < 300; i++) {
             let word = wLis[Math.floor(Math.random() * wLis.length)];
             tmpLis.push(word);
@@ -436,7 +445,11 @@ function judgeKeys(e) {
             }
             correctType(typedKey);
         } else {
-            incorrectType(typedKey);
+            if (timer.textContent === '' && typedKey === ' ') {
+                useHeartPower(Number(localStorage.getItem('heartPower')));
+            } else {
+                incorrectType(typedKey);
+            }
         }
 
     //にほんご用の入力うけつけ処理
@@ -483,7 +496,9 @@ function judgeKeys(e) {
             deleteBlock();
 
         } else {
-            //incorrectType(typedKey);
+            if (timer.textContent === '' && typedKey === ' ') {
+                useHeartPower(Number(localStorage.getItem('heartPower')));
+            }
         }
 
     }
@@ -523,6 +538,12 @@ function deleteBlock() {
 
     let topOrder = shuffledOrder.shift();
     blocks[topOrder].classList.add('typedBlock');
+
+    const heartPowerValue = Number(localStorage.getItem('heartPower')) ?? 0;
+    if (heartPowerValue < 2000) {
+        localStorage.setItem('heartPower', String(Number(heartPowerValue) + 1));
+        heartPower.textContent = String(Number(heartPowerValue) + 1);
+    }
 
     if (shuffledOrder.length === 0) {
         typeFinish(true);
@@ -647,6 +668,23 @@ function displayEx() {
         const ex = document.getElementById('ex');
         if (unlockedCount >= 20) ex.hidden = false;
         if (unlockedCount >= 40) displaySecret();
+    }
+}
+
+function useHeartPower(currentPower) {
+    let additionalTier = 0;
+    for (let i = 0; i < 5 - choosingLevel; i++) {
+        if (currentPower >= 500 * (i + 1)) additionalTier++;
+    }
+    if (additionalTier > 0) {
+        const expiredPower = currentPower - 500 * additionalTier;
+        localStorage.setItem('heartPower', String(expiredPower));
+        heartPower.textContent = String(expiredPower);
+
+        initializeDataBox();
+        adjustDataBox();
+        clearInterval(intervalId);
+        createBlocks(choosingLevel + additionalTier, true);
     }
 }
 

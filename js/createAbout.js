@@ -73,7 +73,7 @@ export function createAbout() {
         <p class="has-text-centered title mt-2 mb-4" style="opacity:0.7">About</p>
         <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
         <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
-
+        <li><span style="color:white;">開始前にSpaceキーで♡を消費すると、イラストの抽選が優遇されます。</li>
         <details class="mt-2">
             <summary>難易度対応表（目安）</summary>
             <div class="tabs">
