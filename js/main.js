@@ -22,7 +22,17 @@ const timer = document.getElementById('timer');
 const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
 const dataBox = document.getElementById('dataBox');
+
+const countHeart = (num) => {
+    if (num == undefined) return '0';
+    const cnt = Math.floor(Number(num) / 500) ?? 0;
+    if (cnt >= 4) return 'MAX';
+    return String(cnt);
+}
+
+const heartCount = document.getElementById('heartCount');
 const heartPower = document.getElementById('heartPower');
+heartCount.textContent = countHeart(localStorage.getItem('heartPower'));
 heartPower.textContent = localStorage.getItem('heartPower') ?? 0;
 
 const about = document.getElementById('about');
@@ -542,6 +552,7 @@ function deleteBlock() {
     const heartPowerValue = Number(localStorage.getItem('heartPower')) ?? 0;
     if (heartPowerValue < 2000) {
         localStorage.setItem('heartPower', String(Number(heartPowerValue) + 1));
+        heartCount.textContent = countHeart(Number(heartPowerValue) + 1);
         heartPower.textContent = String(Number(heartPowerValue) + 1);
     }
 
@@ -679,6 +690,7 @@ function useHeartPower(currentPower) {
     if (additionalTier > 0) {
         const expiredPower = currentPower - 500 * additionalTier;
         localStorage.setItem('heartPower', String(expiredPower));
+        heartCount.textContent = countHeart(expiredPower);
         heartPower.textContent = String(expiredPower);
 
         initializeDataBox();
