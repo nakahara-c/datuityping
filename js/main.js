@@ -18,6 +18,7 @@ import { displaySecret } from './secret.js';
 
 const area = document.getElementById('area');
 const contentList = document.getElementsByClassName('difficulty');
+const contentList2 = document.getElementsByClassName('difficulty2');
 const timer = document.getElementById('timer');
 const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
@@ -79,13 +80,16 @@ document.getElementById('english').addEventListener('click', () => {
     isEnglish = true;
     initializeDataBox();
     contentList[choosingLevel].click();
+    contentList2[choosingLevel].click();
 });
 document.getElementById('japanese').addEventListener('click', () => {
     isEnglish = false;
     initializeDataBox();
     contentList[choosingLevel].click();
+    contentList2[choosingLevel].click();
 });
 
+//aboutが0。レベルボタンは1から
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
 
@@ -93,6 +97,9 @@ for (let i = 1; i < contentList.length; i++) {
 
         for (let j = 1; j < contentList.length; j++) {
             contentList[j].classList.remove('activeLevel');
+        }
+        for (let j = 0; j < contentList2.length; j++) {
+            contentList2[j].classList.remove('activeLevel');
         }
         contentList[i].classList.add('activeLevel');
 
@@ -103,6 +110,29 @@ for (let i = 1; i < contentList.length; i++) {
         createBlocks(i, false);
 
     });
+}
+
+for (let i = 0; i < contentList2.length; i++) {
+    contentList2[i].addEventListener('click', () => {
+            
+        initializeDataBox();
+
+        for (let j = 1; j < contentList.length; j++) {
+            contentList[j].classList.remove('activeLevel');
+        }
+        for (let j = 0; j < contentList2.length; j++) {
+            contentList2[j].classList.remove('activeLevel');
+        }
+        contentList2[i].classList.add('activeLevel');
+
+        adjustDataBox();
+
+        clearInterval(intervalId);
+        choosingLevel = i + 10;
+        createBlocks(i + 10);
+
+    });
+
 }
 
 window.addEventListener('keydown', judgeEscape, true);
@@ -179,6 +209,7 @@ async function createBlocks(level, isPowerUsed) {
     const windowHeight = window.innerHeight;
 
     let w = 0;
+    let h = 0;
     let xCount = 0;
     let yCount = 0;
     let lv;
@@ -212,26 +243,45 @@ async function createBlocks(level, isPowerUsed) {
             [w, xCount, yCount] = [42, 14, 21];
             break;
 
+        //chapter2
+        case 10:
+            [w, xCount, yCount] = [40, 16, 9];
+            break;
+
     }
 
     const girls = document.createElement('img');
 
     let imgID;
-    try {
-        imgID = await fetchID(level);
-    } catch (e) {
-        console.error('Error:', e);
+    if (level < 10){
+        try {
+            imgID = await fetchID(level);
+        } catch (e) {
+            console.error('Error:', e);
+        }
+    } else {
+        imgID = { imgID: 'test', randomValue: 0 };
     }
 
     girls.src = `./img/${imgID.imgID}.png`;
     chosenImgNumber = imgID.randomValue;
     currentImgID = imgID.imgID;
 
-    const girlsAspectRatio = 512 / 768;
-    const girlsHeightRatio = 0.75;
+    let girlsAspectRatio;
+    let girlsHeightRatio;
+    if (lv < 10) {
+        girlsAspectRatio = 512 / 768;
+        girlsHeightRatio = 0.75;
 
-    girls.height = windowHeight * girlsHeightRatio;
-    girls.width = girls.height * girlsAspectRatio;
+        girls.height = windowHeight * girlsHeightRatio;
+        girls.width = girls.height * girlsAspectRatio;
+    } else {
+        girlsAspectRatio = 480 / 270;
+        girlsHeightRatio = 0.4;
+    
+        girls.width = windowHeight * girlsHeightRatio;
+        girls.height = girls.height * girlsAspectRatio;
+    }
 
     let blockDOMs = [];
     if (lv === 4 || lv === 5 || lv === 6 || lv === 7) {
@@ -261,6 +311,17 @@ async function createBlocks(level, isPowerUsed) {
         }
 
 
+    } else if(lv < 10) {
+
+        for (let i = 0; i < yCount; i++) {
+            for (let j = 0; j < xCount; j++) {
+                let block = createImg('');
+
+                block.style = `left:${j * (100 / xCount)}%;top:${girls.height * i / yCount}px`;
+                blockDOMs.push(block);
+            }
+        }
+
     } else {
 
         for (let i = 0; i < yCount; i++) {
@@ -271,6 +332,7 @@ async function createBlocks(level, isPowerUsed) {
                 blockDOMs.push(block);
             }
         }
+        
     }
 
     adjustBlockPositions();
@@ -326,7 +388,7 @@ async function createBlocks(level, isPowerUsed) {
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
-        div.style = `top:35vh`;
+        div.style = level < 10 ? `top:35vh` : `top:17.5vh`;
 
         let input = document.createElement('input');
         input.id = 'typing_area';
@@ -445,7 +507,7 @@ function fisherYatesShuffle(arr) {
 function judgeKeys(e) {
     e.preventDefault();
     let typedKey = e.key;
-    if (choosingLevel < 6 && isEnglish) {
+    if ((choosingLevel < 6 || choosingLevel >= 10) && isEnglish) {
 
         let nextKey = typeText[0];
 
@@ -721,6 +783,42 @@ function initializeDataBox () {
     kpm.textContent = '';
     return;
 }
+
+document.getElementById("fullscreenButton").addEventListener("click", function() {
+    const area = document.getElementById("area");
+    if (!document.fullscreenElement) {
+        area.requestFullscreen().then(() => {
+            area.classList.add("fullscreen");
+            scaleElements();
+        });
+    } else {
+        document.exitFullscreen().then(() => {
+            area.classList.remove("fullscreen");
+        });
+    }
+});
+
+function scaleElements() {
+    const area = document.getElementById("area");
+    const images = document.querySelectorAll("#area img");
+    const scaleX = window.screen.width / images[images.length - 1].width;
+    const scaleY = window.screen.height / images[images.length - 1].height;
+    console.log(scaleX, scaleY);
+    const scale = Math.max(scaleX, scaleY);
+    
+    images.forEach(img => {
+        const originalWidth = img.width;
+        const originalHeight = img.height;
+        const originalLeft = parseFloat(img.style.left);
+        const originalTop = parseFloat(img.style.top);
+        
+        img.style.width = originalWidth * scale + 'px';
+        img.style.height = originalHeight * scale + 'px';
+        img.style.left = originalLeft * scale + 'px';
+        img.style.top = originalTop * scale + 'px';
+    });
+}
+
 
 function makeTweet(isCompleted) {
     const tweetButton = document.getElementById('tweet');
