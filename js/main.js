@@ -70,6 +70,8 @@ let shuffledOrder = [];
 let choosingLevel = 0;
 let chosenImgNumber = 0;
 let currentImgID = '';
+let originalImg;
+let isFreePlaying = false;
 
 let startTime;
 let intervalId;
@@ -88,7 +90,7 @@ document.getElementById('japanese').addEventListener('click', () => {
 
 for (let i = 1; i < contentList.length; i++) {
     contentList[i].addEventListener('click', () => {
-
+        isFreePlaying = false;
         initializeDataBox();
 
         for (let j = 1; j < contentList.length; j++) {
@@ -100,7 +102,7 @@ for (let i = 1; i < contentList.length; i++) {
 
         clearInterval(intervalId);
         choosingLevel = i;
-        createBlocks(i, false);
+        createBlocks(i, false, false);
 
     });
 }
@@ -110,7 +112,11 @@ window.addEventListener('keydown', judgeEscape, true);
 function judgeEscape(e) {
     if (e.key === 'Escape') {
         if (timerArray.length !== 0) addTypeCount();
-        contentList[choosingLevel].click();
+        if (isFreePlaying) {
+            freePlayStart();
+        } else {
+            contentList[choosingLevel].click();
+        }
     }
 }
 
@@ -133,10 +139,6 @@ function firstKeyPressed() {
 }
 
 function startTimer() {
-    
-    //負荷かけるやつ
-    //stressFunc();
-
     let elapsedTime = (performance.now() - startTime) / 1000;
     let remaining = 30.0 - elapsedTime;
     timer.textContent = remaining.toFixed(1);
@@ -145,12 +147,6 @@ function startTimer() {
         clearInterval(intervalId);
         timer.textContent = '0.0';
         typeFinish(false);
-    }
-}
-
-function stressFunc() {
-    let st = Date.now();
-    while (Date.now() - st < 20000) {
     }
 }
 
@@ -173,7 +169,16 @@ function isInViewport(element) {
     );
 }
 
-async function createBlocks(level, isPowerUsed) {
+async function createBlocks(level, isPowerUsed, isFreePlay) {
+
+    if (level === 7) {
+        if (isFreePlaying) {
+            
+        } else {
+            freePlay();
+        }
+        return;
+    }
 
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -215,17 +220,27 @@ async function createBlocks(level, isPowerUsed) {
     }
 
     const girls = document.createElement('img');
-
     let imgID;
-    try {
-        imgID = await fetchID(level);
-    } catch (e) {
-        console.error('Error:', e);
-    }
 
-    girls.src = `./img/${imgID.imgID}.png`;
-    chosenImgNumber = imgID.randomValue;
-    currentImgID = imgID.imgID;
+    if (isFreePlay) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            girls.src = reader.result;
+        }
+        reader.readAsDataURL(originalImg);
+        chosenImgNumber = 0;
+        currentImgID = 'original';
+    } else {
+        try {
+            imgID = await fetchID(level);
+        } catch (e) {
+            console.error('Error:', e);
+        }
+
+        girls.src = `./img/${imgID.imgID}.png`;
+        chosenImgNumber = imgID.randomValue;
+        currentImgID = imgID.imgID;
+    }
 
     const girlsAspectRatio = 512 / 768;
     const girlsHeightRatio = 0.75;
@@ -455,7 +470,7 @@ function judgeKeys(e) {
             }
             correctType(typedKey);
         } else {
-            if (timer.textContent === '' && typedKey === ' ') {
+            if (timer.textContent === '' && typedKey === ' ' && isFreePlaying === false) {
                 useHeartPower(Number(localStorage.getItem('heartPower')));
             } else {
                 incorrectType(typedKey);
@@ -659,7 +674,6 @@ function displayAbout() {
 }
 
 function displayStats() {
-
     let div = createStats(isEnglish);
     area.innerHTML = '';
     for (let j = 1; j < contentList.length; j++) {
@@ -670,7 +684,51 @@ function displayStats() {
     setTimeout(() => {
         addModalListeners();
     }, 0);
+}
 
+function freePlay() {
+    let div = createFreePlayDom();
+    area.innerHTML = '';
+    area.appendChild(div);
+    const freePlayButton = document.getElementById('freePlayButton');
+    freePlayButton.addEventListener('click', freePlayStart);
+}
+
+function createFreePlayDom() {
+    let div = document.createElement('div');
+    div.innerHTML = `
+        <input type="radio" id="freeLevel1" name="freeLevel" value="1" checked>
+        <label for="freeLevel1">LEVEL1</label>
+        <input type="radio" id="freeLevel2" name="freeLevel" value="2">
+        <label for="freeLevel2">LEVEL2</label>
+        <input type="radio" id="freeLevel3" name="freeLevel" value="3">
+        <label for="freeLevel3">LEVEL3</label>
+        <input type="radio" id="freeLevel4" name="freeLevel" value="4">
+        <label for="freeLevel4">LEVEL4</label>
+        <input type="radio" id="freeLevel5" name="freeLevel" value="5">
+        <label for="freeLevel5">LEVEL5</label><br>
+        <input type="file" id="originalImg" accept="image/*">
+        <button id="freePlayButton" class="button is-primary">START</button>
+    `;
+    div.id = 'freePlay';
+    return div;
+}
+
+function freePlayStart() {
+    const lv = Number(document.querySelector('input[name="freeLevel"]:checked')?.value ?? choosingLevel);
+    if (originalImg === undefined) {
+        originalImg = document.getElementById('originalImg').files[0];
+    }
+    if (originalImg === undefined) return;
+    area.innerHTML = '';
+    choosingLevel = lv;
+    isFreePlaying = true;
+
+    initializeDataBox();
+    adjustDataBox();
+    clearInterval(intervalId);
+
+    createBlocks(lv, false, true);
 }
 
 function displayEx() {
@@ -696,7 +754,7 @@ function useHeartPower(currentPower) {
         initializeDataBox();
         adjustDataBox();
         clearInterval(intervalId);
-        createBlocks(choosingLevel + additionalTier, true);
+        createBlocks(choosingLevel + additionalTier, true, false);
     }
 }
 
