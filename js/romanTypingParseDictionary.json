@@ -181,7 +181,7 @@
   },
   {
     "Pattern": "ん",
-    "TypePattern": ["nn", "xn"]
+    "TypePattern": ["nn", "xn", "n'"]
   },
   {
     "Pattern": "が",
@@ -1002,11 +1002,11 @@
   },
   {
     "Pattern": "んか",
-    "TypePattern": ["nka", "nca", "nnka", "nnca", "xnka", "xnca"]
+    "TypePattern": ["nka", "nca", "nnka", "nnca", "xnka", "xnca", "n'ka", "n'ca"]
   },
   {
     "Pattern": "んき",
-    "TypePattern": ["nki", "nnki", "xnki"]
+    "TypePattern": ["nki", "nnki", "xnki", "n'ki"]
   },
   {
     "Pattern": "んく",
@@ -1019,20 +1019,23 @@
       "nnqu",
       "xnku",
       "xncu",
-      "xnqu"
+      "xnqu",
+      "n'ku",
+      "n'cu",
+      "n'qu"
     ]
   },
   {
     "Pattern": "んけ",
-    "TypePattern": ["nke", "nnke", "xnke"]
+    "TypePattern": ["nke", "nnke", "xnke", "n'ke"]
   },
   {
     "Pattern": "んこ",
-    "TypePattern": ["nko", "nco", "nnko", "nnco", "xnko", "xnco"]
+    "TypePattern": ["nko", "nco", "nnko", "nnco", "xnko", "xnco", "n'ko", "n'co"]
   },
   {
     "Pattern": "んさ",
-    "TypePattern": ["nsa", "nnsa", "xnsa"]
+    "TypePattern": ["nsa", "nnsa", "xnsa", "n'sa"]
   },
   {
     "Pattern": "んし",
@@ -1045,208 +1048,211 @@
       "nnci",
       "xnsi",
       "xnshi",
-      "xnci"
+      "xnci",
+      "n'si",
+      "n'shi",
+      "n'ci"
     ]
   },
   {
     "Pattern": "んす",
-    "TypePattern": ["nsu", "nnsu", "xnsu"]
+    "TypePattern": ["nsu", "nnsu", "xnsu", "n'su"]
   },
   {
     "Pattern": "んせ",
-    "TypePattern": ["nse", "nce", "nnse", "nnce", "xnse", "xnce"]
+    "TypePattern": ["nse", "nce", "nnse", "nnce", "xnse", "xnce", "n'se", "n'ce"]
   },
   {
     "Pattern": "んそ",
-    "TypePattern": ["nso", "nnso", "xnso"]
+    "TypePattern": ["nso", "nnso", "xnso", "n'so"]
   },
   {
     "Pattern": "んた",
-    "TypePattern": ["nta", "nnta", "xnta"]
+    "TypePattern": ["nta", "nnta", "xnta", "n'ta"]
   },
   {
     "Pattern": "んち",
-    "TypePattern": ["nti", "nchi", "nnti", "nnchi", "xnti", "xnchi"]
+    "TypePattern": ["nti", "nchi", "nnti", "nnchi", "xnti", "xnchi", "n'ti", "n'chi"]
   },
   {
     "Pattern": "んつ",
-    "TypePattern": ["ntu", "ntsu", "nntu", "nntsu", "xntu", "xntsu"]
+    "TypePattern": ["ntu", "ntsu", "nntu", "nntsu", "xntu", "xntsu", "n'tu", "n'tsu"]
   },
   {
     "Pattern": "んて",
-    "TypePattern": ["nte", "nnte", "xnte"]
+    "TypePattern": ["nte", "nnte", "xnte", "n'te"]
   },
   {
     "Pattern": "んと",
-    "TypePattern": ["nto", "nnto", "xnto"]
+    "TypePattern": ["nto", "nnto", "xnto", "n'to"]
   },
   {
     "Pattern": "んは",
-    "TypePattern": ["nha", "nnha", "xnha"]
+    "TypePattern": ["nha", "nnha", "xnha", "n'ha"]
   },
   {
     "Pattern": "んひ",
-    "TypePattern": ["nhi", "nnhi", "xnhi"]
+    "TypePattern": ["nhi", "nnhi", "xnhi", "n'hi"]
   },
   {
     "Pattern": "んふ",
-    "TypePattern": ["nfu", "nhu", "nnfu", "nnhu", "xnfu", "xnhu"]
+    "TypePattern": ["nfu", "nhu", "nnfu", "nnhu", "xnfu", "xnhu", "n'fu", "n'hu"]
   },
   {
     "Pattern": "んへ",
-    "TypePattern": ["nhe", "nnhe", "xnhe"]
+    "TypePattern": ["nhe", "nnhe", "xnhe", "n'he"]
   },
   {
     "Pattern": "んほ",
-    "TypePattern": ["nho", "nnho", "xnho"]
+    "TypePattern": ["nho", "nnho", "xnho", "n'ho"]
   },
   {
     "Pattern": "んま",
-    "TypePattern": ["nma", "nnma", "xnma"]
+    "TypePattern": ["nma", "nnma", "xnma", "n'ma"]
   },
   {
     "Pattern": "んみ",
-    "TypePattern": ["nmi", "nnmi", "xnmi"]
+    "TypePattern": ["nmi", "nnmi", "xnmi", "n'mi"]
   },
   {
     "Pattern": "んむ",
-    "TypePattern": ["nmu", "nnmu", "xnmu"]
+    "TypePattern": ["nmu", "nnmu", "xnmu", "n'mu"]
   },
   {
     "Pattern": "んめ",
-    "TypePattern": ["nme", "nnme", "xnme"]
+    "TypePattern": ["nme", "nnme", "xnme", "n'me"]
   },
   {
     "Pattern": "んも",
-    "TypePattern": ["nmo", "nnmo", "xnmo"]
+    "TypePattern": ["nmo", "nnmo", "xnmo", "n'mo"]
   },
   {
     "Pattern": "んら",
-    "TypePattern": ["nra", "nnra", "xnra"]
+    "TypePattern": ["nra", "nnra", "xnra", "n'ra"]
   },
   {
     "Pattern": "んり",
-    "TypePattern": ["nri", "nnri", "xnri"]
+    "TypePattern": ["nri", "nnri", "xnri", "n'ri"]
   },
   {
     "Pattern": "んる",
-    "TypePattern": ["nru", "nnru", "xnru"]
+    "TypePattern": ["nru", "nnru", "xnru", "n'ru"]
   },
   {
     "Pattern": "んれ",
-    "TypePattern": ["nre", "nnre", "xnre"]
+    "TypePattern": ["nre", "nnre", "xnre", "n're"]
   },
   {
     "Pattern": "んろ",
-    "TypePattern": ["nro", "nnro", "xnro"]
+    "TypePattern": ["nro", "nnro", "xnro", "n'ro"]
   },
   {
     "Pattern": "んわ",
-    "TypePattern": ["nwa", "nnwa", "xnwa"]
+    "TypePattern": ["nwa", "nnwa", "xnwa", "n'wa"]
   },
   {
     "Pattern": "んを",
-    "TypePattern": ["nwo", "nnwo", "xnwo"]
+    "TypePattern": ["nwo", "nnwo", "xnwo", "n'wo"]
   },
   {
     "Pattern": "んが",
-    "TypePattern": ["nga", "nnga", "xnga"]
+    "TypePattern": ["nga", "nnga", "xnga", "n'ga"]
   },
   {
     "Pattern": "んぎ",
-    "TypePattern": ["ngi", "nngi", "xngi"]
+    "TypePattern": ["ngi", "nngi", "xngi", "n'gi"]
   },
   {
     "Pattern": "んぐ",
-    "TypePattern": ["ngu", "nngu", "xngu"]
+    "TypePattern": ["ngu", "nngu", "xngu", "n'gu"]
   },
   {
     "Pattern": "んげ",
-    "TypePattern": ["nge", "nnge", "xnge"]
+    "TypePattern": ["nge", "nnge", "xnge", "n'ge"]
   },
   {
     "Pattern": "んご",
-    "TypePattern": ["ngo", "nngo", "xngo"]
+    "TypePattern": ["ngo", "nngo", "xngo", "n'go"]
   },
   {
     "Pattern": "んざ",
-    "TypePattern": ["nza", "nnza", "xnza"]
+    "TypePattern": ["nza", "nnza", "xnza", "n'za"]
   },
   {
     "Pattern": "んじ",
-    "TypePattern": ["nji", "nzi", "nnji", "nnzi", "xnji", "xnzi"]
+    "TypePattern": ["nji", "nzi", "nnji", "nnzi", "xnji", "xnzi", "n'ji", "n'zi"]
   },
   {
     "Pattern": "んず",
-    "TypePattern": ["nzu", "nnzu", "xnzu"]
+    "TypePattern": ["nzu", "nnzu", "xnzu", "n'zu"]
   },
   {
     "Pattern": "んぜ",
-    "TypePattern": ["nze", "nnze", "xnze"]
+    "TypePattern": ["nze", "nnze", "xnze", "n'ze"]
   },
   {
     "Pattern": "んぞ",
-    "TypePattern": ["nzo", "nnzo", "xnze"]
+    "TypePattern": ["nzo", "nnzo", "xnzo", "n'zo"]
   },
   {
     "Pattern": "んだ",
-    "TypePattern": ["nda", "nnda", "xnda"]
+    "TypePattern": ["nda", "nnda", "xnda", "n'da"]
   },
   {
     "Pattern": "んぢ",
-    "TypePattern": ["ndi", "nndi", "xndi"]
+    "TypePattern": ["ndi", "nndi", "xndi", "n'di"]
   },
   {
     "Pattern": "んづ",
-    "TypePattern": ["ndu", "nndu", "xndu"]
+    "TypePattern": ["ndu", "nndu", "xndu", "n'du"]
   },
   {
     "Pattern": "んで",
-    "TypePattern": ["nde", "nnde", "xnde"]
+    "TypePattern": ["nde", "nnde", "xnde", "n'de"]
   },
   {
     "Pattern": "んど",
-    "TypePattern": ["ndo", "nndo", "xndo"]
+    "TypePattern": ["ndo", "nndo", "xndo", "n'do"]
   },
   {
     "Pattern": "んば",
-    "TypePattern": ["nba", "nnba", "xnba"]
+    "TypePattern": ["nba", "nnba", "xnba", "n'ba"]
   },
   {
     "Pattern": "んび",
-    "TypePattern": ["nbi", "nnbi", "xnbi"]
+    "TypePattern": ["nbi", "nnbi", "xnbi", "n'bi"]
   },
   {
     "Pattern": "んぶ",
-    "TypePattern": ["nbu", "nnbu", "xnbu"]
+    "TypePattern": ["nbu", "nnbu", "xnbu", "n'bu"]
   },
   {
     "Pattern": "んべ",
-    "TypePattern": ["nbe", "nnbe", "xnbe"]
+    "TypePattern": ["nbe", "nnbe", "xnbe", "n'be"]
   },
   {
     "Pattern": "んぼ",
-    "TypePattern": ["nbo", "nnbo", "xnbo"]
+    "TypePattern": ["nbo", "nnbo", "xnbo", "n'bo"]
   },
   {
     "Pattern": "んぱ",
-    "TypePattern": ["npa", "nnpa", "xnpa"]
+    "TypePattern": ["npa", "nnpa", "xnpa", "n'pa"]
   },
   {
     "Pattern": "んぴ",
-    "TypePattern": ["npi", "nnpi", "xnpi"]
+    "TypePattern": ["npi", "nnpi", "xnpi", "n'pi"]
   },
   {
     "Pattern": "んぷ",
-    "TypePattern": ["npu", "nnpu", "xnpu"]
+    "TypePattern": ["npu", "nnpu", "xnpu", "n'pu"]
   },
   {
     "Pattern": "んぺ",
-    "TypePattern": ["npe", "nnpe", "xnpe"]
+    "TypePattern": ["npe", "nnpe", "xnpe", "n'pe"]
   },
   {
     "Pattern": "んぽ",
-    "TypePattern": ["npo", "nnpo", "xnpo"]
+    "TypePattern": ["npo", "nnpo", "xnpo", "n'po"]
   },
   {
     "Pattern": "んきゃ",
@@ -1259,7 +1265,10 @@
       "nnkixya",
       "xnkya",
       "xnkilya",
-      "xnkixya"
+      "xnkixya",
+      "n'kya",
+      "n'kilya",
+      "n'kixya"
     ]
   },
   {
@@ -1279,7 +1288,12 @@
       "xnkili",
       "xnkilyi",
       "xnkixi",
-      "xnkixyi"
+      "xnkixyi",
+      "n'kyi",
+      "n'kili",
+      "n'kilyi",
+      "n'kixi",
+      "n'kixyi"
     ]
   },
   {
@@ -1293,7 +1307,10 @@
       "nnkixyu",
       "xnkyu",
       "xnkilyu",
-      "xnkixyu"
+      "xnkixyu",
+      "n'kyu",
+      "n'kilyu",
+      "n'kixyu"
     ]
   },
   {
@@ -1313,7 +1330,12 @@
       "xnkile",
       "xnkilye",
       "xnkixe",
-      "xnkixye"
+      "xnkixye",
+      "n'kye",
+      "n'kile",
+      "n'kilye",
+      "n'kixe",
+      "n'kixye"
     ]
   },
   {
@@ -1327,7 +1349,10 @@
       "nnkixyo",
       "xnkyo",
       "xnkilyo",
-      "xnkixyo"
+      "xnkixyo",
+      "n'kyo",
+      "n'kilyo",
+      "n'kixyo"
     ]
   },
   {
@@ -1341,7 +1366,10 @@
       "nngixya",
       "xngya",
       "xngilya",
-      "xngixya"
+      "xngixya",
+      "n'gya",
+      "n'gilya",
+      "n'gixya"
     ]
   },
   {
@@ -1361,7 +1389,12 @@
       "xngili",
       "xngilyi",
       "xngixi",
-      "xngixyi"
+      "xngixyi",
+      "n'gyi",
+      "n'gili",
+      "n'gilyi",
+      "n'gixi",
+      "n'gixyi"
     ]
   },
   {
@@ -1375,7 +1408,10 @@
       "nngixyu",
       "xngyu",
       "xngilyu",
-      "xngixyu"
+      "xngixyu",
+      "n'gyu",
+      "n'gilyu",
+      "n'gixyu"
     ]
   },
   {
@@ -1395,7 +1431,12 @@
       "xngile",
       "xngilye",
       "xngixe",
-      "xngixye"
+      "xngixye",
+      "n'gye",
+      "n'gile",
+      "n'gilye",
+      "n'gixe",
+      "n'gixye"
     ]
   },
   {
@@ -1409,7 +1450,10 @@
       "nngixyo",
       "xngyo",
       "xngilyo",
-      "xngixyo"
+      "xngixyo",
+      "n'gyo",
+      "n'gilyo",
+      "n'gixyo"
     ]
   },
   {
@@ -1438,7 +1482,15 @@
       "xnshilya",
       "xnshixya",
       "xncilya",
-      "xncixya"
+      "xncixya",
+      "n'sya",
+      "n'sha",
+      "n'silya",
+      "n'sixya",
+      "n'shilya",
+      "n'shixya",
+      "n'cilya",
+      "n'cixya"
     ]
   },
   {
@@ -1482,7 +1534,20 @@
       "xncili",
       "xncixi",
       "xncilyi",
-      "xncixyi"
+      "xncixyi",
+      "n'syi",
+      "n'sili",
+      "n'sixi",
+      "n'silyi",
+      "n'sixyi",
+      "n'shili",
+      "n'shixi",
+      "n'shilyi",
+      "n'shixyi",
+      "n'cili",
+      "n'cixi",
+      "n'cilyi",
+      "n'cixyi"
     ]
   },
   {
@@ -1511,7 +1576,15 @@
       "xnshilyu",
       "xnshixyu",
       "xncilyu",
-      "xncixyu"
+      "xncixyu",
+      "n'syu",
+      "n'shu",
+      "n'silyu",
+      "n'sixyu",
+      "n'shilyu",
+      "n'shixyu",
+      "n'cilyu",
+      "n'cixyu"
     ]
   },
   {
@@ -1558,7 +1631,21 @@
       "xncile",
       "xncilye",
       "xncixe",
-      "xncixye"
+      "xncixye",
+      "n'sye",
+      "n'she",
+      "n'sile",
+      "n'silye",
+      "n'sixe",
+      "n'sixye",
+      "n'shile",
+      "n'shilye",
+      "n'shixe",
+      "n'shixye",
+      "n'cile",
+      "n'cilye",
+      "n'cixe",
+      "n'cixye"
     ]
   },
   {
@@ -1587,7 +1674,15 @@
       "xnshilyo",
       "xnshixyo",
       "xncilyo",
-      "xncixyo"
+      "xncixyo",
+      "n'syo",
+      "n'sho",
+      "n'silyo",
+      "n'sixyo",
+      "n'shilyo",
+      "n'shixyo",
+      "n'cilyo",
+      "n'cixyo"
     ]
   },
   {
@@ -1613,7 +1708,14 @@
       "xnjilya",
       "xnjixya",
       "xnzilya",
-      "xnzixya"
+      "xnzixya",
+      "n'ja",
+      "n'jya",
+      "n'zya",
+      "n'jilya",
+      "n'jixya",
+      "n'zilya",
+      "n'zixya"
     ]
   },
   {
@@ -1648,7 +1750,17 @@
       "xnzili",
       "xnzixi",
       "xnzilyi",
-      "xnzixyi"
+      "xnzixyi",
+      "n'jyi",
+      "n'zyi",
+      "n'jili",
+      "n'jixi",
+      "n'jilyi",
+      "n'jixyi",
+      "n'zili",
+      "n'zixi",
+      "n'zilyi",
+      "n'zixyi"
     ]
   },
   {
@@ -1674,7 +1786,14 @@
       "xnjilyu",
       "xnjixyu",
       "xnzilyu",
-      "xnzixyu"
+      "xnzixyu",
+      "n'ju",
+      "n'jyu",
+      "n'zyu",
+      "n'jilyu",
+      "n'jixyu",
+      "n'zilyu",
+      "n'zixyu"
     ]
   },
   {
@@ -1712,7 +1831,18 @@
       "xnzile",
       "xnzixe",
       "xnzilye",
-      "xnzixye"
+      "xnzixye",
+      "n'je",
+      "n'jye",
+      "n'zye",
+      "n'jile",
+      "n'jixe",
+      "n'jilye",
+      "n'jixye",
+      "n'zile",
+      "n'zixe",
+      "n'zilye",
+      "n'zixye"
     ]
   },
   {
@@ -1738,7 +1868,14 @@
       "xnjilyo",
       "xnjixyo",
       "xnzilyo",
-      "xnzixyo"
+      "xnzixyo",
+      "n'jo",
+      "n'jyo",
+      "n'zyo",
+      "n'jilyo",
+      "n'jixyo",
+      "n'zilyo",
+      "n'zixyo"
     ]
   },
   {
@@ -1764,7 +1901,14 @@
       "xntilya",
       "xntixya",
       "xnchilya",
-      "xnchixya"
+      "xnchixya",
+      "n'tya",
+      "n'cha",
+      "n'cya",
+      "n'tilya",
+      "n'tixya",
+      "n'chilya",
+      "n'chixya"
     ]
   },
   {
@@ -1799,7 +1943,17 @@
       "xnchili",
       "xnchixi",
       "xnchilyi",
-      "xnchixyi"
+      "xnchixyi",
+      "n'tyi",
+      "n'cyi",
+      "n'tili",
+      "n'tixi",
+      "n'tilyi",
+      "n'tixyi",
+      "n'chili",
+      "n'chixi",
+      "n'chilyi",
+      "n'chixyi"
     ]
   },
   {
@@ -1825,7 +1979,14 @@
       "xntilyu",
       "xntixyu",
       "xnchilyu",
-      "xnchixyu"
+      "xnchixyu",
+      "n'tyu",
+      "n'chu",
+      "n'cyu",
+      "n'tilyu",
+      "n'tixyu",
+      "n'chilyu",
+      "n'chixyu"
     ]
   },
   {
@@ -1863,7 +2024,18 @@
       "xnchile",
       "xnchixe",
       "xnchilye",
-      "xnchixye"
+      "xnchixye",
+      "n'tye",
+      "n'che",
+      "n'cye",
+      "n'tile",
+      "n'tixe",
+      "n'tilye",
+      "n'tixye",
+      "n'chile",
+      "n'chixe",
+      "n'chilye",
+      "n'chixye"
     ]
   },
   {
@@ -1889,7 +2061,14 @@
       "xntilyo",
       "xntixyo",
       "xnchilyo",
-      "xnchixyo"
+      "xnchixyo",
+      "n'tyo",
+      "n'cho",
+      "n'cyo",
+      "n'tilyo",
+      "n'tixyo",
+      "n'chilyo",
+      "n'chixyo"
     ]
   },
   {
@@ -1903,7 +2082,10 @@
       "xndilyi",
       "ndixyi",
       "nndixyi",
-      "xndixyi"
+      "xndixyi",
+      "n'dyi",
+      "n'dilyi",
+      "n'dixyi"
     ]
   },
   {
@@ -1917,7 +2099,10 @@
       "nndixya",
       "xndya",
       "xndilya",
-      "xndixya"
+      "xndixya",
+      "n'dya",
+      "n'dilya",
+      "n'dixya"
     ]
   },
   {
@@ -1931,7 +2116,10 @@
       "nndixyu",
       "xndyu",
       "xndilyu",
-      "xndixyu"
+      "xndixyu",
+      "n'dyu",
+      "n'dilyu",
+      "n'dixyu"
     ]
   },
   {
@@ -1951,7 +2139,12 @@
       "xndile",
       "xndixe",
       "xndilye",
-      "xndixye"
+      "xndixye",
+      "n'dye",
+      "n'dile",
+      "n'dixe",
+      "n'dilye",
+      "n'dixye"
     ]
   },
   {
@@ -1965,7 +2158,10 @@
       "nndixyo",
       "xndyo",
       "xndilyo",
-      "xndixyo"
+      "xndixyo",
+      "n'dyo",
+      "n'dilyo",
+      "n'dixyo"
     ]
   },
   {
@@ -1985,7 +2181,12 @@
       "xntula",
       "xntuxa",
       "xntsula",
-      "xntsuxa"
+      "xntsuxa",
+      "n'tsa",
+      "n'tula",
+      "n'tuxa",
+      "n'tsula",
+      "n'tsuxa"
     ]
   },
   {
@@ -2017,7 +2218,16 @@
       "xntsuli",
       "xntsuxi",
       "xntsulyi",
-      "xntsuxyi"
+      "xntsuxyi",
+      "n'tsi",
+      "n'tuli",
+      "n'tuxi",
+      "n'tulyi",
+      "n'tuxyi",
+      "n'tsuli",
+      "n'tsuxi",
+      "n'tsulyi",
+      "n'tsuxyi"
     ]
   },
   {
@@ -2049,7 +2259,16 @@
       "xntsule",
       "xntsuxe",
       "xntsulye",
-      "xntsuxye"
+      "xntsuxye",
+      "n'tse",
+      "n'tule",
+      "n'tuxe",
+      "n'tulye",
+      "n'tuxye",
+      "n'tsule",
+      "n'tsuxe",
+      "n'tsulye",
+      "n'tsuxye"
     ]
   },
   {
@@ -2069,7 +2288,12 @@
       "xntulo",
       "xntuxo",
       "xntsulo",
-      "xntsuxo"
+      "xntsuxo",
+      "n'tso",
+      "n'tulo",
+      "n'tuxo",
+      "n'tsulo",
+      "n'tsuxo"
     ]
   },
   {
@@ -2083,7 +2307,10 @@
       "nntexya",
       "xntha",
       "xntelya",
-      "xntexya"
+      "xntexya",
+      "n'tha",
+      "n'telya",
+      "n'texya"
     ]
   },
   {
@@ -2103,7 +2330,12 @@
       "xnteli",
       "xntexi",
       "xntelyi",
-      "xntexyi"
+      "xntexyi",
+      "n'thi",
+      "n'teli",
+      "n'texi",
+      "n'telyi",
+      "n'texyi"
     ]
   },
   {
@@ -2117,7 +2349,10 @@
       "nntexyu",
       "xnthu",
       "xntelyu",
-      "xntexyu"
+      "xntexyu",
+      "n'thu",
+      "n'telyu",
+      "n'texyu"
     ]
   },
   {
@@ -2137,7 +2372,12 @@
       "xntele",
       "xntexe",
       "xntelye",
-      "xntexye"
+      "xntexye",
+      "n'the",
+      "n'tele",
+      "n'texe",
+      "n'telye",
+      "n'texye"
     ]
   },
   {
@@ -2151,7 +2391,10 @@
       "nntexyo",
       "xntho",
       "xntelyo",
-      "xntexyo"
+      "xntexyo",
+      "n'tho",
+      "n'telyo",
+      "n'texyo"
     ]
   },
   {
@@ -2165,7 +2408,10 @@
       "nndexya",
       "xndha",
       "xndelya",
-      "xndexya"
+      "xndexya",
+      "n'dha",
+      "n'delya",
+      "n'dexya"
     ]
   },
   {
@@ -2185,7 +2431,12 @@
       "xndeli",
       "xndexi",
       "xndelyi",
-      "xndexyi"
+      "xndexyi",
+      "n'dhi",
+      "n'deli",
+      "n'dexi",
+      "n'delyi",
+      "n'dexyi"
     ]
   },
   {
@@ -2199,7 +2450,10 @@
       "nndexyu",
       "xndhu",
       "xndelyu",
-      "xndexyu"
+      "xndexyu",
+      "n'dhu",
+      "n'delyu",
+      "n'dexyu"
     ]
   },
   {
@@ -2219,7 +2473,12 @@
       "xndele",
       "xndexe",
       "xndelye",
-      "xndexye"
+      "xndexye",
+      "n'dhe",
+      "n'dele",
+      "n'dexe",
+      "n'delye",
+      "n'dexye"
     ]
   },
   {
@@ -2233,7 +2492,10 @@
       "nndexyo",
       "xndho",
       "xndelyo",
-      "xndexyo"
+      "xndexyo",
+      "n'dho",
+      "n'delyo",
+      "n'dexyo"
     ]
   },
   {
@@ -2247,7 +2509,10 @@
       "nntoxa",
       "xntwa",
       "xntola",
-      "xntoxa"
+      "xntoxa",
+      "n'twa",
+      "n'tola",
+      "n'toxa"
     ]
   },
   {
@@ -2267,7 +2532,12 @@
       "xntoli",
       "xntoxi",
       "xntolyi",
-      "xntoxyi"
+      "xntoxyi",
+      "n'twi",
+      "n'toli",
+      "n'toxi",
+      "n'tolyi",
+      "n'toxyi"
     ]
   },
   {
@@ -2281,7 +2551,10 @@
       "nntoxu",
       "xntwu",
       "xntolu",
-      "xntoxu"
+      "xntoxu",
+      "n'twu",
+      "n'tolu",
+      "n'toxu"
     ]
   },
   {
@@ -2301,7 +2574,12 @@
       "xntole",
       "xntoxe",
       "xntolye",
-      "xntoxye"
+      "xntoxye",
+      "n'twe",
+      "n'tole",
+      "n'toxe",
+      "n'tolye",
+      "n'toxye"
     ]
   },
   {
@@ -2315,7 +2593,10 @@
       "nntoxo",
       "xntwo",
       "xntolo",
-      "xntoxo"
+      "xntoxo",
+      "n'two",
+      "n'tolo",
+      "n'toxo"
     ]
   },
   {
@@ -2329,7 +2610,10 @@
       "nndoxa",
       "xndwa",
       "xndola",
-      "xndoxa"
+      "xndoxa",
+      "n'dwa",
+      "n'dola",
+      "n'doxa"
     ]
   },
   {
@@ -2349,7 +2633,12 @@
       "xndoli",
       "xndoxi",
       "xndolyi",
-      "xndoxyi"
+      "xndoxyi",
+      "n'dwi",
+      "n'doli",
+      "n'doxi",
+      "n'dolyi",
+      "n'doxyi"
     ]
   },
   {
@@ -2363,7 +2652,10 @@
       "nndoxu",
       "xndwu",
       "xndolu",
-      "xndoxu"
+      "xndoxu",
+      "n'dwu",
+      "n'dolu",
+      "n'doxu"
     ]
   },
   {
@@ -2383,7 +2675,12 @@
       "xndole",
       "xndoxe",
       "xndolye",
-      "xndoxye"
+      "xndoxye",
+      "n'dwe",
+      "n'dole",
+      "n'doxe",
+      "n'dolye",
+      "n'doxye"
     ]
   },
   {
@@ -2397,7 +2694,10 @@
       "nndoxo",
       "xndwo",
       "xndolo",
-      "xndoxo"
+      "xndoxo",
+      "n'dwo",
+      "n'dolo",
+      "n'doxo"
     ]
   },
   {
@@ -2411,7 +2711,10 @@
       "nnpixya",
       "xnpya",
       "xnpilya",
-      "xnpixya"
+      "xnpixya",
+      "n'pya",
+      "n'pilya",
+      "n'pixya"
     ]
   },
   {
@@ -2431,7 +2734,12 @@
       "xnpili",
       "xnpixi",
       "xnpilyi",
-      "xnpixyi"
+      "xnpixyi",
+      "n'pyi",
+      "n'pili",
+      "n'pixi",
+      "n'pilyi",
+      "n'pixyi"
     ]
   },
   {
@@ -2445,7 +2753,10 @@
       "nnpixyu",
       "xnpyu",
       "xnpilyu",
-      "xnpixyu"
+      "xnpixyu",
+      "n'pyu",
+      "n'pilyu",
+      "n'pixyu"
     ]
   },
   {
@@ -2465,7 +2776,12 @@
       "xnpile",
       "xnpixe",
       "xnpilye",
-      "xnpixye"
+      "xnpixye",
+      "n'pye",
+      "n'pile",
+      "n'pixe",
+      "n'pilye",
+      "n'pixye"
     ]
   },
   {
@@ -2479,7 +2795,10 @@
       "nnpixyo",
       "xnpyo",
       "xnpilyo",
-      "xnpixyo"
+      "xnpixyo",
+      "n'pyo",
+      "n'pilyo",
+      "n'pixyo"
     ]
   },
   {
@@ -2493,7 +2812,10 @@
       "nnhixya",
       "xnhya",
       "xnhilya",
-      "xnhixya"
+      "xnhixya",
+      "n'hya",
+      "n'hilya",
+      "n'hixya"
     ]
   },
   {
@@ -2513,7 +2835,12 @@
       "xnhili",
       "xnhixi",
       "xnhilyi",
-      "xnhixyi"
+      "xnhixyi",
+      "n'hyi",
+      "n'hili",
+      "n'hixi",
+      "n'hilyi",
+      "n'hixyi"
     ]
   },
   {
@@ -2527,7 +2854,10 @@
       "nnhixyu",
       "xnhyu",
       "xnhilyu",
-      "xnhixyu"
+      "xnhixyu",
+      "n'hyu",
+      "n'hilyu",
+      "n'hixyu"
     ]
   },
   {
@@ -2547,7 +2877,12 @@
       "xnhile",
       "xnhixe",
       "xnhilye",
-      "xnhixye"
+      "xnhixye",
+      "n'hye",
+      "n'hile",
+      "n'hixe",
+      "n'hilye",
+      "n'hixye"
     ]
   },
   {
@@ -2561,7 +2896,10 @@
       "nnhixyo",
       "xnhyo",
       "xnhilyo",
-      "xnhixyo"
+      "xnhixyo",
+      "n'hyo",
+      "n'hilyo",
+      "n'hixyo"
     ]
   },
   {
@@ -2575,7 +2913,10 @@
       "nnbixya",
       "xnbya",
       "xnbilya",
-      "xnbixya"
+      "xnbixya",
+      "n'bya",
+      "n'bilya",
+      "n'bixya"
     ]
   },
   {
@@ -2595,7 +2936,12 @@
       "xnbili",
       "xnbixi",
       "xnbilyi",
-      "xnbixyi"
+      "xnbixyi",
+      "n'byi",
+      "n'bili",
+      "n'bixi",
+      "n'bilyi",
+      "n'bixyi"
     ]
   },
   {
@@ -2609,7 +2955,10 @@
       "nnbixyu",
       "xnbyu",
       "xnbilyu",
-      "xnbixyu"
+      "xnbixyu",
+      "n'byu",
+      "n'bilyu",
+      "n'bixyu"
     ]
   },
   {
@@ -2629,7 +2978,12 @@
       "xnbile",
       "xnbixe",
       "xnbilye",
-      "xnbixye"
+      "xnbixye",
+      "n'bye",
+      "n'bile",
+      "n'bixe",
+      "n'bilye",
+      "n'bixye"
     ]
   },
   {
@@ -2643,7 +2997,10 @@
       "nnbixyo",
       "xnbyo",
       "xnbilyo",
-      "xnbixyo"
+      "xnbixyo",
+      "n'byo",
+      "n'bilyo",
+      "n'bixyo"
     ]
   },
   {
@@ -2663,7 +3020,12 @@
       "xnfulya",
       "xnfuxya",
       "xnhulya",
-      "xnhuxya"
+      "xnhuxya",
+      "n'fya",
+      "n'fulya",
+      "n'fuxya",
+      "n'hulya",
+      "n'huxya"
     ]
   },
   {
@@ -2698,7 +3060,17 @@
       "xnhuli",
       "xnhuxi",
       "xnhulyi",
-      "xnhuxyi"
+      "xnhuxyi",
+      "n'fi",
+      "n'fyi",
+      "n'fuli",
+      "n'fuxi",
+      "n'fulyi",
+      "n'fuxyi",
+      "n'huli",
+      "n'huxi",
+      "n'hulyi",
+      "n'huxyi"
     ]
   },
   {
@@ -2718,7 +3090,12 @@
       "xnfulyu",
       "xnfuxyu",
       "xnhulyu",
-      "xnhuxyu"
+      "xnhuxyu",
+      "n'fyu",
+      "n'fulyu",
+      "n'fuxyu",
+      "n'hulyu",
+      "n'huxyu"
     ]
   },
   {
@@ -2753,7 +3130,17 @@
       "xnhule",
       "xnhuxe",
       "xnhulye",
-      "xnhuxye"
+      "xnhuxye",
+      "n'fe",
+      "n'fye",
+      "n'fule",
+      "n'fuxe",
+      "n'fulye",
+      "n'fuxye",
+      "n'hule",
+      "n'huxe",
+      "n'hulye",
+      "n'huxye"
     ]
   },
   {
@@ -2773,7 +3160,12 @@
       "xnfulyo",
       "xnfuxyo",
       "xnhulyo",
-      "xnhuxyo"
+      "xnhuxyo",
+      "n'fyo",
+      "n'fulyo",
+      "n'fuxyo",
+      "n'hulyo",
+      "n'huxyo"
     ]
   },
   {
@@ -2793,7 +3185,12 @@
       "xnfula",
       "xnfuxa",
       "xnhula",
-      "xnhuxa"
+      "xnhuxa",
+      "n'fa",
+      "n'fula",
+      "n'fuxa",
+      "n'hula",
+      "n'huxa"
     ]
   },
   {
@@ -2813,7 +3210,12 @@
       "xnfulo",
       "xnfuxo",
       "xnhulo",
-      "xnhuxo"
+      "xnhuxo",
+      "n'fo",
+      "n'fulo",
+      "n'fuxo",
+      "n'hulo",
+      "n'huxo"
     ]
   },
   {
@@ -2827,7 +3229,10 @@
       "nnmixya",
       "xnmya",
       "xnmilya",
-      "xnmixya"
+      "xnmixya",
+      "n'mya",
+      "n'milya",
+      "n'mixya"
     ]
   },
   {
@@ -2847,7 +3252,12 @@
       "xnmili",
       "xnmixi",
       "xnmilyi",
-      "xnmixyi"
+      "xnmixyi",
+      "n'myi",
+      "n'mili",
+      "n'mixi",
+      "n'milyi",
+      "n'mixyi"
     ]
   },
   {
@@ -2861,7 +3271,10 @@
       "nnmixyu",
       "xnmyu",
       "xnmilyu",
-      "xnmixyu"
+      "xnmixyu",
+      "n'myu",
+      "n'milyu",
+      "n'mixyu"
     ]
   },
   {
@@ -2881,7 +3294,12 @@
       "xnmile",
       "xnmixe",
       "xnilye",
-      "xnmixye"
+      "xnmixye",
+      "n'mye",
+      "n'mile",
+      "n'mixe",
+      "n'milye",
+      "n'mixye"
     ]
   },
   {
@@ -2895,7 +3313,10 @@
       "nnmixyo",
       "xnmyo",
       "xnmilyo",
-      "xnmixyo"
+      "xnmixyo",
+      "n'myo",
+      "n'milyo",
+      "n'mixyo"
     ]
   },
   {
@@ -2909,7 +3330,10 @@
       "nnrixya",
       "xnrya",
       "xnrilya",
-      "xnrixya"
+      "xnrixya",
+      "n'rya",
+      "n'rilya",
+      "n'rixya"
     ]
   },
   {
@@ -2929,7 +3353,12 @@
       "xnrili",
       "xnrixi",
       "xnrilyi",
-      "xnrixyi"
+      "xnrixyi",
+      "n'ryi",
+      "n'rili",
+      "n'rixi",
+      "n'rilyi",
+      "n'rixyi"
     ]
   },
   {
@@ -2943,7 +3372,10 @@
       "nnrixyu",
       "xnryu",
       "xnrilyu",
-      "xnrixyu"
+      "xnrixyu",
+      "n'ryu",
+      "n'rilyu",
+      "n'rixyu"
     ]
   },
   {
@@ -2963,7 +3395,12 @@
       "xnrile",
       "xnrixe",
       "xnrilye",
-      "xnrixye"
+      "xnrixye",
+      "n'rye",
+      "n'rile",
+      "n'rixe",
+      "n'rilye",
+      "n'rixye"
     ]
   },
   {
@@ -2977,7 +3414,10 @@
       "nnrixyo",
       "xnryo",
       "xnrilyo",
-      "xnrixyo"
+      "xnrixyo",
+      "n'ryo",
+      "n'rilyo",
+      "n'rixyo"
     ]
   },
   {
@@ -3003,7 +3443,14 @@
       "xnwula",
       "xnwuxa",
       "xnwhula",
-      "xnwhuxa"
+      "xnwhuxa",
+      "n'wha",
+      "n'ula",
+      "n'uxa",
+      "n'wula",
+      "n'wuxa",
+      "n'whula",
+      "n'whuxa"
     ]
   },
   {
@@ -3041,7 +3488,18 @@
       "xnwuxi",
       "xnwulyi",
       "xnwuxyi",
-      "xnwhuli"
+      "xnwhuli",
+      "n'wi",
+      "n'whi",
+      "n'uli",
+      "n'uxi",
+      "n'ulyi",
+      "n'uxyi",
+      "n'wuli",
+      "n'wuxi",
+      "n'wulyi",
+      "n'wuxyi",
+      "n'whuli"
     ]
   },
   {
@@ -3088,7 +3546,21 @@
       "xnwhule",
       "xnwhuxe",
       "xnwhulye",
-      "xnwhuxye"
+      "xnwhuxye",
+      "n'we",
+      "n'whe",
+      "n'ule",
+      "n'uxe",
+      "n'ulye",
+      "n'uxye",
+      "n'wule",
+      "n'wuxe",
+      "n'wulye",
+      "n'wuxye",
+      "n'whule",
+      "n'whuxe",
+      "n'whulye",
+      "n'whuxye"
     ]
   },
   {
@@ -3114,7 +3586,14 @@
       "xnwulo",
       "xnwuxo",
       "xnwhulo",
-      "xnwhuxo"
+      "xnwhuxo",
+      "n'who",
+      "n'ulo",
+      "n'uxo",
+      "n'wulo",
+      "n'wuxo",
+      "n'whulo",
+      "n'whuxo"
     ]
   },
   {
@@ -3128,7 +3607,10 @@
       "nnvuxa",
       "xnva",
       "xnvula",
-      "xnvuxa"
+      "xnvuxa",
+      "n'va",
+      "n'vula",
+      "n'vuxa"
     ]
   },
   {
@@ -3151,12 +3633,18 @@
       "xnvuli",
       "xnvuxi",
       "xnvulyi",
-      "xnvuxyi"
+      "xnvuxyi",
+      "n'vi",
+      "n'vyi",
+      "n'vuli",
+      "n'vuxi",
+      "n'vulyi",
+      "n'vuxyi"
     ]
   },
   {
     "Pattern": "んゔ",
-    "TypePattern": ["nvu", "nnvu", "xnvu"]
+    "TypePattern": ["nvu", "nnvu", "xnvu", "n'vu"]
   },
   {
     "Pattern": "んゔぇ",
@@ -3178,7 +3666,13 @@
       "xnvule",
       "xnvuxe",
       "xnvulye",
-      "xnvuxye"
+      "xnvuxye",
+      "n've",
+      "n'vye",
+      "n'vule",
+      "n'vuxe",
+      "n'vulye",
+      "n'vuxye"
     ]
   },
   {
@@ -3192,7 +3686,10 @@
       "nnvuxo",
       "xnvo",
       "xnvulo",
-      "xnvuxo"
+      "xnvuxo",
+      "n'vo",
+      "n'vulo",
+      "n'vuxo"
     ]
   },
   {
@@ -3206,7 +3703,10 @@
       "nnvuxya",
       "xnvya",
       "xnvulya",
-      "xnvuxya"
+      "xnvuxya",
+      "n'vya",
+      "n'vulya",
+      "n'vuxya"
     ]
   },
   {
@@ -3220,7 +3720,10 @@
       "nnvuxyu",
       "xnvyu",
       "xnvulyu",
-      "xnvuxyu"
+      "xnvuxyu",
+      "n'vyu",
+      "n'vulyu",
+      "n'vuxyu"
     ]
   },
   {
@@ -3234,24 +3737,27 @@
       "nnvuxyo",
       "xnvyo",
       "xnvulyo",
-      "xnvuxyo"
+      "xnvuxyo",
+      "n'vyo",
+      "n'vulyo",
+      "n'vuxyo"
     ]
   },
   {
     "Pattern": "んゐ",
-    "TypePattern": ["nwyi", "nnwyi", "xnwyi"]
+    "TypePattern": ["nwyi", "nnwyi", "xnwyi", "n'wyi"]
   },
   {
     "Pattern": "んゑ",
-    "TypePattern": ["nwye", "nnwye", "xnwye"]
+    "TypePattern": ["nwye", "nnwye", "xnwye", "n'wye"]
   },
   {
     "Pattern": "ん、",
-    "TypePattern": ["n,", "nn,", "xn,"]
+    "TypePattern": ["n,", "nn,", "xn,", "n',"]
   },
   {
     "Pattern": "ん ",
-    "TypePattern": ["n ", "nn ", "xn "]
+    "TypePattern": ["n ", "nn ", "xn ", "n' "]
   },
   {
     "Pattern": "っか",
@@ -6101,210 +6607,210 @@
   },
   {
     "Pattern": "んa",
-    "TypePattern": ["nna", "xna"]
+    "TypePattern": ["nna", "xna", "n'a"]
   },
   {
     "Pattern": "んb",
-    "TypePattern": ["nnb", "xnb"]
+    "TypePattern": ["nnb", "xnb", "n'b"]
   },
   {
     "Pattern": "んc",
-    "TypePattern": ["nnc", "xnc"]
+    "TypePattern": ["nnc", "xnc", "n'c"]
   },
   {
     "Pattern": "んd",
-    "TypePattern": ["nnd", "xnd"]
+    "TypePattern": ["nnd", "xnd", "n'd"]
   },
   {
     "Pattern": "んe",
-    "TypePattern": ["nne", "xne"]
+    "TypePattern": ["nne", "xne", "n'e"]
   },
   {
     "Pattern": "んf",
-    "TypePattern": ["nnf", "xnf"]
+    "TypePattern": ["nnf", "xnf", "n'f"]
   },
   {
     "Pattern": "んg",
-    "TypePattern": ["nng", "xng"]
+    "TypePattern": ["nng", "xng", "n'g"]
   },
   {
     "Pattern": "んh",
-    "TypePattern": ["nnh", "xnh"]
+    "TypePattern": ["nnh", "xnh", "n'h"]
   },
   {
     "Pattern": "んi",
-    "TypePattern": ["nni", "xni"]
+    "TypePattern": ["nni", "xni", "n'i"]
   },
   {
     "Pattern": "んj",
-    "TypePattern": ["nnj", "xnj"]
+    "TypePattern": ["nnj", "xnj", "n'j"]
   },
   {
     "Pattern": "んk",
-    "TypePattern": ["nnk", "xnk"]
+    "TypePattern": ["nnk", "xnk", "n'k"]
   },
   {
     "Pattern": "んl",
-    "TypePattern": ["nnl", "xnl"]
+    "TypePattern": ["nnl", "xnl", "n'l"]
   },
   {
     "Pattern": "んm",
-    "TypePattern": ["nnm", "xnm"]
+    "TypePattern": ["nnm", "xnm", "n'm"]
   },
   {
     "Pattern": "んn",
-    "TypePattern": ["nnn", "xnn"]
+    "TypePattern": ["nnn", "xnn", "n'n"]
   },
   {
     "Pattern": "んo",
-    "TypePattern": ["nno", "xno"]
+    "TypePattern": ["nno", "xno", "n'o"]
   },
   {
     "Pattern": "んp",
-    "TypePattern": ["nnp", "xnp"]
+    "TypePattern": ["nnp", "xnp", "n'p"]
   },
   {
     "Pattern": "んq",
-    "TypePattern": ["nnq", "xnq"]
+    "TypePattern": ["nnq", "xnq", "n'q"]
   },
   {
     "Pattern": "んr",
-    "TypePattern": ["nnr", "xnr"]
+    "TypePattern": ["nnr", "xnr", "n'r"]
   },
   {
     "Pattern": "んs",
-    "TypePattern": ["nns", "xns"]
+    "TypePattern": ["nns", "xns", "n's"]
   },
   {
     "Pattern": "んt",
-    "TypePattern": ["nnt", "xnt"]
+    "TypePattern": ["nnt", "xnt", "n't"]
   },
   {
     "Pattern": "んu",
-    "TypePattern": ["nnu", "xnu"]
+    "TypePattern": ["nnu", "xnu", "n'u"]
   },
   {
     "Pattern": "んv",
-    "TypePattern": ["nnv", "xnv"]
+    "TypePattern": ["nnv", "xnv", "n'v"]
   },
   {
     "Pattern": "んw",
-    "TypePattern": ["nnw", "xnw"]
+    "TypePattern": ["nnw", "xnw", "n'w"]
   },
   {
     "Pattern": "んx",
-    "TypePattern": ["nnx", "xnx"]
+    "TypePattern": ["nnx", "xnx", "n'x"]
   },
   {
     "Pattern": "んy",
-    "TypePattern": ["nny", "xny"]
+    "TypePattern": ["nny", "xny", "n'y"]
   },
   {
     "Pattern": "んz",
-    "TypePattern": ["nnz", "xnz"]
+    "TypePattern": ["nnz", "xnz", "n'z"]
   },
   {
     "Pattern": "んA",
-    "TypePattern": ["nnA", "xnA"]
+    "TypePattern": ["nnA", "xnA", "n'A"]
   },
   {
     "Pattern": "んB",
-    "TypePattern": ["nnB", "xnB"]
+    "TypePattern": ["nnB", "xnB", "n'B"]
   },
   {
     "Pattern": "んC",
-    "TypePattern": ["nnC", "xnC"]
+    "TypePattern": ["nnC", "xnC", "n'C"]
   },
   {
     "Pattern": "んD",
-    "TypePattern": ["nnD", "xnD"]
+    "TypePattern": ["nnD", "xnD", "n'D"]
   },
   {
     "Pattern": "んE",
-    "TypePattern": ["nnE", "xnE"]
+    "TypePattern": ["nnE", "xnE", "n'E"]
   },
   {
     "Pattern": "んF",
-    "TypePattern": ["nnF", "xnF"]
+    "TypePattern": ["nnF", "xnF", "n'F"]
   },
   {
     "Pattern": "んG",
-    "TypePattern": ["nnG", "xnG"]
+    "TypePattern": ["nnG", "xnG", "n'G"]
   },
   {
     "Pattern": "んH",
-    "TypePattern": ["nnH", "xnH"]
+    "TypePattern": ["nnH", "xnH", "n'H"]
   },
   {
     "Pattern": "んI",
-    "TypePattern": ["nnI", "xnI"]
+    "TypePattern": ["nnI", "xnI", "n'I"]
   },
   {
     "Pattern": "んJ",
-    "TypePattern": ["nnJ", "xnJ"]
+    "TypePattern": ["nnJ", "xnJ", "n'J"]
   },
   {
     "Pattern": "んK",
-    "TypePattern": ["nnK", "xnK"]
+    "TypePattern": ["nnK", "xnK", "n'K"]
   },
   {
     "Pattern": "んL",
-    "TypePattern": ["nnL", "xnL"]
+    "TypePattern": ["nnL", "xnL", "n'L"]
   },
   {
     "Pattern": "んM",
-    "TypePattern": ["nnM", "xnM"]
+    "TypePattern": ["nnM", "xnM", "n'M"]
   },
   {
     "Pattern": "んN",
-    "TypePattern": ["nnN", "xnN"]
+    "TypePattern": ["nnN", "xnN", "n'N"]
   },
   {
     "Pattern": "んO",
-    "TypePattern": ["nnO", "xnO"]
+    "TypePattern": ["nnO", "xnO", "n'O"]
   },
   {
     "Pattern": "んP",
-    "TypePattern": ["nnP", "xnP"]
+    "TypePattern": ["nnP", "xnP", "n'P"]
   },
   {
     "Pattern": "んQ",
-    "TypePattern": ["nnQ", "xnQ"]
+    "TypePattern": ["nnQ", "xnQ", "n'Q"]
   },
   {
     "Pattern": "んR",
-    "TypePattern": ["nnR", "xnR"]
+    "TypePattern": ["nnR", "xnR", "n'R"]
   },
   {
     "Pattern": "んS",
-    "TypePattern": ["nnS", "xnS"]
+    "TypePattern": ["nnS", "xnS", "n'S"]
   },
   {
     "Pattern": "んT",
-    "TypePattern": ["nnT", "xnT"]
+    "TypePattern": ["nnT", "xnT", "n'T"]
   },
   {
     "Pattern": "んU",
-    "TypePattern": ["nnU", "xnU"]
+    "TypePattern": ["nnU", "xnU", "n'U"]
   },
   {
     "Pattern": "んV",
-    "TypePattern": ["nnV", "xnV"]
+    "TypePattern": ["nnV", "xnV", "n'V"]
   },
   {
     "Pattern": "んW",
-    "TypePattern": ["nnW", "xnW"]
+    "TypePattern": ["nnW", "xnW", "n'W"]
   },
   {
     "Pattern": "んX",
-    "TypePattern": ["nnX", "xnX"]
+    "TypePattern": ["nnX", "xnX", "n'X"]
   },
   {
     "Pattern": "んY",
-    "TypePattern": ["nnY", "xnY"]
+    "TypePattern": ["nnY", "xnY", "n'Y"]
   },
   {
     "Pattern": "んZ",
-    "TypePattern": ["nnZ", "xnZ"]
+    "TypePattern": ["nnZ", "xnZ", "n'Z"]
   }
 ]
