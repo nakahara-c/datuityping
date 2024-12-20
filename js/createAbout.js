@@ -71,7 +71,8 @@ export function createAbout() {
 
     <div class="tile is-child box">
         <p class="has-text-centered title mt-2 mb-4" style="opacity:0.7">About</p>
-        <li>レベルを選んでキーを押すと始まります。Escでやり直しができます。</li>
+        <li class="has-text-danger">成人向けコンテンツを含みます。18歳未満は閲覧禁止です。</li>
+        <li>レベルを選んでキーを押すと始まります。<b>Esc</b>でやり直しができます。</li>
         <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
         <li><span style="color:white;">開始前にSpaceキーで♡を消費すると、イラストの抽選が優遇されます。</li>
         <details class="mt-2">
