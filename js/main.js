@@ -195,6 +195,9 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         if (level === 5 && !isEnglish) lv = 7;
     }
     switch (lv) {
+        case 0:
+            [w, xCount, yCount] = [62.5, 8, 12];
+            break;
         case 1:
             [w, xCount, yCount] = [62.5, 8, 12];
             break;
@@ -697,6 +700,8 @@ function freePlay() {
 function createFreePlayDom() {
     let div = document.createElement('div');
     div.innerHTML = `
+        <input type="radio" id="freelevel0" name="freeLevel" value="0">
+        <label for="freelevel0">LEVEL0</label>
         <input type="radio" id="freeLevel1" name="freeLevel" value="1" checked>
         <label for="freeLevel1">LEVEL1</label>
         <input type="radio" id="freeLevel2" name="freeLevel" value="2">
