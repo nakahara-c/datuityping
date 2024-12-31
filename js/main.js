@@ -7,7 +7,6 @@
 
 'use strict';
 
-// This function is based on code from RomanTypeParser by Whitefox (MIT License)
 import { parser } from './parser.js';
 
 import { createAbout } from './createAbout.js';
@@ -195,6 +194,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         if (level === 5 && !isEnglish) lv = 7;
     }
     switch (lv) {
+        //season 1
         case 1:
             [w, xCount, yCount] = [62.5, 8, 12];
             break;
@@ -215,6 +215,28 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
             break;
         case 7:
             [w, xCount, yCount] = [42, 14, 21];
+            break;
+        //season 2
+        case 11:
+            [w, xCount, yCount] = [85.5, 9, 12];
+            break;
+        case 12:
+            [w, xCount, yCount] = [64, 12, 16];
+            break;
+        case 13:
+            [w, xCount, yCount] = [51.5, 15, 20];
+            break;
+        case 14:
+            [w, xCount, yCount] = [43, 18, 24];
+            break;
+        case 15:
+            [w, xCount, yCount] = [37, 21, 28];
+            break;
+        case 16:
+            [w, xCount, yCount] = [32, 24, 32];
+            break;
+        case 17:
+            [w, xCount, yCount] = [28.5, 27, 36];
             break;
 
     }
@@ -242,13 +264,21 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         currentImgID = imgID.imgID;
     }
 
-    const girlsAspectRatio = 512 / 768;
-    const girlsHeightRatio = 0.75;
+    let girlsAspectRatio;
+    let girlsHeightRatio
+    if (lv >= 0 && lv < 10) {
+        girlsAspectRatio = 512 / 768;
+        girlsHeightRatio = 0.75;
+    } else if (lv >= 10 && lv < 20) {
+        girlsAspectRatio = 768 / 1024;
+        girlsHeightRatio = 0.75;
+    }
 
     girls.height = windowHeight * girlsHeightRatio;
     girls.width = girls.height * girlsAspectRatio;
 
     let blockDOMs = [];
+    // 二重にかさねる
     if (lv === 4 || lv === 5 || lv === 6 || lv === 7) {
 
         for (let i = 0; i < yCount; i++) {
@@ -274,7 +304,6 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
                 blockDOMs.push(block);
             }
         }
-
 
     } else {
 
