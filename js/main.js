@@ -59,6 +59,21 @@ fontSize.addEventListener('change', () => {
     }
 });
 
+const seasonSelect = document.getElementById('seasonSelect');
+seasonSelect.addEventListener('change', () => {
+    const season = seasonSelect.value;
+    const season1 = document.getElementById('levelButtons-1');
+    const season2 = document.getElementById('levelButtons-2');
+
+    if (season === '1') {
+        season1.style.display = 'block';
+        season2.style.display = 'none';
+    } else if (season === '2') {
+        season1.style.display = 'none';
+        season2.style.display = 'block';
+    }
+});
+
 window.openImageModal = openImageModal;
 
 let timerArray = [];
