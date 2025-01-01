@@ -232,27 +232,25 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
             [w, xCount, yCount] = [42, 14, 21];
             break;
         //season 2
-        case 11:
+        case 8:
             [w, xCount, yCount] = [85.5, 9, 12];
             break;
-        case 12:
+        case 9:
             [w, xCount, yCount] = [64, 12, 16];
             break;
-        case 13:
+        case 10:
             [w, xCount, yCount] = [51.5, 15, 20];
             break;
-        case 14:
+        case 11:
             [w, xCount, yCount] = [43, 18, 24];
             break;
-        case 15:
+        case 12:
             [w, xCount, yCount] = [37, 21, 28];
             break;
-        case 16:
+        case 13:
             [w, xCount, yCount] = [32, 24, 32];
             break;
-        case 17:
-            [w, xCount, yCount] = [28.5, 27, 36];
-            break;
+
 
     }
 
@@ -281,10 +279,10 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
     let girlsAspectRatio;
     let girlsHeightRatio
-    if (lv >= 0 && lv < 10) {
+    if (lv >= 0 && lv <= 7) {
         girlsAspectRatio = 512 / 768;
         girlsHeightRatio = 0.75;
-    } else if (lv >= 10 && lv < 20) {
+    } else if (lv >= 8 && lv <= 13) {
         girlsAspectRatio = 768 / 1024;
         girlsHeightRatio = 0.75;
     }
@@ -832,18 +830,19 @@ function makeTweet(isCompleted) {
     const ENorJP = isEnglish ? '英語' : 'ローマ字';
     const hashTags = '脱衣タイピング';
     let tweetText = '';
+    let levelText = '';
+    if (choosingLevel <= 5) {
+        levelText = `LEVEL${choosingLevel} [Season1]`;
+    } else if (choosingLevel === 6) {
+        levelText = 'LEVELEX (Season1)';
+    } else if (choosingLevel >= 7 && choosingLevel <= 12) {
+        levelText = `LEVEL${choosingLevel - 6} [Season2]`;
+    }
     if (isCompleted) {
-        if (choosingLevel !== 6) {
-            tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
-        } else {
-            tweetText = `LEVELEX 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
-        }
+        tweetText = `${levelText}(${ENorJP}) 脱衣成功❤${cnt}打/${sec}秒(${KPM}KPM)`;
     } else {
-        if (choosingLevel !== 6) {
-            tweetText = `LEVEL${choosingLevel}(${ENorJP}) 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
-        } else {
-            tweetText = `LEVELEX 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
-        }
+        tweetText = `${levelText}(${ENorJP}) 脱衣失敗...${cnt}打/30.0秒(${KPM}KPM)`;
+
     }
     const url = 'https://nkhr-c.com/datuityping/';
     const tweetURL = `https://twitter.com/intent/tweet?ref_src=twsrc&text=${tweetText}&hashtags=${hashTags}&url=${url}`;
