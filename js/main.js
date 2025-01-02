@@ -782,7 +782,8 @@ function displayEx() {
 
 function useHeartPower(currentPower) {
     let additionalTier = 0;
-    for (let i = 0; i < 5 - choosingLevel; i++) {
+    const num = choosingLevel >= 8 ? choosingLevel - 7 : choosingLevel;
+    for (let i = 0; i < 5 - num; i++) {
         if (currentPower >= 500 * (i + 1)) additionalTier++;
     }
     if (additionalTier > 0) {
