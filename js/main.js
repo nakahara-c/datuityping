@@ -278,13 +278,11 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
     }
 
     let girlsAspectRatio;
-    let girlsHeightRatio
+    const girlsHeightRatio = 0.75;
     if (lv >= 0 && lv <= 7) {
         girlsAspectRatio = 512 / 768;
-        girlsHeightRatio = 0.75;
     } else if (lv >= 8 && lv <= 13) {
         girlsAspectRatio = 768 / 1024;
-        girlsHeightRatio = 0.75;
     }
 
     girls.height = windowHeight * girlsHeightRatio;
@@ -397,7 +395,6 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
         area.appendChild(div);
         let makedDiv = document.getElementById('type_area');
-        //makedDiv.appendChild(inputA);
         setTimeout(() => {
             makedDiv.appendChild(input);
         }, 300);
@@ -502,7 +499,8 @@ function fisherYatesShuffle(arr) {
 function judgeKeys(e) {
     e.preventDefault();
     let typedKey = e.key;
-    if (choosingLevel < 6 && isEnglish) {
+    // if (choosingLevel < 6 && isEnglish) {
+    if (isEnglish && (choosingLevel < 6 || choosingLevel > 7)) {
 
         let nextKey = typeText[0];
 
