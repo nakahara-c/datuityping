@@ -1,4 +1,5 @@
 export function createStats(isEnglish) {
+    const ttl = 150;
     
     let unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
     let unlocked = new Object();
@@ -7,7 +8,7 @@ export function createStats(isEnglish) {
     });
 
     const div = document.createElement('div');
-    const tableString = generateTable(10, 10);
+    const tableString = generateTable(15, 10);
     let resultKey = 'resultsEN';
     let data = JSON.parse(localStorage.getItem(resultKey)) || [];
     let totalKeys = localStorage.getItem('typedCount') || 0;
@@ -47,7 +48,7 @@ export function createStats(isEnglish) {
             <div class="tile is-parent">
                 <div class="tile is-child box" id="unlockedImages">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">ギャラリー</p>
-                    <p class="has-text-centered mb-4">解放済み: <span class="statCount">${Object.keys(unlocked).length}</span> / 100枚</p>
+                    <p class="has-text-centered mb-4">解放済み: <span class="statCount">${Object.keys(unlocked).length}</span> / ${ttl}枚</p>
                     ${tableString}
                 </div>
             </div>
@@ -61,7 +62,7 @@ export function createStats(isEnglish) {
         <div class="modal" id="image-modal">
             <div class="modal-background"></div>
             <div class="modal-content">
-                <p class="image is-2by3">
+                <p class="image">
                     <img loading="lazy" src="" alt="" id="modal-image">
                 </p>
             </div>
@@ -191,7 +192,7 @@ export function createStats(isEnglish) {
     }
 
     function generateTable(rows, cols) {
-        let table = '<table class="table is-bordered is-striped is-hoverable is-fullwidth">\n<tbody>\n';
+        let table = '<table id="galleryTable" class="table is-bordered is-striped is-hoverable is-fullwidth">\n<tbody>\n';
         const getRowClass = (i) => {
             return 'row-gradient-' + String(Math.ceil(i / 2));
         };
@@ -201,10 +202,13 @@ export function createStats(isEnglish) {
             table += `<tr class="${rowClass}">\n`;
             for (let j = 1; j <= cols; j++) {
                 let tmp = (i - 1) * 10 + j;
+                const season = i <= 10 ? 1 : 2;
+                const width = i <= 10 ? 40 : 45;
+                const height = i <= 10 ? 60 : 60;
                 if (tmp in unlocked) {
-                    table += `<td><img loading="lazy" class="unlockedGirl" src="img/${unlocked[tmp]}.png" alt="${tmp}" width="40" height="60" onclick="openImageModal('${unlocked[tmp]}')"></td>\n`;
+                    table += `<td class="has-text-centered is-vcentered"><img loading="lazy" class="galleryImg unlockedGirl" src="img/${unlocked[tmp]}.png" alt="${tmp}" width="${width}" height="${height}" onclick="openImageModal('${unlocked[tmp]}',${season})"></td>\n`;
                 } else {
-                    table += `<td><img loading="lazy" src="img/block3.png" alt="0" width="40" height="60"></td>\n`;
+                    table += `<td class="has-text-centered is-vcentered"><img loading="lazy" class="galleryImg" src="img/block3.png" alt="0" width="${width}" height="${height}"></td>\n`;
                 }
             }
             table += '</tr>\n';
@@ -216,13 +220,13 @@ export function createStats(isEnglish) {
     return div;
 }
 
-export function openImageModal(imageID) {
+export function openImageModal(imageID, season = 1) {
     const modal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
 
     // 画像の元のサイズ
-    const originalWidth = 512;
-    const originalHeight = 768;
+    const originalWidth = season === 1 ? 512 : 768;
+    const originalHeight = season === 1 ? 768 : 1024;
 
     // ウィンドウの縦幅に合わせるためのスケーリング係数を計算
     const windowHeight = window.innerHeight;
