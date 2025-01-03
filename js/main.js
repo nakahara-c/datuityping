@@ -76,6 +76,8 @@ seasonSelect.addEventListener('change', () => {
 
 window.openImageModal = openImageModal;
 
+const doublingLevel = [4, 5, 6, 7, 11, 12, 13];
+
 let timerArray = [];
 let typeText = '';
 let japaneseWord;
@@ -242,16 +244,14 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
             [w, xCount, yCount] = [51.5, 15, 20];
             break;
         case 11:
-            [w, xCount, yCount] = [43, 18, 24];
+            [w, xCount, yCount] = [64, 12, 16];
             break;
         case 12:
-            [w, xCount, yCount] = [37, 21, 28];
+            [w, xCount, yCount] = [51.5, 15, 20];
             break;
         case 13:
-            [w, xCount, yCount] = [32, 24, 32];
+            [w, xCount, yCount] = [51.5, 15, 20];
             break;
-
-
     }
 
     const girls = document.createElement('img');
@@ -290,7 +290,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
     let blockDOMs = [];
     // 二重にかさねる
-    if (lv === 4 || lv === 5 || lv === 6 || lv === 7) {
+    if (doublingLevel.includes(lv)) {
 
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
@@ -306,8 +306,11 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
                 if (lv === 5) {
                     if (i < 2 || i > 15) continue; //0,1行目と14,15行目は灰ブロックを置かない
                 }
-                else if (lv === 7) {
+                if (lv === 7) {
                     if (i < 4 || i > 16) continue; //0-3行目と17-20行目は灰ブロックを置かない
+                }
+                if (lv === 12) {
+                    if (i < 4 || i > 17) continue; //0-3行目と18-21行目は灰ブロックを置かない
                 }
                 let block = createImg('2');
 
@@ -337,7 +340,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         }
     }, 300);
 
-    createInputBox(xCount * yCount, isPowerUsed);
+    createInputBox(isPowerUsed);
 
 
     function createImg(id) {
@@ -377,7 +380,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         }
     }
 
-    function createInputBox(blocksCount, isPowerUsed) {
+    function createInputBox(isPowerUsed) {
         let div = document.createElement('div');
         div.id = 'type_area';
         div.className = 'is-overlay';
@@ -401,14 +404,16 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
 
         if (choosingLevel !== 6 && isEnglish) {
-            setWordEnglish(blocksCount, input);
+            setWordEnglish(input);
         } else {
-            setWordJapanese(blocksCount, input);
+            setWordJapanese(input);
         }
 
     }
 
-    function setWordEnglish(blocksCount, typingArea) {
+    function setWordEnglish(typingArea) {
+        const blocksCount = blockDOMs.length;
+        console.log(blocksCount);
 
         let shuffledWordList;
         shuffledWordList = fisherYatesShuffle(wordList);
@@ -418,24 +423,20 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         order = [];
         shuffledOrder = [];
 
-        if (choosingLevel === 5) blocksCount -= 24;
-
-        if (choosingLevel === 4 || choosingLevel === 5) {
-            for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
-            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
-
+        for (let i = 0; i < blocksCount; i++) order.push(i);
+        if (doublingLevel.includes(choosingLevel)) {
+            shuffledOrder = reorder(fisherYatesShuffle(order), xCount * yCount);
         } else {
-            for (let i = 0; i < blocksCount; i++) order.push(i);
             shuffledOrder = fisherYatesShuffle(order);
         }
-
         window.addEventListener('keydown', judgeKeys, false);
 
         return;
 
     }
 
-    function setWordJapanese(blocksCount, typingArea) {
+    function setWordJapanese(typingArea) {
+        let blocksCount = xCount * yCount;
 
         let tmpLis = new Array();
         let wLis = (choosingLevel === 6) ? wordListExtra : wordListJapanese;        
@@ -456,7 +457,6 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
             for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
             shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
         }
-
 
         (async () => japaneseWord = await parser(txt))();
 
@@ -499,8 +499,7 @@ function fisherYatesShuffle(arr) {
 function judgeKeys(e) {
     e.preventDefault();
     let typedKey = e.key;
-    // if (choosingLevel < 6 && isEnglish) {
-    if (isEnglish && (choosingLevel < 6 || choosingLevel > 7)) {
+    if (isEnglish && (choosingLevel !== 7)) {
 
         let nextKey = typeText[0];
 
@@ -600,7 +599,6 @@ function deleteBlock() {
     }
 
     const blocks = document.getElementsByClassName('block');
-
     let topOrder = shuffledOrder.shift();
     blocks[topOrder].classList.add('typedBlock');
 
