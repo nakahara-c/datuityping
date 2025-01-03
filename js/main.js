@@ -412,7 +412,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
     }
 
     function setWordEnglish(typingArea) {
-        let blocksCount = blockDOMs.length;
+        const blocksCount = blockDOMs.length;
 
         let shuffledWordList;
         shuffledWordList = fisherYatesShuffle(wordList);
@@ -435,7 +435,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
     }
 
     function setWordJapanese(typingArea) {
-        let blocksCount = blockDOMs.length;
+        const blocksCount = blockDOMs.length;
 
         let tmpLis = new Array();
         let wLis = (choosingLevel === 6) ? wordListExtra : wordListJapanese;        
@@ -496,7 +496,7 @@ function fisherYatesShuffle(arr) {
 function judgeKeys(e) {
     e.preventDefault();
     let typedKey = e.key;
-    if (isEnglish && (choosingLevel !== 7)) {
+    if (isEnglish && (choosingLevel !== 6)) {
 
         let nextKey = typeText[0];
 
