@@ -675,7 +675,7 @@ function writeChosenImgNumber() {
 function writeResult(isCompleted) {
     let time = isCompleted ? parseFloat(String(30.0 - Number(timer.textContent))).toFixed(1) : '30.0';
     let result = {
-        'level': choosingLevel,
+        'level': choosingLevel % 7,
         'time': time,
         'kpm': kpm.textContent,
         'keys': count.textContent
