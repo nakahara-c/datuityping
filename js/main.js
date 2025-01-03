@@ -167,7 +167,6 @@ function startTimer() {
 }
 
 function adjustDataBox() {
-    
     if (isInViewport(dataBox)) {
         dataBox.classList.remove('fixed');
     } else {
@@ -304,13 +303,13 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         for (let i = 0; i < yCount; i++) {
             for (let j = 0; j < xCount; j++) {
                 if (lv === 5) {
-                    if (i < 2 || i > 15) continue; //0,1行目と14,15行目は灰ブロックを置かない
+                    if (i < 2 || i > 15) continue; //1-2行目と14-15行目は灰ブロックを置かない
                 }
                 if (lv === 7) {
-                    if (i < 4 || i > 16) continue; //0-3行目と17-20行目は灰ブロックを置かない
+                    if (i < 4 || i > 16) continue; //1-4行目と17-21行目は灰ブロックを置かない
                 }
                 if (lv === 12) {
-                    if (i < 4 || i > 17) continue; //0-3行目と18-21行目は灰ブロックを置かない
+                    if (i < 4 || i > 17) continue; //1-4行目と18-20行目は灰ブロックを置かない
                 }
                 let block = createImg('2');
 
@@ -408,7 +407,6 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         } else {
             setWordJapanese(input);
         }
-
     }
 
     function setWordEnglish(typingArea) {
@@ -431,7 +429,6 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         window.addEventListener('keydown', judgeKeys, false);
 
         return;
-
     }
 
     function setWordJapanese(typingArea) {
@@ -464,9 +461,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         window.addEventListener('keydown', judgeKeys, false);
 
         return;
-
     }
-
     return imgID;
 }
 
@@ -539,11 +534,7 @@ function judgeKeys(e) {
         }
 
         if (isOK) {
-
-            if (timer.textContent === '') {
-                firstKeyPressed();
-            }
-
+            if (timer.textContent === '') firstKeyPressed();
             if (isLast) {
                 japaneseWord.parsedSentence.shift();
                 japaneseWord.judgeAutomaton.shift();
@@ -551,19 +542,14 @@ function judgeKeys(e) {
                 typeText = typeText.slice(currentHiraganaLength);
                 let typingArea = document.getElementById('typing_area');
                 typingArea.value = typeText;
-
             }
-
             deleteBlock();
-
         } else {
             if (timer.textContent === '' && typedKey === ' ') {
                 useHeartPower(Number(localStorage.getItem('heartPower')));
             }
         }
-
     }
-
 }
 
 function correctType(key) {
