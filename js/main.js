@@ -412,8 +412,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
     }
 
     function setWordEnglish(typingArea) {
-        const blocksCount = blockDOMs.length;
-        console.log(blocksCount);
+        let blocksCount = blockDOMs.length;
 
         let shuffledWordList;
         shuffledWordList = fisherYatesShuffle(wordList);
@@ -425,7 +424,7 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
         for (let i = 0; i < blocksCount; i++) order.push(i);
         if (doublingLevel.includes(choosingLevel)) {
-            shuffledOrder = reorder(fisherYatesShuffle(order), xCount * yCount);
+            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount / 2);
         } else {
             shuffledOrder = fisherYatesShuffle(order);
         }
@@ -436,11 +435,11 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
     }
 
     function setWordJapanese(typingArea) {
-        let blocksCount = xCount * yCount;
+        let blocksCount = blockDOMs.length;
 
         let tmpLis = new Array();
         let wLis = (choosingLevel === 6) ? wordListExtra : wordListJapanese;        
-        for (let i = 0; i < 300; i++) {
+        for (let i = 0; i < 400; i++) {
             let word = wLis[Math.floor(Math.random() * wLis.length)];
             tmpLis.push(word);
         }
@@ -448,14 +447,12 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
         order = [];
         shuffledOrder = [];
-        if (lv < 4) {
-            for (let i = 0; i < blocksCount; i++) order.push(i);
-            shuffledOrder = fisherYatesShuffle(order);
+
+        for (let i = 0; i < blocksCount; i++) order.push(i);
+        if (doublingLevel.includes(lv)) {
+            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount / 2);
         } else {
-            if (lv === 5) blocksCount -= 24;
-            else if (lv === 7) blocksCount -= 56;
-            for (let i = 0; i < (blocksCount * 2); i++) order.push(i);
-            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount);
+            shuffledOrder = fisherYatesShuffle(order);
         }
 
         (async () => japaneseWord = await parser(txt))();
