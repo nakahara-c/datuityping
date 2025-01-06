@@ -76,6 +76,8 @@ seasonSelect.addEventListener('change', () => {
 
 window.openImageModal = openImageModal;
 
+const ttl = 151;
+document.getElementById('ttl').textContent = ttl;
 const doublingLevel = [4, 5, 6, 7, 11, 12, 13];
 
 let timerArray = [];
@@ -136,13 +138,17 @@ function judgeEscape(e) {
     }
 }
 
-function renderUnlockedCount() {
+function getUnlockedCount() {
     const unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
     const unlocked = new Object();
     unlockedArray.forEach(pair => {
         unlocked[pair[0]] = pair[1];
     });
-    document.getElementById('unlockedCount').textContent = Object.keys(unlocked).length;
+    return Object.keys(unlocked).length;
+}
+
+function renderUnlockedCount() {
+    document.getElementById('unlockedCount').textContent = getUnlockedCount();
 }
 
 function firstKeyPressed() {
@@ -251,6 +257,9 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         case 13:
             [w, xCount, yCount] = [51.5, 15, 20];
             break;
+        case 100:
+            [w, xCount, yCount] = [42, 16, 9];
+            break;
     }
 
     const girls = document.createElement('img');
@@ -282,6 +291,8 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         girlsAspectRatio = 512 / 768;
     } else if (lv >= 8 && lv <= 13) {
         girlsAspectRatio = 768 / 1024;
+    } else {
+        girlsAspectRatio = 16 / 9;
     }
 
     girls.height = windowHeight * girlsHeightRatio;
@@ -763,20 +774,28 @@ function displayEx() {
 
 function useHeartPower(currentPower) {
     let additionalTier = 0;
-    const num = choosingLevel >= 8 ? choosingLevel - 7 : choosingLevel;
+    const num = choosingLevel >= 8 ? choosingLevel - 7 : choosingLevel;  
     for (let i = 0; i < 5 - num; i++) {
         if (currentPower >= 500 * (i + 1)) additionalTier++;
     }
-    if (additionalTier > 0) {
+    const expire = (additionalTier) => {
         const expiredPower = currentPower - 500 * additionalTier;
         localStorage.setItem('heartPower', String(expiredPower));
         heartCount.textContent = countHeart(expiredPower);
         heartPower.textContent = String(expiredPower);
-
+        return true;
+    }
+    const reRender = (lv) => {
         initializeDataBox();
         adjustDataBox();
         clearInterval(intervalId);
-        createBlocks(choosingLevel + additionalTier, true, false);
+        createBlocks(lv, true, false);
+    }
+    if (additionalTier > 0) {
+        expire(additionalTier);
+        reRender(choosingLevel + additionalTier);
+    } else {
+        num === 5 && getUnlockedCount() + 1 >= ttl && c >= 500 * 4 && expire(4) && reRender(100);
     }
 }
 
