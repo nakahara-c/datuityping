@@ -257,8 +257,8 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
         case 13:
             [w, xCount, yCount] = [51.5, 15, 20];
             break;
-        case 100:
-            [w, xCount, yCount] = [42, 16, 9];
+        case 14:
+            [w, xCount, yCount] = [120, 16, 9];
             break;
     }
 
@@ -795,7 +795,7 @@ function useHeartPower(currentPower) {
         expire(additionalTier);
         reRender(choosingLevel + additionalTier);
     } else {
-        num === 5 && getUnlockedCount() + 1 >= ttl && c >= 500 * 4 && expire(4) && reRender(100);
+        num === 5 && getUnlockedCount() + 1 >= ttl && c >= 500 * 4 && expire(4) && reRender(14);
     }
 }
 
