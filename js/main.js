@@ -212,25 +212,25 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
     switch (lv) {
         //season 1
         case 1:
-            [w, xCount, yCount] = [62.5, 8, 12];
+            [w, xCount, yCount] = [62.5, 6, 9];
             break;
         case 2:
-            [w, xCount, yCount] = [50, 10, 15];
+            [w, xCount, yCount] = [50, 8, 12];
             break;
         case 3:
-            [w, xCount, yCount] = [42, 12, 18];
+            [w, xCount, yCount] = [42, 10, 15];
             break;
         case 4:
-            [w, xCount, yCount] = [50, 10, 15];
+            [w, xCount, yCount] = [50, 8, 12];
             break;
         case 5:
-            [w, xCount, yCount] = [42, 12, 18];
+            [w, xCount, yCount] = [42, 10, 15];
             break;
         case 6:
-            [w, xCount, yCount] = [42, 12, 18];
+            [w, xCount, yCount] = [42, 10, 15];
             break;
         case 7:
-            [w, xCount, yCount] = [42, 14, 21];
+            [w, xCount, yCount] = [42, 12, 18];
             break;
         //season 2
         case 8:

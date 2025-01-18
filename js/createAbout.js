@@ -3,66 +3,56 @@ export function createAbout() {
     let tbodyEN = `
         <tr>
             <td>1</td>
-            <td>96</td>
-            <td>192</td>
-            <td>F</td>
+            <td><s>96</s> 50</td>
+            <td><s>192</s> 100</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>150</td>
-            <td>300</td>
-            <td>SJ</td>
+            <td><s>150</s> 96</td>
+            <td><s>300</s> 150</td>
         </tr>
         <tr>
             <td>3</td>
-            <td>216</td>
-            <td>432</td>
-            <td>XI</td>
+            <td><s>216</s> 150</td>
+            <td><s>432</s> 300</td>
         </tr>
         <tr>
             <td>4</td>
-            <td>300</td>
-            <td>600</td>
-            <td>XA</td>
+            <td><s>300</s> 216</td>
+            <td><s>600</s> 432</td>
         </tr>
         <tr>
             <td>5</td>
-            <td>384</td>
-            <td>768</td>
-            <td>ZI</td>
+            <td><s>384</s> 280</td>
+            <td><s>768</s> 560</td>
         </tr>
     `;
 
     let tbodyJP = `
         <tr>
             <td>1</td>
-            <td>150</td>
-            <td>300</td>
-            <td>A</td>
+            <td><s>150</s> 96</td>
+            <td><s>300</s> 150</td>
         </tr>
-            <tr>
+        <tr>
             <td>2</td>
-            <td>216</td>
-            <td>432</td>
-            <td>SS</td>
+            <td><s>216</s> 150</td>
+            <td><s>432</s> 300</td>
         </tr>
-            <tr>
+        <tr>
             <td>3</td>
-            <td>300</td>
-            <td>600</td>
-            <td>XC</td>
+            <td><s>300</s> 216</td>
+            <td><s>600</s> 432</td>
         </tr>
             <tr>
             <td>4</td>
-            <td>384</td>
-            <td>768</td>
-            <td>XX</td>
+            <td><s>384</s> 280</td>
+            <td><s>768</s> 560</td>
         </tr>
         <tr>
             <td>5</td>
-            <td>476</td>
-            <td>952</td>
-            <td>ZH</td>
+            <td><s>476</s> 372</td>
+            <td><s>952</s> 744</td>
         </tr>
     `;
 
@@ -76,7 +66,7 @@ export function createAbout() {
         <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
         <li>開始前にSpaceキーで♡を消費すると、イラストの抽選が<span class="has-text-danger">優遇</span>されます。</li>
         <details class="mt-2">
-            <summary>難易度対応表（目安）</summary>
+            <summary>難易度対応表（Season 1）</summary>
             <div class="tabs">
                 <ul>
                     <li id="diffEN" class="is-active"><a>英語</a></li>
@@ -89,7 +79,6 @@ export function createAbout() {
                     <th>LEVEL</th>
                     <th>ブロック数</th>
                     <th>KPM</th>
-                    <th>TW換算</th>
                     </tr>
                 </thead>
                 <tbody id="diff">
