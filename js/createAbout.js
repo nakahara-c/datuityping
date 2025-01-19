@@ -2,57 +2,111 @@ export function createAbout() {
 
     let tbodyEN = `
         <tr>
-            <td>1</td>
+            <td>S1-1</td>
             <td><s>96</s> 50</td>
             <td><s>192</s> 100</td>
         </tr>
         <tr>
-            <td>2</td>
+            <td>S1-2</td>
             <td><s>150</s> 96</td>
             <td><s>300</s> 150</td>
         </tr>
         <tr>
-            <td>3</td>
+            <td>S1-3</td>
             <td><s>216</s> 150</td>
             <td><s>432</s> 300</td>
         </tr>
         <tr>
-            <td>4</td>
+            <td>S1-4</td>
             <td><s>300</s> 216</td>
             <td><s>600</s> 432</td>
         </tr>
         <tr>
-            <td>5</td>
+            <td>S1-5</td>
             <td><s>384</s> 280</td>
             <td><s>768</s> 560</td>
+        </tr>
+        <tr>
+            <td>S2-1</td>
+            <td>108</td>
+            <td>216</td>
+        </tr>
+        <tr>
+            <td>S2-2</td>
+            <td>192</td>
+            <td>384</td>
+        </tr>
+        <tr>
+            <td>S2-3</td>
+            <td>300</td>
+            <td>600</td>
+        </tr>
+        <tr>
+            <td>S2-4</td>
+            <td>384</td>
+            <td>768</td>
+        </tr>
+        <tr>
+            <td>S2-5</td>
+            <td>510</td>
+            <td>1020</td>
         </tr>
     `;
 
     let tbodyJP = `
         <tr>
-            <td>1</td>
+            <td>S1-1</td>
             <td><s>150</s> 96</td>
             <td><s>300</s> 150</td>
         </tr>
         <tr>
-            <td>2</td>
+            <td>S1-2</td>
             <td><s>216</s> 150</td>
             <td><s>432</s> 300</td>
         </tr>
         <tr>
-            <td>3</td>
+            <td>S1-3</td>
             <td><s>300</s> 216</td>
             <td><s>600</s> 432</td>
         </tr>
             <tr>
-            <td>4</td>
+            <td>S1-4</td>
             <td><s>384</s> 280</td>
             <td><s>768</s> 560</td>
         </tr>
         <tr>
-            <td>5</td>
+            <td>S1-5</td>
             <td><s>476</s> 372</td>
             <td><s>952</s> 744</td>
+        </tr>
+        <tr>
+            <td>S1-EX</td>
+            <td><s>432</s> 300</td>
+            <td><s>864</s> 600</td>
+        <tr>
+            <td>S2-1</td>
+            <td>192</td>
+            <td>384</td>
+        </tr>
+        <tr>
+            <td>S2-2</td>
+            <td>300</td>
+            <td>600</td>
+        </tr>
+        <tr>
+            <td>S2-3</td>
+            <td>384</td>
+            <td>768</td>
+        </tr>
+        <tr>
+            <td>S2-4</td>
+            <td>510</td>
+            <td>1020</td>
+        </tr>
+        <tr>
+            <td>S2-5</td>
+            <td>600</td>
+            <td>1200</td>
         </tr>
     `;
 
@@ -66,7 +120,7 @@ export function createAbout() {
         <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
         <li>開始前にSpaceキーで♡を消費すると、イラストの抽選が<span class="has-text-danger">優遇</span>されます。</li>
         <details class="mt-2">
-            <summary>難易度対応表（Season 1）</summary>
+            <summary>難易度対応表</summary>
             <div class="tabs">
                 <ul>
                     <li id="diffEN" class="is-active"><a>英語</a></li>
