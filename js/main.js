@@ -462,6 +462,32 @@ async function createBlocks(level, isPowerUsed, isFreePlay) {
 
         return;
     }
+
+    function setWordAllKey(typingArea) {
+        const blocksCount = blockDOMs.length;
+
+        // すべてのキーボードのキーを使う
+        const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!"#$%&()-=^~\@`[{;+:*]},<.>/?' + "'";
+        let txt = '';
+        for (let i = 0; i < 400; i++) {
+            txt += chars[Math.floor(Math.random() * chars.length)];
+        }
+        typeText = txt;
+        typingArea.value = txt;
+
+        order = [];
+        shuffledOrder = [];
+
+        for (let i = 0; i < blocksCount; i++) order.push(i);
+        if (doublingLevel.includes(lv)) {
+            shuffledOrder = reorder(fisherYatesShuffle(order), blocksCount / 2);
+        } else {
+            shuffledOrder = fisherYatesShuffle(order);
+        }
+        window.addEventListener('keydown', judgeKeys, false);
+
+        return;
+    }
     return imgID;
 }
 
