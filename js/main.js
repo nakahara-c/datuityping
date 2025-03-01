@@ -34,8 +34,11 @@ const heartPower = document.getElementById('heartPower');
 heartCount.textContent = countHeart(localStorage.getItem('heartPower'));
 heartPower.textContent = localStorage.getItem('heartPower') ?? 0;
 
-const about = document.getElementById('about');
-about.addEventListener('click', displayAbout);
+const aboutLinks = document.querySelectorAll('.about');
+aboutLinks.forEach(link => {
+    link.addEventListener('click', displayAbout);
+});
+
 displayAbout();
 
 const stat = document.getElementById('stat');
