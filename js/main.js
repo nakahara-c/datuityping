@@ -21,6 +21,7 @@ const timer = document.getElementById('timer');
 const count = document.getElementById('count');
 const kpm = document.getElementById('kpm');
 const dataBox = document.getElementById('dataBox');
+let unlockedCount = 0;
 
 const countHeart = (num) => {
     if (num == undefined) return '0';
@@ -145,7 +146,8 @@ function renderUnlockedCount() {
     unlockedArray.forEach(pair => {
         unlocked[pair[0]] = pair[1];
     });
-    document.getElementById('unlockedCount').textContent = Object.keys(unlocked).length;
+    unlockedCount = String(Object.keys(unlocked).length);
+    document.getElementById('unlockedCount').textContent = unlockedCount;
 }
 
 function firstKeyPressed() {
@@ -668,7 +670,7 @@ async function fetchID(level) {
     loader.style = 'top:30vh;';
     area.appendChild(loader);
 
-    const id = await fetchImgID(level);
+    const id = await fetchImgID(level, unlockedCount);
     loader.remove();
     return id;
 }
