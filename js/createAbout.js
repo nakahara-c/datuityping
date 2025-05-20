@@ -115,10 +115,13 @@ export function createAbout() {
 
     <div class="tile is-child box">
         <p class="has-text-centered title mt-2 mb-4" style="opacity:0.7">About</p>
-        <li><span class="has-text-danger">成人向けコンテンツを含みます。18歳未満は閲覧禁止です。</span></li>
-        <li>レベルを選んでキーを押すと始まります。<b>Esc</b>でやり直しができます。</li>
-        <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
-        <li>LEVEL5未満の開始前にSpaceキーを押すと、♡を消費してイラストの抽選が<span class="has-text-danger">優遇</span>されます。</li>
+        <span class="has-text-danger">成人向けコンテンツを含みます。18歳未満は閲覧禁止です。</span>
+        <details class="mt-2">
+            <summary>説明</summary>
+            <li>レベルを選んでキーを押すと始まります。<b>Esc</b>でやり直しができます。</li>
+            <li>ギャラリーを<span class="has-text-danger">20枚解放</span>すると<span style="color:white; background-color:black;"> LEVEL EX </span>が解放されます。<span class="has-text-danger">40枚</span>で…？</li>
+            <li>LEVEL5未満の開始前にSpaceキーを押すと、♡を消費してイラストの抽選が<span class="has-text-danger">優遇</span>されます。</li>
+        </details>
         <details class="mt-2">
             <summary>難易度対応表</summary>
             <div class="tabs">
@@ -146,6 +149,7 @@ export function createAbout() {
             <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
             <p>ローマ字では「ざ」を含むものを取り除いています。(「座禅」など)</p>
         </details>
+        <p class="mt-4 mb-2">意見・要望→<a href="https://marshmallow-qa.com/3h2hyy360x0davt" target="_blank">マシュマロ</a></p>
 
         <hr>
         <div class="has-text-centered">
