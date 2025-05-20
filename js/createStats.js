@@ -3,9 +3,12 @@ export function createStats(isEnglish) {
     
     let unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
     let unlocked = new Object();
+    let freePlayed = false;
     unlockedArray.forEach(pair => {
         unlocked[pair[0]] = pair[1];
+        if (pair[0] == 0) freePlayed = true;
     });
+    const unlockedCount = unlockedArray.length - (freePlayed ? 1 : 0);
 
     const div = document.createElement('div');
     const s1TableString = generateTable(10, 10, 1, 0);
@@ -14,10 +17,7 @@ export function createStats(isEnglish) {
     let data = JSON.parse(localStorage.getItem(resultKey)) || [];
     let totalKeys = localStorage.getItem('typedCount') || 0;
     let ex = `<li id="statEX" style="display:none;"><a>EXTRA</a></li>`
-    if (localStorage.getItem('unlocked') !== null) {
-        const unlockedCount = JSON.parse(localStorage.getItem('unlocked')).length;
-        if (unlockedCount >= 20) ex = `<li id="statEX""><a>EXTRA</a></li>`;
-    }
+    if (unlockedCount >= 20) ex = `<li id="statEX""><a>EXTRA</a></li>`;
 
     div.innerHTML = `
 
@@ -49,7 +49,7 @@ export function createStats(isEnglish) {
             <div class="tile is-parent">
                 <div class="tile is-child box" id="unlockedImages">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">ギャラリー</p>
-                    <p class="has-text-centered mb-4">解放済み: <span class="statCount">${Object.keys(unlocked).length}</span> / ${ttl}枚</p>
+                    <p class="has-text-centered mb-4">解放済み: <span class="statCount">${unlockedCount}</span> / ${ttl}枚</p>
                     <p class="has-text-centered mb-4">Season 1</p>
                     ${s1TableString}
                     <p class="has-text-centered mb-4">Season 2</p>
