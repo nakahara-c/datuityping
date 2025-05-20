@@ -235,8 +235,17 @@ export function openImageModal(imageID, season = 1) {
     const modalImage = document.getElementById('modal-image');
 
     // 画像の元のサイズ
-    const originalWidth = season === 1 ? 512 : 768;
-    const originalHeight = season === 1 ? 768 : 1024;
+    let originalWidth, originalHeight;
+    switch (season) {
+        case 1:
+            originalWidth = 512;
+            originalHeight = 768;
+            break;
+        case 2:
+            originalWidth = 768;
+            originalHeight = 1024;
+            break;
+    }
 
     // ウィンドウの縦幅に合わせるためのスケーリング係数を計算
     const windowHeight = window.innerHeight;
