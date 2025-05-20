@@ -144,7 +144,7 @@ function renderUnlockedCount() {
     const unlockedArray = JSON.parse(localStorage.getItem('unlocked') ?? '[]');
     const unlocked = new Object();
     unlockedArray.forEach(pair => {
-        unlocked[pair[0]] = pair[1];
+        if (pair[0] !== 0) unlocked[pair[0]] = pair[1];
     });
     unlockedCount = String(Object.keys(unlocked).length);
     document.getElementById('unlockedCount').textContent = unlockedCount;
