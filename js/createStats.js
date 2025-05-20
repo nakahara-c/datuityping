@@ -8,7 +8,8 @@ export function createStats(isEnglish) {
     });
 
     const div = document.createElement('div');
-    const tableString = generateTable(15, 10);
+    const s1TableString = generateTable(10, 10, 1, 0);
+    const s2TableString = generateTable(5, 10, 2, 100);
     let resultKey = 'resultsEN';
     let data = JSON.parse(localStorage.getItem(resultKey)) || [];
     let totalKeys = localStorage.getItem('typedCount') || 0;
@@ -49,7 +50,10 @@ export function createStats(isEnglish) {
                 <div class="tile is-child box" id="unlockedImages">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">ギャラリー</p>
                     <p class="has-text-centered mb-4">解放済み: <span class="statCount">${Object.keys(unlocked).length}</span> / ${ttl}枚</p>
-                    ${tableString}
+                    <p class="has-text-centered mb-4">Season 1</p>
+                    ${s1TableString}
+                    <p class="has-text-centered mb-4">Season 2</p>
+                    ${s2TableString}
                 </div>
             </div>
             <div class="tile is-parent">
@@ -191,20 +195,26 @@ export function createStats(isEnglish) {
         });
     }
 
-    function generateTable(rows, cols) {
+    function generateTable(rows, cols, season, st) {
         let table = '<table id="galleryTable" class="table is-bordered is-striped is-hoverable is-fullwidth">\n<tbody>\n';
         const getRowClass = (i) => {
-            return 'row-gradient-' + String(Math.ceil(i / 2));
+            return 'row-gradient-' + String(Math.ceil(i / (Math.ceil(rows / 5))));
         };
 
         for (let i = 1; i <= rows; i++) {
             let rowClass = getRowClass(i);
             table += `<tr class="${rowClass}">\n`;
             for (let j = 1; j <= cols; j++) {
-                let tmp = (i - 1) * 10 + j;
-                const season = i <= 10 ? 1 : 2;
-                const width = i <= 10 ? 40 : 45;
-                const height = i <= 10 ? 60 : 60;
+                let tmp = (i - 1) * 10 + j + st;
+                let width = 40;
+                let height = 60;
+                switch (season) {
+                    case 2:
+                        width = 45;
+                        height = 60;
+                        break;
+                }
+
                 if (tmp in unlocked) {
                     table += `<td class="has-text-centered is-vcentered"><img loading="lazy" class="galleryImg unlockedGirl" src="img/${unlocked[tmp]}.png" alt="${tmp}" width="${width}" height="${height}" onclick="openImageModal('${unlocked[tmp]}',${season})"></td>\n`;
                 } else {
