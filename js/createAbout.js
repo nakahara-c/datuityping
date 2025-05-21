@@ -3,28 +3,28 @@ export function createAbout() {
     let tbodyEN = `
         <tr>
             <td>S1-1</td>
-            <td><s>96</s> 50</td>
-            <td><s>192</s> 100</td>
+            <td>50</td>
+            <td>100</td>
         </tr>
         <tr>
             <td>S1-2</td>
-            <td><s>150</s> 96</td>
-            <td><s>300</s> 150</td>
+            <td>96</td>
+            <td>192</td>
         </tr>
         <tr>
             <td>S1-3</td>
-            <td><s>216</s> 150</td>
-            <td><s>432</s> 300</td>
+            <td>150</td>
+            <td>300</td>
         </tr>
         <tr>
             <td>S1-4</td>
-            <td><s>300</s> 216</td>
-            <td><s>600</s> 432</td>
+            <td>216</td>
+            <td>432</td>
         </tr>
         <tr>
             <td>S1-5</td>
-            <td><s>384</s> 280</td>
-            <td><s>768</s> 560</td>
+            <td>280</td>
+            <td>560</td>
         </tr>
         <tr>
             <td>S2-1</td>
@@ -56,33 +56,33 @@ export function createAbout() {
     let tbodyJP = `
         <tr>
             <td>S1-1</td>
-            <td><s>150</s> 96</td>
-            <td><s>300</s> 150</td>
+            <td>96</td>
+            <td>192</td>
         </tr>
         <tr>
             <td>S1-2</td>
-            <td><s>216</s> 150</td>
-            <td><s>432</s> 300</td>
+            <td>150</td>
+            <td>300</td>
         </tr>
         <tr>
             <td>S1-3</td>
-            <td><s>300</s> 216</td>
-            <td><s>600</s> 432</td>
+            <td>216</td>
+            <td>432</td>
         </tr>
             <tr>
             <td>S1-4</td>
-            <td><s>384</s> 280</td>
-            <td><s>768</s> 560</td>
+            <td>280</td>
+            <td>560</td>
         </tr>
         <tr>
             <td>S1-5</td>
-            <td><s>476</s> 372</td>
-            <td><s>952</s> 744</td>
+            <td>372</td>
+            <td>744</td>
         </tr>
         <tr>
             <td>S1-EX</td>
-            <td><s>432</s> 300</td>
-            <td><s>864</s> 600</td>
+            <td>300</td>
+            <td>600</td>
         <tr>
             <td>S2-1</td>
             <td>192</td>
