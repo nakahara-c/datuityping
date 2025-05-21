@@ -670,7 +670,7 @@ async function fetchID(level) {
     loader.style = 'top:30vh;';
     area.appendChild(loader);
 
-    const id = await fetchImgID(level, unlockedCount);
+    const id = await fetchImgID(level, unlockedCount, isEnglish ? 'E': 'R');
     loader.remove();
     return id;
 }
