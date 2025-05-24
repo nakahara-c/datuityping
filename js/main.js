@@ -96,7 +96,7 @@ let isFreePlaying = false;
 let startTime;
 let intervalId;
 
-let isEnglish = true;
+let isEnglish = false;
 document.getElementById('english').addEventListener('click', () => {
     isEnglish = true;
     initializeDataBox();
