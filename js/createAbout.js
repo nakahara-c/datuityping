@@ -126,8 +126,8 @@ export function createAbout() {
             <summary>難易度対応表</summary>
             <div class="tabs">
                 <ul>
-                    <li id="diffEN" class="is-active"><a>英語</a></li>
-                    <li id="diffJP"><a>ローマ字</a></li>
+                    <li id="diffJP" class="is-active"><a>ローマ字</a></li>
+                    <li id="diffEN"><a>英語</a></li>
                 </ul>
             </div>
             <table class="table is-bordered is-striped">
@@ -139,7 +139,7 @@ export function createAbout() {
                     </tr>
                 </thead>
                 <tbody id="diff">
-                    ${tbodyEN}
+                    ${tbodyJP}
                 </tbody>
             </table>
         </details>
