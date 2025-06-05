@@ -27,6 +27,11 @@ export function createStats(isEnglish) {
                 <div class="tile is-child box" id="result">
                     <p class="has-text-centered title mt-4" style="opacity:0.7">成績</p>
                     <p class="has-text-centered mt-4 mb-2">総打鍵数: <span class="statCount">${totalKeys}</span>打</p>
+                    <p class="has-text-centered mt-4 mb-2">
+                        最高: <span id="maxKpm" class="statCount">${data.length > 0 ? Math.max(...data.map(item => parseInt(item.kpm))) : 0}</span>KPM
+                        最低: <span id="minKpm" class="statCount">${data.length > 0 ? Math.min(...data.map(item => parseInt(item.kpm))) : 0}</span>KPM
+                        平均: <span id="avgKpm" class="statCount">${data.length > 0 ? (data.reduce((sum, item) => sum + parseInt(item.kpm), 0) / data.length).toFixed(1) : 0}</span>KPM
+                    </p>
                     <div class="tabs is-centered">
                         <ul>
                             <li id="statEN" class="is-active"><a>英語</a></li>
@@ -126,6 +131,20 @@ export function createStats(isEnglish) {
 
         const labels = data.map((item, index) => `${index + 1}`);
         const chartData = data.map(item => parseInt(item.kpm));
+        const [max, min, avg, median] = data.reduce((acc, item) => {
+            const kpm = parseInt(item.kpm);
+            acc[0] = Math.max(acc[0], kpm);
+            acc[1] = Math.min(acc[1], kpm);
+            acc[2] += kpm;
+            acc[3].push(kpm);
+            return acc;
+        }, [0, Infinity, 0, []]);
+
+        if (data.length > 0) {
+            document.getElementById('maxKpm').textContent = max;
+            document.getElementById('minKpm').textContent = min;
+            document.getElementById('avgKpm').textContent = (avg / data.length).toFixed(1);
+        }
         
         chart = new Chart(ctx, {
             type: 'line',
