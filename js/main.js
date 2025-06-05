@@ -578,6 +578,8 @@ function judgeKeys(e) {
         } else {
             if (timer.textContent === '' && typedKey === ' ') {
                 useHeartPower(Number(localStorage.getItem('heartPower')));
+            } else {
+                incorrectType(typedKey);
             }
         }
     }
@@ -591,13 +593,11 @@ function correctType(key) {
 }
 
 function incorrectType(key) {
-
     let typingArea = document.getElementById('typing_area');
     typingArea?.classList.add('missed');
     setTimeout(() => {
         typingArea?.classList.remove('missed');
     }, 1000);
-
 }
 
 function deleteBlock() {
