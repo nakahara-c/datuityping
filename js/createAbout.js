@@ -149,7 +149,6 @@ export function createAbout() {
             <p>英語では大文字や記号を含むものを取り除いています。(Mondayやo'clockなど)</p>
             <p>ローマ字では「ざ」を含むものを取り除いています。(「座禅」など)</p>
         </details>
-        <p class="mt-4 mb-2">意見・要望→<a href="https://marshmallow-qa.com/3h2hyy360x0davt" target="_blank">マシュマロ</a></p>
 
         <hr>
         <div class="has-text-centered">
