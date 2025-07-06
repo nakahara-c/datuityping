@@ -172,7 +172,7 @@ function startTimer() {
 }
 
 function adjustDataBox() {
-    if (isInViewport(dataBox)) {
+    if (isInViewport(dataBox) && !dataBox.classList.contains('fixed')) {
         dataBox.classList.remove('fixed');
     } else {
         dataBox.classList.add('fixed');
